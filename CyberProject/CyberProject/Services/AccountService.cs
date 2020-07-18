@@ -78,7 +78,7 @@ namespace CyberProject.Services
                             new Claim(ClaimTypes.NameIdentifier, checkUser.Id.ToString()),
                             new Claim(ClaimTypes.Name, checkUser.UserName),
                             new Claim(ClaimTypes.Email , checkUser.Email),
-                            new Claim(ClaimTypes.GivenName, checkUser.FullName),
+                            new Claim(ClaimTypes.GivenName, checkUser.FirstName + checkUser.LastName),
                             }),
                             Expires = DateTime.UtcNow.AddDays(7),
                             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

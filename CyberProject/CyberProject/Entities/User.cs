@@ -19,10 +19,11 @@ namespace CyberProject.Entities
         public int FacultyID { get; set; }
         public string Email { get; set; }
         public string PhoneNo { get; set; }
+        public string Grade { get; set; }
+        public string Level { get; set; }
+        public string Step { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
-        public string Role { get; set; }
-        public DateTime? Dateregistered { get; set; }
         public Department Department { get; set; }
         public Faculty Faculty { get; set; }
     }

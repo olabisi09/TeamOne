@@ -1,27 +1,37 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign Up</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Form Controls - Wide selection of forms controls, using the Bootstrap 4 code base, but built with React.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
+    <meta name="description" content="Wide selection of forms controls, using the Bootstrap 4 code base, but built with React.">
+    <meta name="msapplication-tap-highlight" content="no">
+    <!--
+    =========================================================
+    * ArchitectUI HTML Theme Dashboard - v1.0.0
+    =========================================================
+    * Product Page: https://dashboardpack.com
+    * Copyright 2019 DashboardPack (https://dashboardpack.com)
+    * Licensed under MIT (https://github.com/DashboardPack/architectui-html-theme-free/blob/master/LICENSE)
+    =========================================================
+    * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+    -->
+    <link href="~/main.css" rel="stylesheet">
 
-    <!-- Font Icon -->
-    <link rel="stylesheet" href="~/fonts/material-icon/css/material-design-iconic-font.min.css">
-
-    <!-- Main css -->
-    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/assets/css/loading.css">
+    <link href="~/sweetAlert/sweetalert.css" rel="stylesheet" />
+    <script src="~/sweetAlert/sweetalert.min.js"></script>
 </head>
 
 <body>
+    
 
-    <div class="container container-fluid">
-        <partial name="_CookieConsentPartial" />
-        @RenderBody()
-    </div>
-    <!-- JS -->
-    <script src="~/vendor/jquery/jquery.min.js"></script>
-    <script src="~/js/main.js"></script>
-    @RenderSection("Scripts", required: false)
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+    <partial name="_CookieConsentPartial" />
+    @RenderBody()
+    <!-- <script type="text/javascript" src="./assets/scripts/main.d810cf0ae7f39f28f336.js"></script></body> -->
+</body>
 </html>

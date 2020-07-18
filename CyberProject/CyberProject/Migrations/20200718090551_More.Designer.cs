@@ -4,14 +4,16 @@ using CyberProject.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CyberProject.Migrations
 {
     [DbContext(typeof(CyberProjectDataContext))]
-    partial class CyberProjectDataContextModelSnapshot : ModelSnapshot
+    [Migration("20200718090551_More")]
+    partial class More
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

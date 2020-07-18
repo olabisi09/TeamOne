@@ -16,6 +16,10 @@
     <meta name="msapplication-tap-highlight" content="no">
 
     <link href="./main.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/assets/css/loading.css">
+    <link href="~/sweetAlert/sweetalert.css" rel="stylesheet" />
+    <script src="~/sweetAlert/sweetalert.min.js"></script>
 </head>
 <body>
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
@@ -91,12 +95,13 @@
                                         </a>
                                         <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
                                             <button type="button" tabindex="0" class="dropdown-item">User Account</button>
-                                            <a asp-controller="Account" asp-action="Login" class="nav-link waves-effect waves-dark fa fa-sign-in-alt" > Login</a>
-                                            <!--<h6 tabindex="-1" class="dropdown-header">Header</h6>
-                                            <button type="button" tabindex="0" class="dropdown-item">Actions</button>
-                                            <div tabindex="-1" class="dropdown-divider"></div>-->
+                                            
+                                            @*<h6 tabindex="-1" class="dropdown-header">Header</h6>*@
+                                            @*<button type="button" tabindex="0" class="dropdown-item">Actions</button>*@
+                                            @*<div tabindex="-1" class="dropdown-divider"></div>*@
                                             <hr />
-                                            <a asp-controller="Account" asp-action="LogOut" class="nav-link waves-effect waves-dark fa fa-sign-out-alt" > Logout</a>
+                                            <button asp-controller="Account" asp-action="LogOut" type="button" tabindex="0" class="dropdown-item">Logout</button>
+                                            
                                         </div>
                                     </div>
                                 </div>

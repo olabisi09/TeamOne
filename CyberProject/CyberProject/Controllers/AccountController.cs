@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using CyberProject.Dtos;
 using CyberProject.Entities;
 using CyberProject.Enums;
 using CyberProject.Interfaces;
 using CyberProject.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -55,36 +57,53 @@ namespace CyberProject.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Signup(ApplicationUser user, SignUpViewModel model)
+        public async Task<IActionResult> Signup(SignUpViewModel model)
         {
-            var sign = await _account.CreateUser(user, model.Password);
+            //var sign = await _account.CreateUser(user, model.Password);
 
-            if (sign)
+            //if (sign)
+            //{
+            //    Alert("Account created successfully", NotificationType.success);
+            //    return RedirectToAction("Index", "Home");
+            //}
+            //return View();
+
+            //if (!ModelState.IsValid)
+            //{
+            //    Alert("Sign Up Unsuccesful!", NotificationType.error);
+            //    ModelState.AddModelError("", "UserName/Password is incorrect");
+            //    return View();
+            //}
+            //ApplicationUser user = new ApplicationUser();
+            //user.UserName = us.Username;
+            //user.Email = us.Email;
+
+            if (ModelState.IsValid)
             {
-                Alert("Account created successfully", NotificationType.success);
-                return RedirectToAction("Index", "Home");
+                var user = new ApplicationUser { UserName = model.Username, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName};
+                var signUp = await _userManager.CreateAsync(user, model.Password);
+
+                if (signUp.Succeeded)
+                {
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    return RedirectToAction("Index", "Home");
+                }
             }
-            return View();
+            return View(model);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel login)
+        public async Task<IActionResult> Login(LoginViewModel model)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                Alert("Invalid username or password", NotificationType.error);
-                ModelState.AddModelError("", "UserName/Password is incorrect");
-                return View();
+                var result = await _account.Login(model);
+                if (result)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
             }
-
-            var signin = await _account.Login(login);
-
-            if (signin)
-            {
-                Alert("Welcome!", NotificationType.success);
-                return RedirectToAction("Index", "Home");
-            }
-            return View();
+            return View(model);
         }
 
         [HttpGet]

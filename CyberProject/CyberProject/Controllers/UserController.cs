@@ -17,18 +17,35 @@ namespace CyberProject.Controllers
 {
     public class UserController : Controller
     {
-        //private IAccount _account;
+        private IAccount _account;
         private IUser _userService;
         private IConfiguration _config;
 
-        public UserController(IUser userService, IConfiguration config)
+        public UserController(IUser userService, IConfiguration config, IAccount account)
         {
-            //_account = account;
+            _account = account;
             _userService = userService;
             _config = config;
         }
 
-        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IActionResult> Register([FromBody] UserDto registerUser)
+        {
+            ApplicationUser user = new ApplicationUser();
+
+            user.FirstName = registerUser.FirstName;
+            user.LastName = registerUser.LastName;
+            user.UserName = registerUser.Username;
+            user.Email = registerUser.Email;
+            user.PhoneNumber = registerUser.PhoneNo;
+
+            var newUser = await _account.CreateUser(user, registerUser.Password);
+            if (newUser)
+                return RedirectToAction("Index");
+
+            return View();
+        }
+
         [HttpPost("authenticate")]
         public IActionResult Authenticate([FromBody] LoginDto userDto)
         {
@@ -110,7 +127,6 @@ namespace CyberProject.Controllers
             return View();
         }
 
-        [Authorize(Roles = Role.Admin)]
         [HttpGet]
         public IActionResult GetAll()
         {
