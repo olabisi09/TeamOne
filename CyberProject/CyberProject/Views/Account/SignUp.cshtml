@@ -15,109 +15,205 @@
                         <div class="modal-content" style="overflow: scroll; padding-top: 400px;">
                             <div class="modal-body">
                                 <div class="h5 modal-title text-center">
-                                    <h4 class="mt-2">
-                                        <div>Welcome,</div>
-                                        <span>It only takes a <span class="text-success">few seconds</span> to create your account</span>
-                                    </h4>
-                                </div>
-                                <form class="" asp-controller="Account">
-                                    <div class="form-row" asp-validation-summary="All">
-                                        <div class="col-md-12">
-                                            <div class="position-relative form-group">
-                                                <span asp-validation-for="FirstName"></span>
-                                                <input asp-for="FirstName" placeholder="First Name" type="text" class="form-control">
+                                    <div class="container h-100">
+                                        <div class="row align-items-center h-100">
+                                            <div class="col-md-4"></div>
+                                            <div class="col-md-4">
+                                                    <h4 class="mt-2">
+                                                        <div>Welcome,</div>
+                                                        <span>It only takes a <span class="text-success">few seconds</span> to create your account</span>
+                                                    </h4>
                                             </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="position-relative form-group">
-                                                <span asp-validation-for="LastName"></span>
-                                                <input asp-for="LastName" placeholder="Last Name" type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="position-relative form-group">
-                                                <input asp-for="Username" id="username" placeholder="Username" type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="position-relative form-group">
-                                                <input asp-for="Email" placeholder="Email here..." type="email" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="position-relative form-group">
-                                                <input asp-for="PhoneNo" placeholder="Phone Number" type="tel" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="position-relative form-group">
-                                                <input asp-for="Faculty" placeholder="Faculty" type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="position-relative form-group">
-                                                <input asp-for="Department" placeholder="Department" type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="position-relative form-group">
-                                                <input asp-for="Country" placeholder="Country" type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <select asp-for="State" class="mb-2 form-control">
-                                                <option>State</option>
-                                                <option>Lagos</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <select asp-for="LGA" class="mb-2 form-control">
-                                                <option>LGA</option>
-                                                <option>Eti-Osa</option>
-                                                <option>Ikeja</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="position-relative form-group">
-                                                <input asp-for="Grade" name="grade" id="grade" placeholder="Grade" type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="position-relative form-group">
-                                                <input asp-for="Level" placeholder="Level" type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="position-relative form-group">
-                                                <input asp-for="Step" placeholder="Step" type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="position-relative form-group">
-                                                <input asp-for="Password" placeholder="Password here..." type="password" class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="position-relative form-check">
-                                        <input name="check" id="exampleCheck" type="checkbox" class="form-check-input">
-                                        <label for="exampleCheck" class="form-check-label">Keep me logged in</label>
-                                    </div>
+                                            <form class="" asp-controller="Account">
+                                                <div class="form-row" asp-validation-summary="All">
+                                                    <div class="col-md-12">
+                                                        <div class="position-relative form-group">
+                                                            <span asp-validation-for="FirstName"></span>
+                                                            <input asp-for="FirstName" placeholder="First Name" type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="position-relative form-group">
+                                                            <span asp-validation-for="LastName"></span>
+                                                            <input asp-for="LastName" placeholder="Last Name" type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="position-relative form-group">
+                                                            <input asp-for="Username" id="username" placeholder="Username" type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="position-relative form-group">
+                                                            <input asp-for="Email" placeholder="Email here..." type="email" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="position-relative form-group">
+                                                            <input asp-for="PhoneNo" placeholder="Phone Number" type="tel" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="position-relative form-group">
+                                                            <input asp-for="Faculty" placeholder="Faculty" type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="position-relative form-group">
+                                                            <input asp-for="Department" placeholder="Department" type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="position-relative form-group">
+                                                            <input asp-for="Country" placeholder="Country" type="text" class="form-control">
+                                                        </div>
+                                                    </div>
 
-                                    <div class="float-right">
-                                        <button asp-action="Signup" type="submit" class="btn btn-primary btn-lg">Login to Dashboard</button>
+                                                        <!--    <div class="col-md-12">
+                                                        <select asp-for="State" class="mb-2 form-control">
+                                                            <option disabled="disabled" selected="selected">State</option>
+                                                            <option>ABUJA FCT</option>
+                                                            <option>ABIA</option>
+                                                            <option>ADAMAWA</option>
+                                                            <option>AKWA IBOM</option>
+                                                            <option>ANAMBRA</option>
+                                                            <option>BAUCHI</option>
+                                                            <option>BAYELSA</option>
+                                                            <option>BENUE</option>
+                                                            <option>BORNO</option>
+                                                            <option>CROSS RIVER</option>
+                                                            <option>DELTA</option>
+                                                            <option>EBONYI</option>
+                                                            <option>EDO</option>
+                                                            <option>EKITI</option>
+                                                            <option>ENUGU</option>
+                                                            <option>GOMBE</option>
+                                                            <option>IMO</option>
+                                                            <option>JIGAWA</option>
+                                                            <option>KADUNA</option>
+                                                            <option>KANO</option>
+                                                            <option>KATSINA</option>
+                                                            <option>KEBBI</option>
+                                                            <option>KOGI</option>
+                                                            <option>KWARA</option>
+                                                            <option>LAGOS</option>
+                                                            <option>NASSARAWA</option>
+                                                            <option>NIGER</option>
+                                                            <option>OGUN</option>
+                                                            <option>ONDO</option>
+                                                            <option>OSUN</option>
+                                                            <option>OYO</option>
+                                                            <option>PLATEAU</option>
+                                                            <option>RIVERS</option>
+                                                            <option>SOKOTO</option>
+                                                            <option>TARABA</option>
+                                                            <option>YOBE</option>
+                                                            <option>ZAMFARA</option>
+                                                        </select>
+                                                    </div> -->
+
+                                                                                                                                                            
+                                                    <div class="col-md-12">                                                       
+                                                        <select asp-for="State" class="mb-2 form-control" onchange="toggleLGA(this);" name="state"id="state">
+                                                            <option value="" selected="selected">- State -</option>
+                                                            <option value="Abia">Abia</option>
+                                                            <option value="Adamawa">Adamawa</option>
+                                                            <option value="AkwaIbom">AkwaIbom</option>
+                                                            <option value="Anambra">Anambra</option>
+                                                            <option value="Bauchi">Bauchi</option>
+                                                            <option value="Bayelsa">Bayelsa</option>
+                                                            <option value="Benue">Benue</option>
+                                                            <option value="Borno">Borno</option>
+                                                            <option value="Cross River">Cross River</option>
+                                                            <option value="Delta">Delta</option>
+                                                            <option value="Ebonyi">Ebonyi</option>
+                                                            <option value="Edo">Edo</option>
+                                                            <option value="Ekiti">Ekiti</option>
+                                                            <option value="Enugu">Enugu</option>
+                                                            <option value="FCT">FCT</option>
+                                                            <option value="Gombe">Gombe</option>
+                                                            <option value="Imo">Imo</option>
+                                                            <option value="Jigawa">Jigawa</option>
+                                                            <option value="Kaduna">Kaduna</option>
+                                                            <option value="Kano">Kano</option>
+                                                            <option value="Katsina">Katsina</option>
+                                                            <option value="Kebbi">Kebbi</option>
+                                                            <option value="Kogi">Kogi</option>
+                                                            <option value="Kwara">Kwara</option>
+                                                            <option value="Lagos">Lagos</option>
+                                                            <option value="Nasarawa">Nasarawa</option>
+                                                            <option value="Niger">Niger</option>
+                                                            <option value="Ogun">Ogun</option>
+                                                            <option value="Ondo">Ondo</option>
+                                                            <option value="Osun">Osun</option>
+                                                            <option value="Oyo">Oyo</option>
+                                                            <option value="Plateau">Plateau</option>
+                                                            <option value="Rivers">Rivers</option>
+                                                            <option value="Sokoto">Sokoto</option>
+                                                            <option value="Taraba">Taraba</option>
+                                                            <option value="Yobe">Yobe</option>
+                                                            <option value="Zamfara">Zamafara</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-md-12">
+                                                        <select asp-for="LGA" name="lga" id="lga" class="form-control select-lga" required></select>
+                                                    </div>
+                                                
+                                                    <div>
+                                                        <div>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <!--     <div class="col-md-12">
+                                                        <select asp-for="LGA" class="mb-2 form-control">
+                                                            <option disabled="disabled" selected="selected">LGA</option>
+                                                            <option>Eti-Osa</option>
+                                                            <option>Ikeja</option>
+                                                        </select>
+                                                    </div> -->
+                                                    
+                                                    <div class="col-md-12">
+                                                        <div class="position-relative form-group">
+                                                            <input asp-for="Grade" name="grade" id="grade" placeholder="Grade" type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="position-relative form-group">
+                                                            <input asp-for="Level" placeholder="Level" type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="position-relative form-group">
+                                                            <input asp-for="Step" placeholder="Step" type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="position-relative form-group">
+                                                            <input asp-for="Password" placeholder="Password here..." type="password" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="position-relative form-check">
+                                                    <input name="check" id="exampleCheck" type="checkbox" class="form-check-input">
+                                                    <label for="exampleCheck" class="form-check-label">Keep me logged in</label>
+                                                </div>
+                                                <div class="float-right">
+                                                    <button asp-action="Signup" type="submit" class="btn btn-primary btn-lg">Login to Dashboard</button>
+                                                </div>
+                            </form>
+                                            @*<div class="divider"></div>
+                <h6 class="mb-0">No account? <a href="javascript:void(0);" class="text-primary">Sign up now</a></h6>*@
+                                        </div>
+                                        @*<div class="modal-footer clearfix">
+                <div class="float-left">
+                    <a href="javascript:void(0);" class="btn-lg btn btn-link">Recover Password</a>
+                </div>
+
+            </div>*@
                                     </div>
-                                </form>
-                                @*<div class="divider"></div>
-                                <h6 class="mb-0">No account? <a href="javascript:void(0);" class="text-primary">Sign up now</a></h6>*@
-                            </div>
-                            @*<div class="modal-footer clearfix">
-                                <div class="float-left">
-                                    <a href="javascript:void(0);" class="btn-lg btn btn-link">Recover Password</a>
                                 </div>
-                                
-                            </div>*@
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
