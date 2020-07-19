@@ -118,7 +118,8 @@ namespace CyberProject.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Index()
+        [HttpGet]
+        public async Task<IActionResult> ListUsers()
         {
             var model = await _userService.GetAll();
 
@@ -127,31 +128,11 @@ namespace CyberProject.Controllers
             return View();
         }
 
-        [HttpGet]
-        public IActionResult GetAll()
-        {
-            var users = _userService.GetAll();
-            return Ok(users);
-        }
-
         //[HttpGet]
-        //public IActionResult GetById(int id)
+        //public IActionResult ListUsers()
         //{
-        //    var user = _userService.GetById(id);
-
-        //    if (user == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    // only allow admins to access other user records
-        //    var currentUserId = int.Parse(User.Identity.Name);
-        //    if (id != currentUserId && !User.IsInRole(Role.Admin))
-        //    {
-        //        return Forbid();
-        //    }
-
-        //    return Ok(user);
+        //    var users = _userService.GetAll();
+        //    return View(users);
         //}
     }
 }

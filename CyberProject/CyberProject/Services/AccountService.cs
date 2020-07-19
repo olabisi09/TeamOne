@@ -41,8 +41,10 @@ namespace CyberProject.Services
                 var checkUser = await _userManager.FindByEmailAsync(user.Email);
                 if (checkUser == null)
                 {
+
                     var userResult = await _userManager.CreateAsync(user, password);
                     if (userResult.Succeeded)
+                        //_userManager.AddToRoleAsync(user, "Admin").Wait();
                         return true;
                 }
                 return false;

@@ -10,13 +10,22 @@ using System.Threading.Tasks;
 
 namespace CyberProject.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class AdministratorController : BaseController
     {
         private readonly RoleManager<ApplicationRole> _roleManager;
-        public AdministratorController(RoleManager<ApplicationRole> roleManager)
+        private readonly UserManager<ApplicationUser> _userManager;
+        public AdministratorController(RoleManager<ApplicationRole> roleManager, UserManager<ApplicationUser> userManager)
         {
             _roleManager = roleManager;
+            _userManager = userManager;
+        }
+
+        [HttpGet]
+        public IActionResult ListUsers()
+        {
+            var users = _userManager.Users;
+            return View(users);
         }
 
         [HttpGet]
@@ -39,9 +48,13 @@ namespace CyberProject.Controllers
                 if (result.Succeeded)
                 {
                     Alert("Role created", Enums.NotificationType.success);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("ListRoles", "Administrator");
                 }
 
+                foreach(var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
             }
             return View(model);
         }

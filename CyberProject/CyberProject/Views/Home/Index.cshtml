@@ -1,14 +1,7 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<CyberProject.Entities.Grade>
+@{ 
+    ViewBag.Title = "Home";
 }
-@model IEnumerable<CyberProject.Entities.User>
-{ 
-
-}
-@using Microsoft.AspNetCore.Identity
-@using CyberProject.Entities
-@inject SignInManager<ApplicationUser> SignInManager
-@inject UserManager<ApplicationUser> UserManager
 
 
 <div class="app-main__outer">
@@ -111,16 +104,16 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>First Name</th>
+                                    @*<th>First Name</th>
                                     <th>Last Name</th>
-                                    <th>Username</th>
-                                    <th>Faculty</th>
+                                    <th>Username</th>*@
+                                    @*<th>Faculty</th>
                                     <th>Department</th>
                                     <th>Email</th>
                                     <th>Phone Number</th>
                                     <th>Grade</th>
                                     <th>Level</th>
-                                    <th>Step</th>
+                                    <th>Step</th>*@
                                 </tr>
                             </thead>
                             <tbody>

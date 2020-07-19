@@ -40,7 +40,6 @@ namespace CyberProject.Services
 
         public async Task<IEnumerable<User>> GetAll()
         {
-
             return await _context.WebUsers.ToListAsync();
         }
 
