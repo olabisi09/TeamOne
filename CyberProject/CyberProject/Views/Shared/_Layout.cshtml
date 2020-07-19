@@ -1,8 +1,4 @@
-﻿
-@using Microsoft.AspNetCore.Identity
-
-
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 
 <head>
@@ -15,7 +11,7 @@
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
     <meta name="msapplication-tap-highlight" content="no">
 
-    <link href="./main.css" rel="stylesheet">
+    <link href="~/main.css" rel="stylesheet">
 
     <link rel="stylesheet" href="~/assets/css/loading.css">
     <link href="~/sweetAlert/sweetalert.css" rel="stylesheet" />
@@ -100,7 +96,7 @@
                                             @*<button type="button" tabindex="0" class="dropdown-item">Actions</button>*@
                                             @*<div tabindex="-1" class="dropdown-divider"></div>*@
                                             <hr />
-                                            <button asp-controller="Account" asp-action="LogOut" type="button" tabindex="0" class="dropdown-item">Logout</button>
+                                            <button asp-controller="Account" asp-action="Logout" type="button" tabindex="0" class="dropdown-item">Logout</button>
                                             
                                         </div>
                                     </div>
@@ -451,9 +447,15 @@
                         <ul class="vertical-nav-menu">
                             <li class="app-sidebar__heading">Dashboards</li>
                             <li>
-                                <a href="index.html" class="mm-active">
-                                    <i class="metismenu-icon pe-7s-rocket"></i>
-                                    Dashboard Example 1
+                                <a asp-controller="Administrator" asp-action="CreateRole">
+                                    <i class="metismenu-icon pe-7s-display2"></i>
+                                    Create Role
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-controller="Faculty" asp-action="Index">
+                                    <i class="metismenu-icon pe-7s-display2"></i>
+                                    Faculties
                                 </a>
                             </li>
                             <li class="app-sidebar__heading">UI Components</li>
@@ -643,14 +645,13 @@
 
 
             </div>
-
-            <div class="container body-content">
-                @RenderBody()
-            </div>
+            <partial name="_CookieConsentPartial" />
+            @*<partial name="_NotificationPanel" />*@
+            @RenderBody()
             <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
         </div>
     </div>
-    <script type="text/javascript" src="./assets/scripts/main.js"></script>
+    <script type="text/javascript" src="~/assets/scripts/main.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

@@ -20,19 +20,7 @@ namespace CyberProject.Controllers
 
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
-        //private readonly RoleManager<ApplicationRole> _roleManager;
-        //string Message = "";
-
-        //public AccountController(SignInManager<ApplicationUser> signInManager,
-        //    RoleManager<ApplicationRole> roleManager,
-        //    UserManager<ApplicationUser> userManager)
-        //{
-        //    _signInManager = signInManager;
-        //    _userManager = userManager;
-        //    _roleManager = roleManager;
-        //}
-
-
+       
         public AccountController(IAccount account, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
             _account = account;
@@ -59,25 +47,6 @@ namespace CyberProject.Controllers
         [HttpPost]
         public async Task<IActionResult> Signup(SignUpViewModel model)
         {
-            //var sign = await _account.CreateUser(user, model.Password);
-
-            //if (sign)
-            //{
-            //    Alert("Account created successfully", NotificationType.success);
-            //    return RedirectToAction("Index", "Home");
-            //}
-            //return View();
-
-            //if (!ModelState.IsValid)
-            //{
-            //    Alert("Sign Up Unsuccesful!", NotificationType.error);
-            //    ModelState.AddModelError("", "UserName/Password is incorrect");
-            //    return View();
-            //}
-            //ApplicationUser user = new ApplicationUser();
-            //user.UserName = us.Username;
-            //user.Email = us.Email;
-
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Username, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName};
@@ -95,15 +64,21 @@ namespace CyberProject.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var result = await _account.Login(model);
-                if (result)
-                {
-                    return RedirectToAction("Index", "Home");
-                }
+                Alert("Invalid username or password", NotificationType.error);
+                ModelState.AddModelError("", "UserName/Password is incorrect");
+                return View();
             }
-            return View(model);
+
+            var signin = await _account.Login(model);
+
+            if (signin)
+            {
+                Alert("Welcome!", NotificationType.success);
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
         }
 
         [HttpGet]

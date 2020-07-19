@@ -134,24 +134,24 @@ namespace CyberProject.Controllers
             return Ok(users);
         }
 
-        [HttpGet]
-        public IActionResult GetById(int id)
-        {
-            var user = _userService.GetById(id);
+        //[HttpGet]
+        //public IActionResult GetById(int id)
+        //{
+        //    var user = _userService.GetById(id);
 
-            if (user == null)
-            {
-                return NotFound();
-            }
+        //    if (user == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            // only allow admins to access other user records
-            var currentUserId = int.Parse(User.Identity.Name);
-            if (id != currentUserId && !User.IsInRole(Role.Admin))
-            {
-                return Forbid();
-            }
+        //    // only allow admins to access other user records
+        //    var currentUserId = int.Parse(User.Identity.Name);
+        //    if (id != currentUserId && !User.IsInRole(Role.Admin))
+        //    {
+        //        return Forbid();
+        //    }
 
-            return Ok(user);
-        }
+        //    return Ok(user);
+        //}
     }
 }

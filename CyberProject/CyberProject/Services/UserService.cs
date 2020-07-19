@@ -1,6 +1,7 @@
 ﻿using CyberProject.Data;
 using CyberProject.Entities;
 using CyberProject.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
