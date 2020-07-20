@@ -19,7 +19,7 @@ namespace CyberProject.Services
 
         public void Add(Department department)
         {
-            department.DateCreated = DateTime.Now;
+            
             _context.Add(department);
             _context.SaveChanges();
         }
@@ -40,10 +40,10 @@ namespace CyberProject.Services
 
         public async Task<bool> Delete(int Id)
         {
-            var department = await _context.Faculties.FindAsync(Id);
+            var department = await _context.Departments.FindAsync(Id);
             if (department != null)
             {
-                _context.Faculties.Remove(department);
+                _context.Departments.Remove(department);
                 _context.SaveChanges();
                 return true;
             }
@@ -63,9 +63,9 @@ namespace CyberProject.Services
             return department;
         }
 
-        public async Task<bool> Update(Department department, int Id)
+        public async Task<bool> Update(Department department)
         {
-            var dept = await _context.Departments.FindAsync(Id);
+            var dept = await _context.Departments.FindAsync(department.deptID);
             if (dept != null)
             {
                 dept.deptName = department.deptName;

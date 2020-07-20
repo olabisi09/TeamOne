@@ -75,7 +75,7 @@ namespace CyberProject.Controllers
         public async Task<IActionResult> Edit(Faculty faculty)
         {
             //var editFaculty = await _faculty.GetById(id);
-            var editFaculty = await _faculty.Update(faculty, faculty.facultyID);
+            var editFaculty = await _faculty.Update(faculty);
 
             if (editFaculty)
             {

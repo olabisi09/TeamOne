@@ -1,8 +1,10 @@
 ﻿using CyberProject.Dtos;
 using CyberProject.Entities;
+using CyberProject.Enums;
 using CyberProject.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -15,17 +17,21 @@ using System.Threading.Tasks;
 
 namespace CyberProject.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         private IAccount _account;
+        private IFaculty _faculty;
+        private IDepartment _department;
         private IUser _userService;
         private IConfiguration _config;
 
-        public UserController(IUser userService, IConfiguration config, IAccount account)
+        public UserController(IUser userService, IConfiguration config, IAccount account, IFaculty faculty, IDepartment department)
         {
             _account = account;
             _userService = userService;
             _config = config;
+            _faculty = faculty;
+            _department = department;
         }
 
         [HttpPost]
@@ -112,8 +118,40 @@ namespace CyberProject.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            var fac = await _faculty.GetAll();
+            var dept = await _department.GetAll();
+            var facList = fac.Select(f => new SelectListItem()
+            {
+                Value = f.facultyID.ToString(),
+                Text = f.facultyName
+            });
+            var deptList = dept.Select(d => new SelectListItem()
+            {
+                Value = d.deptID.ToString(),
+                Text = d.deptName
+            });
+            ViewBag.fac = facList;
+            ViewBag.dept = deptList;
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(User user)
+        {
+            var createUser = await _userService.AddAsync(user);
+
+            if (createUser)
+            {
+                Alert("User created successfully.", NotificationType.success);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                Alert("User not created!", NotificationType.error);
+            }
+
 
             return View();
         }
@@ -128,11 +166,6 @@ namespace CyberProject.Controllers
             return View();
         }
 
-        //[HttpGet]
-        //public IActionResult ListUsers()
-        //{
-        //    var users = _userService.GetAll();
-        //    return View(users);
-        //}
+        
     }
 }

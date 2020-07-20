@@ -53,8 +53,6 @@ namespace CyberProject.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Department department)
         {
-            department.CreatedBy = _userManager.GetUserName(User);
-            department.DateCreated = DateTime.Now;
             var createDepartment = await _department.AddAsync(department);
 
             if (createDepartment)
@@ -87,7 +85,7 @@ namespace CyberProject.Controllers
         public async Task<IActionResult> Edit(Department department)
         {
             //var editDepartment = await _department.GetById(id);
-            var editDepartment = await _department.Update(department, department.deptID);
+            var editDepartment = await _department.Update(department);
 
             if (editDepartment)
             {

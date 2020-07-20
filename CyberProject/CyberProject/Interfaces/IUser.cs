@@ -14,5 +14,6 @@ namespace CyberProject.Interfaces
         User Create(User user, string password);
         Task<bool> Update(User user, string password = null);
         Task<bool> Delete(int Id);
+        Task<bool> AddAsync(User user);
     }
 }

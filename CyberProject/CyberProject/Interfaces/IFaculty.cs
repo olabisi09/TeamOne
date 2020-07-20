@@ -10,7 +10,7 @@ namespace CyberProject.Interfaces
     {
         void Add(Faculty faculty);
         Task<bool> AddAsync(Faculty faculty);
-        Task<bool> Update(Faculty faculty, int Id);
+        Task<bool> Update(Faculty faculty);
         Task<IEnumerable<Faculty>> GetAll();
         Task<Faculty> GetById(int Id);
         Task<bool> Delete(int Id);

@@ -61,9 +61,9 @@ namespace CyberProject.Services
             return faculty;
         }
 
-        public async Task<bool> Update(Faculty faculty, int Id)
+        public async Task<bool> Update(Faculty faculty)
         {
-            var fac = await _context.Faculties.FindAsync(Id);
+            var fac = await _context.Faculties.FindAsync(faculty.facultyID);
             if (fac != null)
             {
                 fac.facultyName = faculty.facultyName;

@@ -40,7 +40,7 @@ namespace CyberProject.Services
 
         public async Task<IEnumerable<User>> GetAll()
         {
-            return await _context.WebUsers.ToListAsync();
+            return await _context.WebUsers.Include(f => f.Faculty).Include(d => d.Department).ToListAsync();
         }
 
         public async Task<User> GetById(int Id)
@@ -117,6 +117,20 @@ namespace CyberProject.Services
             }
 
             return false;
+        }
+
+        public async Task<bool> AddAsync(User user)
+        {
+            try
+            {
+                await _context.AddAsync(user);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
         }
 
         public async Task<bool> Delete(int Id)

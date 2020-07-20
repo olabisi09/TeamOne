@@ -1,8 +1,9 @@
-﻿@model IEnumerable<CyberProject.Entities.Faculty>
+﻿@model IEnumerable<CyberProject.Entities.Department>
 @{
-    ViewData["Title"] = "Faculties";
+    ViewData["Title"] = "Departments";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 
 <div class="app-main__outer">
     <div class="app-main__inner">
@@ -81,16 +82,28 @@
                         <table class="mb-0 table table-borderless">
                             <thead>
                                 <tr>
+                                    <th>Department ID</th>
+                                    <th>Department Name</th>
                                     <th>Faculty ID</th>
-                                    <th>Faculty Name</th>
                                 </tr>
                             </thead>
-                            @foreach (var fac in Model)
+                            @foreach (var dept in Model)
                             {
                                 <tbody>
                                     <tr>
-                                        <td scope="row">@fac.facultyID</td>
-                                        <td>@fac.facultyName</td>
+                                        <td scope="row">@dept.deptID</td>
+                                        <td>@dept.deptName</td>
+                                        <td>@dept.FacultyID</td>
+                                        <td class="dropdown">
+                                            <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fa fa-ellipsis-v"></i>
+                                            </a>
+                                            <div role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+                                                <a asp-controller="Department" asp-action="Edit" asp-route-id="@dept.deptID" tabindex="0" class="dropdown-item">Edit</a>
+                                                <a asp-action="Delete" asp-route-id="@dept.deptID" onclick="return confirm('Are you sure you want to delete the @dept.deptName department?')" tabindex="0" class="dropdown-item">Delete</a>
+                                            </div>
+                                        </td>
+                                        
                                     </tr>
                                 </tbody>
                             }
