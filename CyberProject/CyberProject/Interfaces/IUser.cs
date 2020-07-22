@@ -12,8 +12,9 @@ namespace CyberProject.Interfaces
         Task<IEnumerable<User>> GetAll();
         Task<User> GetById(int id);
         User Create(User user, string password);
-        Task<bool> Update(User user, string password = null);
+        Task<bool> Update(User user);
         Task<bool> Delete(int Id);
         Task<bool> AddAsync(User user);
+        Task<bool> ComputeSalary(Salary s);
     }
 }

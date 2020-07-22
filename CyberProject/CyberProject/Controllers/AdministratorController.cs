@@ -65,5 +65,45 @@ namespace CyberProject.Controllers
             var roles = _roleManager.Roles;
             return View(roles);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> EditRole(string Id)
+        {
+            var role = await _roleManager.FindByIdAsync(Id);
+
+            //if (role == null)
+            //{
+            //    return RedirectToAction("ListRoles", "Administrator");
+            //}
+
+            //var model = new EditRoleModel
+            //{
+            //    RoleName = role.Name
+            //};
+            return View(role);
+        }
+
+        //[HttpPost]
+        //public async Task<IActionResult> EditRole(ApplicationRole model)
+        //{
+        //    var role = await _roleManager.FindByIdAsync(model.Id);
+
+        //    if (role == null)
+        //    {
+        //        return RedirectToAction("ListRoles", "Administrator");
+        //    }
+        //    else
+        //    {
+        //        role.Name = model.RoleName;
+        //        var result = await _roleManager.UpdateAsync(role);
+
+        //        if (result.Succeeded)
+        //        {
+        //            return RedirectToAction("ListRoles", "Administrator");
+        //        }
+        //    }
+        //    return View(model);
+
+        //}
     }
 }

@@ -17,6 +17,7 @@ using System.Threading.Tasks;
 
 namespace CyberProject.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class UserController : BaseController
     {
         private IAccount _account;
@@ -145,7 +146,7 @@ namespace CyberProject.Controllers
             if (createUser)
             {
                 Alert("User created successfully.", NotificationType.success);
-                return RedirectToAction("Index");
+                return RedirectToAction("ListUsers", "User");
             }
             else
             {
@@ -166,6 +167,93 @@ namespace CyberProject.Controllers
             return View();
         }
 
-        
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var editUser = await _userService.GetById(id);
+
+            if (editUser == null)
+            {
+                return RedirectToAction("ListUsers");
+            }
+            var fac = await _faculty.GetAll();
+            var dept = await _department.GetAll();
+            var facList = fac.Select(f => new SelectListItem()
+            {
+                Value = f.facultyID.ToString(),
+                Text = f.facultyName
+            });
+            var deptList = dept.Select(d => new SelectListItem()
+            {
+                Value = d.deptID.ToString(),
+                Text = d.deptName
+            });
+            ViewBag.fac = facList;
+            ViewBag.dept = deptList;
+            return View(editUser);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(User user)
+        {
+            //var editUser = await _faculty.GetById(id);
+            var editUser = await _userService.Update(user);
+
+            if (editUser)
+            {
+                Alert("User edited successfully", NotificationType.success);
+                return RedirectToAction("ListUsers");
+            }
+            else
+            {
+                Alert("User not edited", NotificationType.error);
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public async  Task<IActionResult> CalculateSalary(int Id)
+        {
+            var sal = await _userService.GetById(Id);
+            if (sal == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            var fac = await _faculty.GetAll();
+            var dept = await _department.GetAll();
+            var FacList = fac.Select(f => new SelectListItem()
+            {
+                Value = f.facultyID.ToString(),
+                Text = f.facultyName
+            });
+            var deptList = dept.Select(d => new SelectListItem()
+            {
+                Value = d.deptID.ToString(),
+                Text = d.deptName
+            });
+
+            ViewBag.fac = FacList;
+            ViewBag.dept = deptList;
+            //return View();
+            return View(sal);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CalculateSalary(Salary s, int Id)
+        {
+            //var getUser = _user.GetById(Id);
+            var getSalary = await _userService.ComputeSalary(s);
+            if (getSalary)
+            {
+                Alert("User edited successfully", NotificationType.success);
+                return RedirectToAction("ListUsers");
+            }
+            else
+            {
+                Alert("User not edited", NotificationType.error);
+            }
+            return View();
+        }
     }
 }

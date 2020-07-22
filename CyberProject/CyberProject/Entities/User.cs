@@ -22,6 +22,7 @@ namespace CyberProject.Entities
         public string Grade { get; set; }
         public string Level { get; set; }
         public string Step { get; set; }
+        //public float Salary { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
         public Department Department { get; set; }

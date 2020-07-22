@@ -20,6 +20,9 @@ namespace CyberProject.Controllers
         private IDepartment _department;
         private IFaculty _faculty;
 
+        [BindProperty]
+        public Department Department { get; set; }
+
         private readonly UserManager<ApplicationUser> _userManager;
         public DepartmentController(IFaculty faculty, IDepartment department, UserManager<ApplicationUser> userManager)
         {
@@ -78,16 +81,27 @@ namespace CyberProject.Controllers
             {
                 return RedirectToAction("Index");
             }
+
+            var fac = await _faculty.GetAll();
+            var FacList = fac.Select(f => new SelectListItem()
+            {
+                Value = f.facultyID.ToString(),
+                Text = f.facultyName
+            });
+
+            ViewBag.fac = FacList;
+
+            //return View();
             return View(editDepartment);
         }
-
+        
         [HttpPost]
         public async Task<IActionResult> Edit(Department department)
         {
             //var editDepartment = await _department.GetById(id);
             var editDepartment = await _department.Update(department);
 
-            if (editDepartment)
+            if (editDepartment && ModelState.IsValid)
             {
                 Alert("Department edited successfully", NotificationType.success);
                 return RedirectToAction("Index");

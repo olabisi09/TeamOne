@@ -101,7 +101,7 @@ namespace CyberProject.Services
             return user;
         }
 
-        public async Task<bool> Update(User user, string password = null)
+        public async Task<bool> Update(User user)
         {
             var us = await _context.WebUsers.FindAsync(user.Id);
             if (us != null)
@@ -144,6 +144,29 @@ namespace CyberProject.Services
                 return true;
             }
 
+            return false;
+        }
+
+        public async Task<bool> ComputeSalary(Salary s)
+        {
+            var user = await _context.WebUsers.FindAsync(s.Id);
+
+            if (user != null)
+            {
+                if (s.salary > 100000)
+                {
+                    s.Tax = s.salary * (10 / 100);
+                }
+                else if (s.salary > 50000)
+                {
+                    s.Tax = s.salary * (5 / 100);
+                }
+                else s.Tax = 0;
+
+                s.NetSalary = s.salary - s.Tax;
+                await _context.SaveChangesAsync();
+                return true;
+            }
             return false;
         }
     }

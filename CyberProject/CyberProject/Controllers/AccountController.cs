@@ -20,7 +20,7 @@ namespace CyberProject.Controllers
 
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
-       
+
         public AccountController(IAccount account, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
             _account = account;
@@ -54,7 +54,7 @@ namespace CyberProject.Controllers
 
                 if (signUp.Succeeded)
                 {
-                    signUp = await _userManager.AddToRoleAsync(user, "User");
+                    signUp = await _userManager.AddToRoleAsync(user, "Admin");
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }

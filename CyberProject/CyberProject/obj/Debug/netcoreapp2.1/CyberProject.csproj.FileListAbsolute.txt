@@ -148,3 +148,8 @@ C:\Users\DELL\TeamOne\CyberProject\CyberProject\obj\Debug\netcoreapp2.1\Razor\Vi
 C:\Users\DELL\TeamOne\CyberProject\CyberProject\obj\Debug\netcoreapp2.1\Razor\Views\Department\Index.g.cshtml.cs
 C:\Users\DELL\TeamOne\CyberProject\CyberProject\obj\Debug\netcoreapp2.1\Razor\Views\Department\Create.g.cshtml.cs
 C:\Users\DELL\TeamOne\CyberProject\CyberProject\obj\Debug\netcoreapp2.1\Razor\Views\Department\Edit.g.cshtml.cs
+C:\Users\DELL\TeamOne\CyberProject\CyberProject\obj\Debug\netcoreapp2.1\Razor\Views\Faculty\Edit.g.cshtml.cs
+C:\Users\DELL\TeamOne\CyberProject\CyberProject\obj\Debug\netcoreapp2.1\Razor\Views\User\Edit.g.cshtml.cs
+C:\Users\DELL\TeamOne\CyberProject\CyberProject\obj\Debug\netcoreapp2.1\Razor\Views\Salary\ViewSalary.g.cshtml.cs
+C:\Users\DELL\TeamOne\CyberProject\CyberProject\obj\Debug\netcoreapp2.1\Razor\Views\User\CalculateSalary.g.cshtml.cs
+C:\Users\DELL\TeamOne\CyberProject\CyberProject\obj\Debug\netcoreapp2.1\Razor\Views\Administrator\EditRole.g.cshtml.cs

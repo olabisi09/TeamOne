@@ -63,6 +63,18 @@ namespace CyberProject.Services
             return department;
         }
 
+        //public async Task<bool> Update(Department department)
+        //{
+        //    var dept = await _context.Departments.FindAsync(department.deptID);
+        //    if (dept != null)
+        //    {
+        //        dept.deptName = department.deptName;
+        //        await _context.SaveChangesAsync();
+        //        return true;
+        //    }
+        //    return false;
+        //}
+
         public async Task<bool> Update(Department department)
         {
             var dept = await _context.Departments.FindAsync(department.deptID);

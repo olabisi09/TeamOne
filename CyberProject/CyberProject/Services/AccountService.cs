@@ -115,7 +115,6 @@ namespace CyberProject.Services
             {
                 // check if user exist
                 var checkUser = await _userManager.FindByEmailAsync(loginDetails.Email);
-
                 if (checkUser != null)
                 {
                     //signin user

@@ -452,6 +452,8 @@
                 </div>
                 <div class="scrollbar-sidebar">
                     <div class="app-sidebar__inner">
+                        @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                        {
                         <ul class="vertical-nav-menu">
                             <li class="app-sidebar__heading">Admin</li>
                             <li>
@@ -478,20 +480,41 @@
                             <li>
                                 <a href="#">
                                     <i class="metismenu-icon pe-7s-user"></i>
-                                    Users
+                                    Employees
                                     <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
                                 <ul>
                                     <li>
                                         <a asp-controller="User" asp-action="ListUsers">
                                             <i class="metismenu-icon">
-                                            </i>View Users
+                                            </i>View Employees
                                         </a>
                                     </li>
                                     <li>
                                         <a asp-controller="User" asp-action="Create">
                                             <i class="metismenu-icon">
-                                            </i>New User
+                                            </i>New Employee
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="metismenu-icon pe-7s-user"></i>
+                                    Salary Management
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a asp-controller="User" asp-action="ListUsers">
+                                            <i class="metismenu-icon">
+                                            </i>Employee Salaries
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="User" asp-action="Create">
+                                            <i class="metismenu-icon">
+                                            </i>Compute Salary
                                         </a>
                                     </li>
                                 </ul>
@@ -561,6 +584,35 @@
                                 </ul>
                             </li>
                         </ul>
+                        }
+                        @if (SignInManager.IsSignedIn(User) && User.IsInRole("User"))
+                        {
+                            <ul class="vertical-nav-menu">
+                                <li class="app-sidebar__heading">User</li>
+                                <li>
+                                    <a href="#">
+                                        <i class="metismenu-icon pe-7s-user"></i>
+                                        Profile
+                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a href="#">
+                                                <i class="metismenu-icon">
+                                                </i>View Profile
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="metismenu-icon">
+                                                </i>Edit Profile
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                
+                            </ul>
+                        }
                     </div>
                 </div>
 
@@ -570,7 +622,7 @@
             <partial name="_CookieConsentPartial" />
             @*<partial name="_NotificationPanel" />*@
             @RenderBody()
-            <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+            <script src="https://maps.google.com/maps/api/js?sensor=true"></script>
         </div>
     </div>
     <script type="text/javascript" src="~/assets/scripts/main.js"></script>
