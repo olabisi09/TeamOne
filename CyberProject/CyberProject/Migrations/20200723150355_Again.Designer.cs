@@ -4,14 +4,16 @@ using CyberProject.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CyberProject.Migrations
 {
     [DbContext(typeof(CyberProjectDataContext))]
-    partial class CyberProjectDataContextModelSnapshot : ModelSnapshot
+    [Migration("20200723150355_Again")]
+    partial class Again
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -147,33 +149,6 @@ namespace CyberProject.Migrations
                     b.ToTable("Grades");
                 });
 
-            modelBuilder.Entity("CyberProject.Entities.Salary", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("EmployeeGrade");
-
-                    b.Property<string>("EmployeeLevel");
-
-                    b.Property<string>("EmployeeStep");
-
-                    b.Property<float>("NetSalary");
-
-                    b.Property<float>("Sal");
-
-                    b.Property<float>("TaxOnSalary");
-
-                    b.Property<int>("UserID");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserID");
-
-                    b.ToTable("Salaries");
-                });
-
             modelBuilder.Entity("CyberProject.Entities.User", b =>
                 {
                     b.Property<int>("Id")
@@ -211,10 +186,6 @@ namespace CyberProject.Migrations
                     b.Property<string>("Username");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DepartmentID");
-
-                    b.HasIndex("FacultyID");
 
                     b.ToTable("WebUsers");
                 });
@@ -307,27 +278,6 @@ namespace CyberProject.Migrations
 
             modelBuilder.Entity("CyberProject.Entities.Department", b =>
                 {
-                    b.HasOne("CyberProject.Entities.Faculty", "Faculty")
-                        .WithMany()
-                        .HasForeignKey("FacultyID")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("CyberProject.Entities.Salary", b =>
-                {
-                    b.HasOne("CyberProject.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("CyberProject.Entities.User", b =>
-                {
-                    b.HasOne("CyberProject.Entities.Department", "Department")
-                        .WithMany()
-                        .HasForeignKey("DepartmentID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("CyberProject.Entities.Faculty", "Faculty")
                         .WithMany()
                         .HasForeignKey("FacultyID")

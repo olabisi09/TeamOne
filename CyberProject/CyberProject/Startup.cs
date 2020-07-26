@@ -65,6 +65,7 @@ namespace CyberProject
             services.AddScoped<IFaculty, FacultyService>();
             services.AddScoped<IGrade, GradeService>();
             services.AddScoped<IUser, UserService>();
+            services.AddScoped<ISalary, SalaryService>();
 
         }
 

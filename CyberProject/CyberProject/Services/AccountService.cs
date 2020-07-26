@@ -132,5 +132,10 @@ namespace CyberProject.Services
                 return false;
             }
         }
+
+        public async Task<IEnumerable<ApplicationUser>> GetAll()
+        {
+            return await _userManager.GetUsersInRoleAsync("User");
+        }
     }
 }

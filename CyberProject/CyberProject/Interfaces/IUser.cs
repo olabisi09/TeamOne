@@ -15,6 +15,6 @@ namespace CyberProject.Interfaces
         Task<bool> Update(User user);
         Task<bool> Delete(int Id);
         Task<bool> AddAsync(User user);
-        Task<bool> ComputeSalary(Salary s);
+        Task<bool> GetSalary(User user);
     }
 }

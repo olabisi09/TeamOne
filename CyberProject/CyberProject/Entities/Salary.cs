@@ -8,10 +8,13 @@ namespace CyberProject.Entities
     public class Salary
     {
         public int Id { get; set; }
-        public int EmployeeID { get; set; }
-        public float salary { get; set; }
-        public float Tax { get; set; }
+        public int UserID { get; set; }
+        public string EmployeeGrade { get; set; }
+        public string EmployeeLevel { get; set; }
+        public string EmployeeStep { get; set; }
+        public float Sal { get; set; }
+        public float TaxOnSalary { get; set; }
         public float NetSalary { get; set; }
-        public User user { get; set; }
+        public User User { get; set; }
     }
 }

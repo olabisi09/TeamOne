@@ -12,6 +12,8 @@ namespace CyberProject.Interfaces
     {
         Task<bool> CreateUser(ApplicationUser user, string password);
 
+        Task<IEnumerable<ApplicationUser>> GetAll();
+
         Task<SignInModel> SignIn(LoginDto loginDetails);
 
         Task<bool> Login(LoginViewModel loginModel);

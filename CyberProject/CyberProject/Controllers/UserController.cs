@@ -135,14 +135,14 @@ namespace CyberProject.Controllers
             });
             ViewBag.fac = facList;
             ViewBag.dept = deptList;
-            return View();
+            return View(new User());
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(User user)
         {
             var createUser = await _userService.AddAsync(user);
-
+           
             if (createUser)
             {
                 Alert("User created successfully.", NotificationType.success);
@@ -164,6 +164,43 @@ namespace CyberProject.Controllers
 
             if (model != null)
                 return View(model);
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ComputeSalary(int id)
+        {
+            var getUser = await _userService.GetById(id);
+
+            if (getUser == null)
+            {
+                return RedirectToAction("ListUsers");
+            }
+            var fac = await _faculty.GetAll();
+            var dept = await _department.GetAll();
+            var facList = fac.Select(f => new SelectListItem()
+            {
+                Value = f.facultyID.ToString(),
+                Text = f.facultyName
+            });
+            var deptList = dept.Select(d => new SelectListItem()
+            {
+                Value = d.deptID.ToString(),
+                Text = d.deptName
+            });
+            ViewBag.fac = facList;
+            ViewBag.dept = deptList;
+            return View(getUser);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ComputeSalary(User user)
+        {
+            var getUser = await _userService.GetSalary(user);
+            if (getUser)
+            {
+                return RedirectToAction("ListUsers");
+            }
             return View();
         }
 
@@ -211,47 +248,17 @@ namespace CyberProject.Controllers
             return View();
         }
 
-        [HttpGet]
-        public async  Task<IActionResult> CalculateSalary(int Id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var sal = await _userService.GetById(Id);
-            if (sal == null)
+            var deleteEmployee = await _userService.Delete(id);
+            if (deleteEmployee)
             {
-                return RedirectToAction("Index");
-            }
-
-            var fac = await _faculty.GetAll();
-            var dept = await _department.GetAll();
-            var FacList = fac.Select(f => new SelectListItem()
-            {
-                Value = f.facultyID.ToString(),
-                Text = f.facultyName
-            });
-            var deptList = dept.Select(d => new SelectListItem()
-            {
-                Value = d.deptID.ToString(),
-                Text = d.deptName
-            });
-
-            ViewBag.fac = FacList;
-            ViewBag.dept = deptList;
-            //return View();
-            return View(sal);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> CalculateSalary(Salary s, int Id)
-        {
-            //var getUser = _user.GetById(Id);
-            var getSalary = await _userService.ComputeSalary(s);
-            if (getSalary)
-            {
-                Alert("User edited successfully", NotificationType.success);
-                return RedirectToAction("ListUsers");
+                Alert("Employee deleted successfully", NotificationType.success);
+                return RedirectToAction("ListUsers", "User");
             }
             else
             {
-                Alert("User not edited", NotificationType.error);
+                Alert("Employee not deleted", NotificationType.error);
             }
             return View();
         }

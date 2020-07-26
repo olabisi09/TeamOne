@@ -89,7 +89,7 @@ using CyberProject.Models;
                         ");
             EndContext();
             BeginContext(1084, 434, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "eb232e18cd204a56a52ecbe32c3b395a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ed946832644d45848ccb2398787c4fd5", async() => {
                 BeginContext(1256, 253, true);
                 WriteLiteral("\r\n                            <span class=\"btn-icon-wrapper pr-2 opacity-7\">\r\n                                <i class=\"fa fa-business-time fa-w-20\"></i>\r\n                            </span>\r\n                            Buttons\r\n                        ");
                 EndContext();

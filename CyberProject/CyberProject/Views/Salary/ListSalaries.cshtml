@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<CyberProject.Entities.User>
 @{
-    ViewData["Title"] = "List Users";
+    ViewData["Title"] = "List Salary";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -79,18 +79,15 @@
             <div class="col-lg-6">
                 <div class="main-card mb-3 card" style="width : 180%;">
                     <div class="card-body">
-                        <h5 class="card-title">Users</h5>
+                        <h5 class="card-title">Employees</h5>
                         <table class="mb-0 table table-borderless">
                             <thead>
                                 <tr>
-                                    <th>User ID</th>
+                                    <th>Employee ID</th>
                                     <th>First Name</th>
                                     <th>Last Name</th>
-                                    <th>Username</th>
-                                    <th>Email</th>
                                     <th>Faculty ID</th>
                                     <th>Department ID</th>
-                                    <th>Phone Number</th>
                                     <th>Grade</th>
                                     <th>Level</th>
                                     <th>Step</th>
@@ -98,32 +95,30 @@
                             </thead>
                             @foreach (var user in Model)
                             {
-                                <tbody>
-                                    <tr>
-                                        <td scope="row">@user.Id</td>
-                                        <td>@user.FirstName</td>
-                                        <td>@user.LastName</td>
-                                        <td>@user.Username</td>
-                                        <td>@user.Email</td>
-                                        <td>@user.FacultyID</td>
-                                        <td>@user.DepartmentID</td>
-                                        <td>@user.PhoneNo</td>
-                                        <td>@user.Grade</td>
-                                        <td>@user.Level</td>
-                                        <td>@user.Step</td>
-                                        <td class="dropdown">
-                                            <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fa fa-ellipsis-v"></i>
-                                            </a>
-                                            <div role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                                <a asp-controller="User" asp-action="Edit" asp-route-id="@user.Id" tabindex="0" class="dropdown-item">Edit</a>
-                                                <a asp-controller="User" asp-action="Delete" asp-route-id="@user.Id" onclick="return confirm('Are you sure you want to delete the user '@user.Id'?')" tabindex="0" class="dropdown-item">Delete</a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
+                            <tbody>
+                                <tr>
+                                    <td scope="row">@user.Id</td>
+                                    <td>@user.FirstName</td>
+                                    <td>@user.LastName</td>
+                                    <td>@user.FacultyID</td>
+                                    <td>@user.DepartmentID</td>
+                                    <td>@user.Grade</td>
+                                    <td>@user.EmpLevel</td>
+                                    <td>@user.Step</td>
+                                    <td class="dropdown">
+                                        <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa fa-ellipsis-v"></i>
+                                        </a>
+                                        @*<div role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+                                            <a asp-controller="User" asp-action="Edit" asp-route-id="@user.Id" tabindex="0" class="dropdown-item">Edit</a>
+                                            <a asp-controller="User" asp-action="CalculateSalary" asp-route-id="@user.Id" tabindex="0" class="dropdown-item">Compute Salary</a>
+                                            <a asp-controller="User" asp-action="Delete" asp-route-id="@user.Id" onclick="return confirm('Are you sure you want to delete the user @user.Id?')" tabindex="0" class="dropdown-item">Delete</a>
+                                        </div>*@
+                                    </td>
+                                </tr>
+                            </tbody>
                             }
-                            
+
                         </table>
                     </div>
                 </div>

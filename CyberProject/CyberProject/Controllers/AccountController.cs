@@ -54,7 +54,7 @@ namespace CyberProject.Controllers
 
                 if (signUp.Succeeded)
                 {
-                    signUp = await _userManager.AddToRoleAsync(user, "Admin");
+                    signUp = await _userManager.AddToRoleAsync(user, "User");
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }

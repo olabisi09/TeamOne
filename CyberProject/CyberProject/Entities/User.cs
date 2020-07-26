@@ -20,9 +20,11 @@ namespace CyberProject.Entities
         public string Email { get; set; }
         public string PhoneNo { get; set; }
         public string Grade { get; set; }
-        public string Level { get; set; }
+        public string EmpLevel { get; set; }
         public string Step { get; set; }
-        //public float Salary { get; set; }
+        public float Salary { get; set; }
+        public float TaxOnSalary { get; set; }
+        public float NetSalary { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
         public Department Department { get; set; }

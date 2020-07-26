@@ -7,6 +7,48 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200717110454_PatchUp.cs" />
     <Compile Remove="Migrations\20200717110454_PatchUp.Designer.cs" />
+    <Compile Remove="Migrations\20200721204614_AddSalary.cs" />
+    <Compile Remove="Migrations\20200721204614_AddSalary.Designer.cs" />
+    <Compile Remove="Migrations\20200722184626_TouchupSalary.cs" />
+    <Compile Remove="Migrations\20200722184626_TouchupSalary.Designer.cs" />
+    <Compile Remove="Migrations\20200722193528_Another.cs" />
+    <Compile Remove="Migrations\20200722193528_Another.Designer.cs" />
+    <Compile Remove="Migrations\20200722193614_Another.cs" />
+    <Compile Remove="Migrations\20200722193614_Another.Designer.cs" />
+    <Compile Remove="Migrations\20200722193836_Another.cs" />
+    <Compile Remove="Migrations\20200722193836_Another.Designer.cs" />
+    <Compile Remove="Migrations\20200723140547_Another.cs" />
+    <Compile Remove="Migrations\20200723140547_Another.Designer.cs" />
+    <Compile Remove="Migrations\20200723141400_Another.cs" />
+    <Compile Remove="Migrations\20200723141400_Another.Designer.cs" />
+    <Compile Remove="Migrations\20200723142715_Another.cs" />
+    <Compile Remove="Migrations\20200723142715_Another.Designer.cs" />
+    <Compile Remove="Migrations\20200723143714_Another.cs" />
+    <Compile Remove="Migrations\20200723143714_Another.Designer.cs" />
+    <Compile Remove="Migrations\20200723150208_Again.cs" />
+    <Compile Remove="Migrations\20200723150208_Again.Designer.cs" />
+    <Compile Remove="Migrations\20200723174513_AddSalary.cs" />
+    <Compile Remove="Migrations\20200723174513_AddSalary.Designer.cs" />
+    <Compile Remove="Migrations\20200723190632_AddPrimary.cs" />
+    <Compile Remove="Migrations\20200723190632_AddPrimary.Designer.cs" />
+    <Compile Remove="Migrations\20200723191059_AddPrimary.cs" />
+    <Compile Remove="Migrations\20200723191059_AddPrimary.Designer.cs" />
+    <Compile Remove="Migrations\20200723191414_RealAdd.cs" />
+    <Compile Remove="Migrations\20200723191414_RealAdd.Designer.cs" />
+    <Compile Remove="Migrations\20200725182104_AddForeign.cs" />
+    <Compile Remove="Migrations\20200725182104_AddForeign.Designer.cs" />
+    <Compile Remove="Migrations\20200725184102_AddForeign.cs" />
+    <Compile Remove="Migrations\20200725184102_AddForeign.Designer.cs" />
+    <Compile Remove="Migrations\20200725184129_AddPrimaryUser.cs" />
+    <Compile Remove="Migrations\20200725184129_AddPrimaryUser.Designer.cs" />
+    <Compile Remove="Migrations\20200725184542_AddPrimaryUser.cs" />
+    <Compile Remove="Migrations\20200725184542_AddPrimaryUser.Designer.cs" />
+    <Compile Remove="Migrations\20200725190246_AddPrimaryUser.cs" />
+    <Compile Remove="Migrations\20200725190246_AddPrimaryUser.Designer.cs" />
+    <Compile Remove="Migrations\20200725191732_AddForeign.cs" />
+    <Compile Remove="Migrations\20200725191732_AddForeign.Designer.cs" />
+    <Compile Remove="Migrations\20200725192053_AddForeign.cs" />
+    <Compile Remove="Migrations\20200725192053_AddForeign.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

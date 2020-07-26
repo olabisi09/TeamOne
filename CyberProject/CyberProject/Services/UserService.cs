@@ -40,7 +40,7 @@ namespace CyberProject.Services
 
         public async Task<IEnumerable<User>> GetAll()
         {
-            return await _context.WebUsers.Include(f => f.Faculty).Include(d => d.Department).ToListAsync();
+            return await _context.WebUsers.ToListAsync();
         }
 
         public async Task<User> GetById(int Id)
@@ -48,6 +48,36 @@ namespace CyberProject.Services
             var user = await _context.WebUsers.FindAsync(Id);
 
             return user;
+        }
+
+        public async Task<bool> GetSalary(User user)
+        {
+            var us = await _context.WebUsers.FindAsync(user.Id);
+            if (us != null)
+            {
+                if (us.Grade == "1")
+                {
+                    us.Salary = 50000; 
+                    us.TaxOnSalary = 5;
+                    us.NetSalary = us.Salary - ((us.TaxOnSalary / 100) * us.Salary);
+                }
+                if (us.Grade == "2")
+                {
+                    us.Salary = 100000;
+                    us.TaxOnSalary = 10;
+                    us.NetSalary = us.Salary - ((us.TaxOnSalary / 100) * us.Salary);
+                }
+                if (us.Grade == "3")
+                {
+                    us.Salary = 150000;
+                    us.TaxOnSalary = 5;
+                    us.NetSalary = us.Salary - ((us.TaxOnSalary / 100) * us.Salary);
+                }
+                await _context.SaveChangesAsync();
+                return true;
+            }
+
+            return false;
         }
 
         private static bool VerifyPasswordHash(string password, byte[] storedHash, byte[] storedSalt)
@@ -123,6 +153,24 @@ namespace CyberProject.Services
         {
             try
             {
+                if (user.Grade == "1")
+                {
+                    user.Salary = 50000;
+                    user.TaxOnSalary = 5;
+                    user.NetSalary = user.Salary - ((user.TaxOnSalary / 100) * user.Salary);
+                }
+                if (user.Grade == "2")
+                {
+                    user.Salary = 100000;
+                    user.TaxOnSalary = 10;
+                    user.NetSalary = user.Salary - ((user.TaxOnSalary / 100) * user.Salary);
+                }
+                if (user.Grade == "3")
+                {
+                    user.Salary = 150000;
+                    user.TaxOnSalary = 5;
+                    user.NetSalary = user.Salary - ((user.TaxOnSalary / 100) * user.Salary);
+                }
                 await _context.AddAsync(user);
                 await _context.SaveChangesAsync();
             }
@@ -144,29 +192,6 @@ namespace CyberProject.Services
                 return true;
             }
 
-            return false;
-        }
-
-        public async Task<bool> ComputeSalary(Salary s)
-        {
-            var user = await _context.WebUsers.FindAsync(s.Id);
-
-            if (user != null)
-            {
-                if (s.salary > 100000)
-                {
-                    s.Tax = s.salary * (10 / 100);
-                }
-                else if (s.salary > 50000)
-                {
-                    s.Tax = s.salary * (5 / 100);
-                }
-                else s.Tax = 0;
-
-                s.NetSalary = s.salary - s.Tax;
-                await _context.SaveChangesAsync();
-                return true;
-            }
             return false;
         }
     }
