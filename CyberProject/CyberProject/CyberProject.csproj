@@ -49,6 +49,8 @@
     <Compile Remove="Migrations\20200725191732_AddForeign.Designer.cs" />
     <Compile Remove="Migrations\20200725192053_AddForeign.cs" />
     <Compile Remove="Migrations\20200725192053_AddForeign.Designer.cs" />
+    <Compile Remove="Migrations\20200726194233_NotSureWhat.cs" />
+    <Compile Remove="Migrations\20200726194233_NotSureWhat.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

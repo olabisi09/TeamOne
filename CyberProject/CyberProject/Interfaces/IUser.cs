@@ -8,13 +8,11 @@ namespace CyberProject.Interfaces
 {
     public interface IUser
     {
-        User Authenticate(string username, string password);
         Task<IEnumerable<User>> GetAll();
         Task<User> GetById(int id);
-        User Create(User user, string password);
         Task<bool> Update(User user);
         Task<bool> Delete(int Id);
+        void Add(User user);
         Task<bool> AddAsync(User user);
-        Task<bool> GetSalary(User user);
     }
 }

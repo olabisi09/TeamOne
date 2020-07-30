@@ -95,15 +95,6 @@
                             <span asp-validation-for="LastName"></span>
                         </div>
                         <div class="position-relative row form-group">
-                            <label asp-for="FacultyID" class="col-sm-2 col-form-label">Faculty</label>
-                            <div class="col-sm-10">
-                                <select class="mb-2 form-control" asp-for="FacultyID" asp-items="@ViewBag.dept">
-                                    <option>Faculty</option>
-                                </select>
-                            </div>
-                            <span asp-validation-for="FacultyID"></span>
-                        </div>
-                        <div class="position-relative row form-group">
                             <label asp-for="DepartmentID" class="col-sm-2 col-form-label">Department</label>
                             <div class="col-sm-10">
                                 <select class="mb-2 form-control" asp-for="DepartmentID" asp-items="@ViewBag.dept">

@@ -29,6 +29,7 @@ namespace CyberProject.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "User")]
         public IActionResult Profile()
         {
             return View();

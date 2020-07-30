@@ -44,7 +44,7 @@ namespace CyberProject.Services
 
                     var userResult = await _userManager.CreateAsync(user, password);
                     if (userResult.Succeeded)
-                        //_userManager.AddToRoleAsync(user, "Admin").Wait();
+                        await _userManager.AddToRoleAsync(user, "User");
                         return true;
                 }
                 return false;

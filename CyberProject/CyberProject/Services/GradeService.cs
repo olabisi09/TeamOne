@@ -66,9 +66,9 @@ namespace CyberProject.Services
             var gr = await _context.Grades.FindAsync(Id);
             if (gr != null)
             {
-                gr.gradeName = grade.gradeName;
-                gr.level = grade.level;
-                gr.step = grade.step;
+                gr.GradeName = grade.GradeName;
+                gr.Level = grade.Level;
+                gr.Step = grade.Step;
                 await _context.SaveChangesAsync();
                 return true;
             }

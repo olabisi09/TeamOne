@@ -15,9 +15,9 @@
                         </i>
                     </div>
                     <div>
-                        Regular Tables
+                        Roles
                         <div class="page-title-subheading">
-                            Tables are the backbone of almost all web applications.
+                            View roles for every employee. Which one are you?
                         </div>
                     </div>
                 </div>
@@ -76,37 +76,48 @@
         </div>
         <div class="row">
             <div class="col-lg-6">
-                <div class="main-card mb-3 card" style="width : 700px;">
-                    <div class="card-body">
-                        <h5 class="card-title">Roles</h5>
-                        <table class="mb-0 table table-borderless">
-                            <thead>
-                                <tr>
-                                    <th>Role ID</th>
-                                    <th>Role Name</th>
-                                </tr>
-                            </thead>
-                            @foreach (var role in Model)
-                            {
-                                <tbody>
+                @if (Model.Any())
+                {
+                    <div class="main-card mb-3 card" style="width : 700px;">
+                        <div class="card-body">
+                            <h5 class="card-title">Roles</h5>
+                            <table class="mb-0 table table-borderless">
+                                <thead>
                                     <tr>
-                                        <td scope="row">@role.Id</td>
-                                        <td>@role.Name</td>
-                                        <td class="dropdown">
-                                            <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fa fa-ellipsis-v"></i>
-                                            </a>
-                                            <div role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                                <a asp-controller="Administrator" asp-action="EditRole" asp-route-id="@role.Id" tabindex="0" class="dropdown-item">Edit</a>
-                                                <a asp-action="Delete" asp-route-id="@role.Id" onclick="return confirm('Are you sure you want to delete the @role.Name role?')" tabindex="0" class="dropdown-item">Delete</a>
-                                            </div>
-                                        </td>
+                                        <th>Role ID</th>
+                                        <th>Role Name</th>
                                     </tr>
-                                </tbody>
-                            }
-                        </table>
+                                </thead>
+                                @foreach (var role in Model)
+                                {
+                                    <tbody>
+                                        <tr>
+                                            <td scope="row">@role.Id</td>
+                                            <td>@role.Name</td>
+                                            <td class="dropdown">
+                                                <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fa fa-ellipsis-v"></i>
+                                                </a>
+                                                <div role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+                                                    <a asp-controller="Administrator" asp-action="EditRole" asp-route-id="@role.Id" tabindex="0" class="dropdown-item">Edit</a>
+                                                    <a asp-controller="Administrator" asp-action="DeleteRole" asp-route-id="@role.Id" onclick="return confirm('Are you sure you want to delete the @role.Name role?')" tabindex="0" class="dropdown-item">Delete</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                }
+                            </table>
+                        </div>
                     </div>
-                </div>
+                }
+                else
+                {
+                    <div class="main-card mb-3 card" style="width : 700px;">
+                        <div class="card-body">
+                            <h5 class="card-title">No roles yet</h5>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
     </div>

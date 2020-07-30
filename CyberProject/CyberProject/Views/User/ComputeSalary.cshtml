@@ -79,30 +79,12 @@
         <div class="tab-content">
             <div class="main-card mb-3 card">
                 <div class="card-body">
-                    <h5 class="card-title">Compute Employee Salary</h5>
-                    @*<form asp-controller="User" method="post">
-                        <div class="position-relative row form-group">
-                            <label asp-for="Salary" class="col-sm-2 col-form-label">salary</label>
-                            <div class="col-sm-10"><input asp-for="Salary" type="text" class="form-control" value="@Model.Salary"></div>
-                            <span asp-validation-for="Salary"></span>
-                        </div>
-                        <div class="position-relative row form-group">
-                            <label asp-for="TaxSalary" class="col-sm-2 col-form-label">tax salary</label>
-                            <div class="col-sm-10"><input asp-for="TaxSalary" type="text" class="form-control" value="@Model.TaxSalary"></div>
-                            <span asp-validation-for="TaxSalary"></span>
-                        </div>
-                        <div class="position-relative row form-group">
-                            <label class="col-sm-2 col-form-label">net salary</label>
-                            <div class="col-sm-10"><input type="text" class="form-control" value="@Model.NetSalary"></div>
-                            <span asp-validation-for="NetSalary"></span>
-                        </div>
-
-                        <div class="position-relative row form-check">
-                            <div class="col-sm-10 offset-sm-2">
-                                <button asp-controller="User" asp-action="ComputeSalary" class="btn btn-secondary">Compute Salary</button>
-                            </div>
-                        </div>
-                    </form>*@
+                    <h5 class="card-title">Salary Breakdown</h5>
+                    @*@foreach(var us in Model)
+                    {
+                        <p>First Name : @us.FirstName</p>
+                        <p>Last Name: @us.LastName</p>
+                    }*@
                 </div>
             </div>
 

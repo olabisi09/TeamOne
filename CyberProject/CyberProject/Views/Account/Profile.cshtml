@@ -1,0 +1,104 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using CyberProject.Entities
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+<div class="app-main__outer">
+    <div class="app-main__inner">
+        <div class="app-page-title">
+            <div class="page-title-wrapper">
+                <div class="page-title-heading">
+                    <div class="page-title-icon">
+                        <i class="pe-7s-diamond icon-gradient bg-warm-flame">
+                        </i>
+                    </div>
+                    <div>
+                        Accordions
+                        <div class="page-title-subheading">
+                            Accordions represent collapsable component with extended functionality.
+                        </div>
+                    </div>
+                </div>
+                <div class="page-title-actions">
+                    <button type="button" data-toggle="tooltip" title="Example Tooltip" data-placement="bottom" class="btn-shadow mr-3 btn btn-dark">
+                        <i class="fa fa-star"></i>
+                    </button>
+                    <div class="d-inline-block dropdown">
+                        <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn-shadow dropdown-toggle btn btn-info">
+                            <span class="btn-icon-wrapper pr-2 opacity-7">
+                                <i class="fa fa-business-time fa-w-20"></i>
+                            </span>
+                            Buttons
+                        </button>
+                        <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a href="javascript:void(0);" class="nav-link">
+                                        <i class="nav-link-icon lnr-inbox"></i>
+                                        <span>
+                                            Inbox
+                                        </span>
+                                        <div class="ml-auto badge badge-pill badge-secondary">86</div>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="javascript:void(0);" class="nav-link">
+                                        <i class="nav-link-icon lnr-book"></i>
+                                        <span>
+                                            Book
+                                        </span>
+                                        <div class="ml-auto badge badge-pill badge-danger">5</div>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="javascript:void(0);" class="nav-link">
+                                        <i class="nav-link-icon lnr-picture"></i>
+                                        <span>
+                                            Picture
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a disabled href="javascript:void(0);" class="nav-link disabled">
+                                        <i class="nav-link-icon lnr-file-empty"></i>
+                                        <span>
+                                            File Disabled
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*<div class="">
+                <div class="row">
+
+
+                </div>
+            </div>*@
+        <div class="main-card mb-3 card">
+            <div class="card-body">
+                <h5 class="card-title">@UserManager.GetUserName(User)'s Profile</h5>
+                <div class="collapse" id="collapseExample123">
+                    <p>
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
+                        nesciunt sapiente ea
+                        proident.
+                    </p>
+                    <p>
+                        Donec molestie odio id nisi malesuada, mattis tincidunt velit egestas. Sed non pulvinar risus. Aenean elementum eleifend nunc, pellentesque dapibus arcu hendrerit fringilla. Aliquam in nibh massa. Cras ultricies
+                        lorem non enim volutpat, a eleifend urna placerat. Fusce id luctus urna. In sed leo tellus. Mauris tristique leo a nisl feugiat, eget vehicula leo venenatis. Quisque magna metus, luctus quis sollicitudin vel,
+                        vehicula nec ipsum. Donec rutrum commodo lacus ut condimentum. Integer vel turpis purus. Etiam vehicula, nulla non fringilla blandit, massa purus faucibus tellus, a luctus enim orci non augue. Aenean
+                        ullamcorper nisl urna, non feugiat tortor volutpat in. Vivamus lobortis massa dolor, eget faucibus ipsum varius eget. Pellentesque imperdiet, turpis sed sagittis lobortis, leo elit laoreet arcu, vehicula
+                        sagittis elit leo id nisi.
+                    </p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="button" data-toggle="collapse" href="#collapseExample123" class="btn btn-primary">Toggle</button>
+            </div>
+        </div>
+    </div>

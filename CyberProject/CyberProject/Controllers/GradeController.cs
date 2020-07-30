@@ -82,7 +82,7 @@ namespace CyberProject.Controllers
         public async Task<IActionResult> Edit(Grade grade)
         {
             //var editGrade = await _grade.GetById(id);
-            var editGrade = await _grade.Update(grade, grade.gradeID);
+            var editGrade = await _grade.Update(grade, grade.Id);
 
             if (editGrade)
             {

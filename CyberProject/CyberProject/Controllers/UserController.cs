@@ -1,7 +1,9 @@
-﻿using CyberProject.Dtos;
+﻿using CyberProject.Data;
+using CyberProject.Dtos;
 using CyberProject.Entities;
 using CyberProject.Enums;
 using CyberProject.Interfaces;
+using CyberProject.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -25,18 +27,20 @@ namespace CyberProject.Controllers
         private IDepartment _department;
         private IUser _userService;
         private IConfiguration _config;
+        private CyberProjectDataContext _context;
 
-        public UserController(IUser userService, IConfiguration config, IAccount account, IFaculty faculty, IDepartment department)
+        public UserController(IUser userService, IConfiguration config, IAccount account, IFaculty faculty, IDepartment department, CyberProjectDataContext context)
         {
             _account = account;
             _userService = userService;
             _config = config;
             _faculty = faculty;
             _department = department;
+            _context = context;
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register([FromBody] UserDto registerUser)
+        public async Task<IActionResult> Register([FromBody] CreateUserModel registerUser)
         {
             ApplicationUser user = new ApplicationUser();
 
@@ -51,71 +55,6 @@ namespace CyberProject.Controllers
                 return RedirectToAction("Index");
 
             return View();
-        }
-
-        [HttpPost("authenticate")]
-        public IActionResult Authenticate([FromBody] LoginDto userDto)
-        {
-            var user = _userService.Authenticate(userDto.Username, userDto.Password);
-
-            if (user == null)
-                return BadRequest(new { message = "Username or password is incorrect" });
-
-
-
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_config.GetSection("AppSettings:Secret").Value);
-
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new Claim[]
-                {
-                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                    new Claim(ClaimTypes.Name, user.Username),
-                    new Claim(ClaimTypes.GivenName, user.FirstName + " " + user.LastName),
-                }),
-                Expires = DateTime.UtcNow.AddDays(7),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-            };
-            //var claims = new List<Claim>
-            //        {
-            //        new Claim(JwtRegisteredClaimNames.Sub, user.Username),
-            //        new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-            //        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-            //        };
-
-            //var tokenDescriptor = new JwtSecurityToken(
-            //        issuer: "http://cyberinterns.slack.com",
-            //        audience: "http://api.cyberinterns.com",
-            //        expires: DateTime.UtcNow.AddDays(7),
-            //        cliams: claims,
-            //        signingCredentials: new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256)
-            //        );
-
-
-
-
-
-
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-
-            var Expires = tokenDescriptor.Expires.ToString();
-
-
-
-
-
-            // return basic user info (without password) and token to store client side
-            return Ok(new
-            {
-                Id = user.Id,
-                Username = user.Username,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Email = user.Email,
-                access_token = tokenHandler.WriteToken(token),
-                expires = Expires
-            });
         }
 
         [HttpGet]
@@ -135,14 +74,13 @@ namespace CyberProject.Controllers
             });
             ViewBag.fac = facList;
             ViewBag.dept = deptList;
-            return View(new User());
+            return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(User user)
         {
             var createUser = await _userService.AddAsync(user);
-           
             if (createUser)
             {
                 Alert("User created successfully.", NotificationType.success);
@@ -152,7 +90,6 @@ namespace CyberProject.Controllers
             {
                 Alert("User not created!", NotificationType.error);
             }
-
 
             return View();
         }
@@ -191,17 +128,6 @@ namespace CyberProject.Controllers
             ViewBag.fac = facList;
             ViewBag.dept = deptList;
             return View(getUser);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> ComputeSalary(User user)
-        {
-            var getUser = await _userService.GetSalary(user);
-            if (getUser)
-            {
-                return RedirectToAction("ListUsers");
-            }
-            return View();
         }
 
         [HttpGet]

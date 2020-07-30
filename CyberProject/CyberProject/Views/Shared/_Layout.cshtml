@@ -454,136 +454,136 @@
                     <div class="app-sidebar__inner">
                         @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                         {
-                        <ul class="vertical-nav-menu">
-                            <li class="app-sidebar__heading">Admin</li>
-                            <li>
-                                <a href="#">
-                                    <i class="metismenu-icon pe-7s-lock"></i>
-                                    Roles
-                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-                                </a>
-                                <ul>
-                                    <li>
-                                        <a asp-controller="Administrator" asp-action="ListRoles">
-                                            <i class="metismenu-icon">
-                                            </i>View Roles
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a asp-controller="Administrator" asp-action="CreateRole">
-                                            <i class="metismenu-icon">
-                                            </i>New Role
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="metismenu-icon pe-7s-user"></i>
-                                    Employees
-                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-                                </a>
-                                <ul>
-                                    <li>
-                                        <a asp-controller="User" asp-action="ListUsers">
-                                            <i class="metismenu-icon">
-                                            </i>View Employees
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a asp-controller="User" asp-action="Create">
-                                            <i class="metismenu-icon">
-                                            </i>New Employee
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="metismenu-icon pe-7s-user"></i>
-                                    Salary Management
-                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-                                </a>
-                                <ul>
-                                    <li>
-                                        <a asp-controller="User" asp-action="ListUsers">
-                                            <i class="metismenu-icon">
-                                            </i>Employee Salaries
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a asp-controller="User" asp-action="ComputeSalary">
-                                            <i class="metismenu-icon">
-                                            </i>Compute Salary
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="app-sidebar__heading">Academic</li>
-                            <li>
-                                <a href="#">
-                                    <i class="metismenu-icon pe-7s-albums"></i>
-                                    Faculties
-                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-                                </a>
-                                <ul>
-                                    <li>
-                                        <a asp-controller="Faculty" asp-action="Index">
-                                            <i class="metismenu-icon">
-                                            </i>View Faculties
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a asp-controller="Faculty" asp-action="Create">
-                                            <i class="metismenu-icon">
-                                            </i>New Faculty
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="metismenu-icon pe-7s-bookmarks"></i>
-                                    Departments
-                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-                                </a>
-                                <ul>
-                                    <li>
-                                        <a asp-controller="Department" asp-action="Index">
-                                            <i class="metismenu-icon">
-                                            </i>View Departments
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a asp-controller="Department" asp-action="Create">
-                                            <i class="metismenu-icon">
-                                            </i>New Department
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="metismenu-icon pe-7s-ticket"></i>
-                                    Grades
-                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-                                </a>
-                                <ul>
-                                    <li>
-                                        <a asp-controller="Grade" asp-action="Index">
-                                            <i class="metismenu-icon">
-                                            </i>View Grades
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="components-accordions.html">
-                                            <i class="metismenu-icon">
-                                            </i>New Grade
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                            <ul class="vertical-nav-menu">
+                                <li class="app-sidebar__heading">Admin</li>
+                                <li>
+                                    <a href="#">
+                                        <i class="metismenu-icon pe-7s-lock"></i>
+                                        Roles
+                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a asp-controller="Administrator" asp-action="ListRoles">
+                                                <i class="metismenu-icon">
+                                                </i>View Roles
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a asp-controller="Administrator" asp-action="CreateRole">
+                                                <i class="metismenu-icon">
+                                                </i>New Role
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="metismenu-icon pe-7s-user"></i>
+                                        Employees
+                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a asp-controller="User" asp-action="ListUsers">
+                                                <i class="metismenu-icon">
+                                                </i>View Employees
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a asp-controller="User" asp-action="Create">
+                                                <i class="metismenu-icon">
+                                                </i>New Employee
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="metismenu-icon pe-7s-user"></i>
+                                        Salary Management
+                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a asp-controller="Salary" asp-action="ListSalaries">
+                                                <i class="metismenu-icon">
+                                                </i>Employee Salaries
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a asp-controller="User" asp-action="ComputeSalary">
+                                                <i class="metismenu-icon">
+                                                </i>Compute Salary
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="app-sidebar__heading">Academic</li>
+                                <li>
+                                    <a href="#">
+                                        <i class="metismenu-icon pe-7s-albums"></i>
+                                        Faculties
+                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a asp-controller="Faculty" asp-action="Index">
+                                                <i class="metismenu-icon">
+                                                </i>View Faculties
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a asp-controller="Faculty" asp-action="Create">
+                                                <i class="metismenu-icon">
+                                                </i>New Faculty
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="metismenu-icon pe-7s-bookmarks"></i>
+                                        Departments
+                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a asp-controller="Department" asp-action="Index">
+                                                <i class="metismenu-icon">
+                                                </i>View Departments
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a asp-controller="Department" asp-action="Create">
+                                                <i class="metismenu-icon">
+                                                </i>New Department
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="metismenu-icon pe-7s-ticket"></i>
+                                        Grades
+                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a asp-controller="Grade" asp-action="Index">
+                                                <i class="metismenu-icon">
+                                                </i>View Grades
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="components-accordions.html">
+                                                <i class="metismenu-icon">
+                                                </i>New Grade
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
                         }
                         @if (SignInManager.IsSignedIn(User) && User.IsInRole("User"))
                         {
@@ -597,7 +597,7 @@
                                     </a>
                                     <ul>
                                         <li>
-                                            <a href="#">
+                                            <a asp-controller="Account" asp-action="Profile">
                                                 <i class="metismenu-icon">
                                                 </i>View Profile
                                             </a>
@@ -610,7 +610,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                
+
                             </ul>
                         }
                     </div>
@@ -626,6 +626,7 @@
         </div>
     </div>
     <script type="text/javascript" src="~/assets/scripts/main.js"></script>
+    <script src="~/js/lga.min.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
