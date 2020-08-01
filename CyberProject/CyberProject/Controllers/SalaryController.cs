@@ -38,26 +38,26 @@ namespace CyberProject.Controllers
         }
 
 
-        [HttpGet]
-        public async Task<IActionResult> Index()
-        {
-            var us = await _user.GetAll();
-            var g = await _user.GetAll();
-            var userList = us.Select(u => new SelectListItem()
-            {
-                Value = u.Id.ToString(),
-                Text = u.FirstName + " " + u.LastName
-            });
-            var gradeList = g.Select(u => new SelectListItem()
-            {
-                Value = u.Grade,
-                Text = u.Grade
-            });
+        //[HttpGet]
+        //public async Task<IActionResult> Index()
+        //{
+        //    var us = await _user.GetAll();
+        //    var g = await _user.GetAll();
+        //    var userList = us.Select(u => new SelectListItem()
+        //    {
+        //        Value = u.Id.ToString(),
+        //        Text = u.FirstName + " " + u.LastName
+        //    });
+        //    var gradeList = g.Select(u => new SelectListItem()
+        //    {
+        //        Value = u.gradeID.ToString(),
+        //        Text = u.Grade.GradeName
+        //    });
 
-            ViewBag.g = gradeList;
-            ViewBag.us = userList;
-            return View();
-        }
+        //    ViewBag.g = gradeList;
+        //    ViewBag.us = userList;
+        //    return View();
+        //}
 
         //[HttpPost]
         //public async Task<IActionResult> Index(User user)

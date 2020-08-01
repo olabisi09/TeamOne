@@ -51,6 +51,18 @@
     <Compile Remove="Migrations\20200725192053_AddForeign.Designer.cs" />
     <Compile Remove="Migrations\20200726194233_NotSureWhat.cs" />
     <Compile Remove="Migrations\20200726194233_NotSureWhat.Designer.cs" />
+    <Compile Remove="Migrations\20200731154721_AddGrade.cs" />
+    <Compile Remove="Migrations\20200731154721_AddGrade.Designer.cs" />
+    <Compile Remove="Migrations\20200731161524_AddGrade.cs" />
+    <Compile Remove="Migrations\20200731161524_AddGrade.Designer.cs" />
+    <Compile Remove="Migrations\20200731161906_AddGrade.cs" />
+    <Compile Remove="Migrations\20200731161906_AddGrade.Designer.cs" />
+    <Compile Remove="Migrations\20200731163052_AddGrade.cs" />
+    <Compile Remove="Migrations\20200731163052_AddGrade.Designer.cs" />
+    <Compile Remove="Migrations\20200731201028_MoreTables.cs" />
+    <Compile Remove="Migrations\20200731201028_MoreTables.Designer.cs" />
+    <Compile Remove="Migrations\20200731214429_TryAgain.cs" />
+    <Compile Remove="Migrations\20200731214429_TryAgain.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

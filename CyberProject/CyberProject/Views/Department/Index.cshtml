@@ -84,7 +84,7 @@
                                 <tr>
                                     <th>Department ID</th>
                                     <th>Department Name</th>
-                                    <th>Faculty ID</th>
+                                    <th>Faculty</th>
                                 </tr>
                             </thead>
                             @foreach (var dept in Model)
@@ -93,7 +93,7 @@
                                     <tr>
                                         <td scope="row">@dept.deptID</td>
                                         <td>@dept.deptName</td>
-                                        <td>@dept.FacultyID</td>
+                                        <td>@dept.Faculty.facultyName</td>
                                         <td class="dropdown">
                                             <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="fa fa-ellipsis-v"></i>

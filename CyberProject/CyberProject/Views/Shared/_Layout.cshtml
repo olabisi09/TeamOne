@@ -19,7 +19,7 @@
 
     <link href="~/main.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="~/assets/css/loading.css">
+    <link rel="stylesheet" href="~css/loading.css">
     <link href="~/sweetAlert/sweetalert.css" rel="stylesheet" />
     <script src="~/sweetAlert/sweetalert.min.js"></script>
 </head>
@@ -576,7 +576,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="components-accordions.html">
+                                            <a asp-controller="Grade" asp-action="Create">
                                                 <i class="metismenu-icon">
                                                 </i>New Grade
                                             </a>
@@ -620,13 +620,21 @@
 
             </div>
             <partial name="_CookieConsentPartial" />
-            @*<partial name="_NotificationPanel" />*@
+            <partial name="_NotificationPanel" />
             @RenderBody()
+            @*<partial name="_Loading" />*@
             <script src="https://maps.google.com/maps/api/js?sensor=true"></script>
         </div>
     </div>
     <script type="text/javascript" src="~/assets/scripts/main.js"></script>
     <script src="~/js/lga.min.js"></script>
+    <script type="text/javascript">
+        $(document).on('submit', 'form', function () {
+            displayBusyIndicator();
+        });
+        function displayBusyIndicator() {
+            $('.loading').show();
+        }</script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

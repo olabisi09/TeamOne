@@ -25,21 +25,10 @@ namespace CyberProject.Migrations
                 name: "gradeID",
                 table: "Grades",
                 newName: "Id");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Salaries_WebUsers_UserID",
-                table: "Salaries",
-                column: "UserID",
-                principalTable: "WebUsers",
-                principalColumn: "Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Salaries_WebUsers_UserID",
-                table: "Salaries");
-
             migrationBuilder.RenameColumn(
                 name: "Step",
                 table: "Grades",

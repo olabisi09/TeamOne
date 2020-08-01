@@ -1,6 +1,7 @@
 ﻿@model CyberProject.Models.EditRoleModel
 @{
-    var roleId = ViewBag.roleId;
+    ViewData["Title"] = "Edit Role";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="app-main__outer">
@@ -75,46 +76,42 @@
         <div class="tab-content">
             <div class="main-card mb-3 card">
                 <div class="card-body">
-                    <h5 class="card-title">Create Role</h5>
+                    <h5 class="card-title">Edit Role</h5>
                     <form asp-controller="Administrator" method="post">
-                        <input hidden asp-for="Id" />
+                        <div class="position-relative row form-group">
+                            <label asp-for="Id" class="col-sm-2 col-form-label">Role ID</label>
+                            <div class="col-sm-10"><input asp-for="Id" disabled class="form-control" /></div>
+                        </div>
                         <div class="position-relative row form-group">
                             <label asp-for="RoleName" class="col-sm-2 col-form-label">Role Name</label>
                             <div class="col-sm-10"><input asp-for="RoleName" type="text" class="form-control"></div>
                             <span asp-validation-for="RoleName"></span>
                         </div>
+                        <div asp-validation-summary="All" class="text-danger"></div>
 
                         <div class="position-relative row form-check">
                             <div class="col-sm-10 offset-sm-2">
                                 <button asp-action="EditRole" class="btn btn-secondary">Save Changes</button>
+                                <a asp-controller="Administrator" asp-action="EditUsersInRole" asp-route-roleId="@Model.Id" class="btn btn-info">Add or remove user</a>
                             </div>
                         </div>
-                    </form>
-                </div>
-            </div>
-            <form>
-                <div class="main-card mb-3 card">
-                    <div class="card-body">
+
                         <h5 class="card-title">Users in this role</h5>
                         @if (Model.Users.Any())
                         {
                             foreach (var user in Model.Users)
                             {
-                                <h5 class="card-title">@user</h5>
+                                <h5>@user</h5>
                             }
                         }
                         else
                         {
                             <div class="col-sm-10">None.</div>
                         }
-                    </div>
-                    <div class="col-sm-10 offset-sm-2">
-                        <button asp-action="EditUsersInRole" asp-route-roleId="@Model.Id" class="btn btn-info">Add or remove user</button>
-                    </div>
+                    </form>
                 </div>
-            </form>
-            
-
+                
+            </div>
         </div>
     </div>
     <div class="app-wrapper-footer">

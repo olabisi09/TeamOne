@@ -89,8 +89,17 @@ namespace CyberProject.Controllers
             }
             var model = new EditRoleModel
             {
+                Id = role.Id,
                 RoleName = role.Name
             };
+
+            foreach (var user in _userManager.Users)
+            {
+                if (await _userManager.IsInRoleAsync(user, role.Name))
+                {
+                    model.Users.Add(user.UserName);
+                }
+            }
 
             return View(model);
         }
@@ -114,8 +123,13 @@ namespace CyberProject.Controllers
                 {
                     return RedirectToAction("ListRoles", "Administrator");
                 }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+
             }
-           
+
             return View(model);
 
         }
@@ -129,12 +143,12 @@ namespace CyberProject.Controllers
             if (role == null)
             {
                 ViewBag.ErrorMessage = $"Role with Id = {roleId} cannot be found";
-                return View();
+                return View("ListRoles");
             }
 
             var model = new List<UserRoleViewModel>();
 
-            foreach (var user in _userManager.Users)
+            foreach (var user in _userManager.Users.ToList())
             {
                 var UserRoleViewModel = new UserRoleViewModel
                 {
@@ -164,7 +178,7 @@ namespace CyberProject.Controllers
             if (role == null)
             {
                 ViewBag.ErrorMessage = $"Role with Id = {roleId} cannot be found";
-                return View();
+                return View("ListRoles");
             }
             for (int i = 0; i < model.Count; i++)
             {

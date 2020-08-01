@@ -25,18 +25,18 @@ namespace CyberProject.Controllers
         private IAccount _account;
         private IFaculty _faculty;
         private IDepartment _department;
+        private IGrade _grade;
         private IUser _userService;
         private IConfiguration _config;
-        private CyberProjectDataContext _context;
 
-        public UserController(IUser userService, IConfiguration config, IAccount account, IFaculty faculty, IDepartment department, CyberProjectDataContext context)
+        public UserController(IUser userService, IConfiguration config, IAccount account, IFaculty faculty, IDepartment department, IGrade grade)
         {
             _account = account;
             _userService = userService;
             _config = config;
             _faculty = faculty;
+            _grade = grade;
             _department = department;
-            _context = context;
         }
 
         [HttpPost]
@@ -62,6 +62,7 @@ namespace CyberProject.Controllers
         {
             var fac = await _faculty.GetAll();
             var dept = await _department.GetAll();
+            var grade = await _grade.GetAll();
             var facList = fac.Select(f => new SelectListItem()
             {
                 Value = f.facultyID.ToString(),
@@ -72,6 +73,12 @@ namespace CyberProject.Controllers
                 Value = d.deptID.ToString(),
                 Text = d.deptName
             });
+            var gradeList = grade.Select(g => new SelectListItem()
+            {
+                Value = g.GradeID.ToString(),
+                Text = g.GradeName
+            });
+            ViewBag.grade = gradeList;
             ViewBag.fac = facList;
             ViewBag.dept = deptList;
             return View();

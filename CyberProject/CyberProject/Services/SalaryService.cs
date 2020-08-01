@@ -18,36 +18,9 @@ namespace CyberProject.Services
             _context = context;
         }
 
-
         public async Task<IEnumerable<Salary>> GetAll()
         {
             return await _context.Salaries.ToListAsync();
-        }
-
-        
-
-        public float GetTax(Salary salary)
-        {
-            var tax = salary.TaxOnSalary;
-            if (salary.Sal > 100000)
-            {
-                tax = salary.Sal * (10 / 100);
-            }
-            else if (salary.Sal > 50000)
-            {
-                tax = salary.Sal * (5 / 100);
-            }
-            else tax = 0;
-            return tax;
-        }
-
-        public float GetNetSalary(Salary s)
-        {
-            var netSal = s.Sal - GetTax(s);
-
-            return netSal;
-            //await _context.AddAsync(s);
-            //await _context.SaveChangesAsync();
         }
     }
 }

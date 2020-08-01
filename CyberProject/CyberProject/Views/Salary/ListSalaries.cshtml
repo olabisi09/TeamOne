@@ -86,33 +86,33 @@
                                     <th>Employee ID</th>
                                     <th>First Name</th>
                                     <th>Last Name</th>
-                                    <th>Department ID</th>
+                                    <th>Department</th>
                                     <th>Grade</th>
                                     
                                 </tr>
                             </thead>
                             @foreach (var user in Model)
                             {
-                            <tbody>
-                                <tr>
-                                    <td scope="row">@user.Id</td>
-                                    <td>@user.FirstName</td>
-                                    <td>@user.LastName</td>
-                                    <td>@user.DepartmentID</td>
-                                    <td>@user.Grade</td>
+                                <tbody>
+                                    <tr>
+                                        <td scope="row">@user.Id</td>
+                                        <td>@user.FirstName</td>
+                                        <td>@user.LastName</td>
+                                        <td>@user.Department.deptName</td>
+                                        <td>@user.Grade</td>
                                    
-                                    <td class="dropdown">
-                                        <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fa fa-ellipsis-v"></i>
-                                        </a>
+                                        <td class="dropdown">
+                                            <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fa fa-ellipsis-v"></i>
+                                            </a>
                                         @*<div role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
                                             <a asp-controller="User" asp-action="Edit" asp-route-id="@user.Id" tabindex="0" class="dropdown-item">Edit</a>
                                             <a asp-controller="User" asp-action="CalculateSalary" asp-route-id="@user.Id" tabindex="0" class="dropdown-item">Compute Salary</a>
                                             <a asp-controller="User" asp-action="Delete" asp-route-id="@user.Id" onclick="return confirm('Are you sure you want to delete the user @user.Id?')" tabindex="0" class="dropdown-item">Delete</a>
                                         </div>*@
-                                    </td>
-                                </tr>
-                            </tbody>
+                                        </td>
+                                    </tr>
+                                </tbody>
                             }
 
                         </table>

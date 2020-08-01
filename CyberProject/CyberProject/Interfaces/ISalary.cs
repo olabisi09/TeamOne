@@ -8,7 +8,6 @@ namespace CyberProject.Interfaces
 {
     public interface ISalary
     {
-        float GetNetSalary(Salary s);
         Task<IEnumerable<Salary>> GetAll();
     }
 }

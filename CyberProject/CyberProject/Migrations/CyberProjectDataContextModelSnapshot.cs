@@ -132,7 +132,7 @@ namespace CyberProject.Migrations
 
             modelBuilder.Entity("CyberProject.Entities.Grade", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("GradeID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -142,34 +142,28 @@ namespace CyberProject.Migrations
 
                     b.Property<int>("Step");
 
-                    b.HasKey("Id");
+                    b.HasKey("GradeID");
 
                     b.ToTable("Grades");
                 });
 
             modelBuilder.Entity("CyberProject.Entities.Salary", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("SalaryId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("EmployeeGrade");
+                    b.Property<float>("Amount");
 
-                    b.Property<string>("EmployeeLevel");
+                    b.Property<int>("GradeId");
 
-                    b.Property<string>("EmployeeStep");
+                    b.Property<string>("PayItem");
 
-                    b.Property<float>("NetSalary");
+                    b.Property<string>("PayItemType");
 
-                    b.Property<float>("Sal");
+                    b.HasKey("SalaryId");
 
-                    b.Property<float>("TaxOnSalary");
-
-                    b.Property<int>("UserID");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserID");
+                    b.HasIndex("GradeId");
 
                     b.ToTable("Salaries");
                 });
@@ -188,8 +182,6 @@ namespace CyberProject.Migrations
 
                     b.Property<string>("FirstName");
 
-                    b.Property<string>("Grade");
-
                     b.Property<string>("LGA");
 
                     b.Property<string>("LastName");
@@ -200,9 +192,13 @@ namespace CyberProject.Migrations
 
                     b.Property<string>("Username");
 
+                    b.Property<int>("gradeID");
+
                     b.HasKey("Id");
 
                     b.HasIndex("DepartmentID");
+
+                    b.HasIndex("gradeID");
 
                     b.ToTable("WebUsers");
                 });
@@ -303,9 +299,9 @@ namespace CyberProject.Migrations
 
             modelBuilder.Entity("CyberProject.Entities.Salary", b =>
                 {
-                    b.HasOne("CyberProject.Entities.User", "User")
+                    b.HasOne("CyberProject.Entities.Grade", "Grade")
                         .WithMany()
-                        .HasForeignKey("UserID")
+                        .HasForeignKey("GradeId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -314,6 +310,11 @@ namespace CyberProject.Migrations
                     b.HasOne("CyberProject.Entities.Department", "Department")
                         .WithMany()
                         .HasForeignKey("DepartmentID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("CyberProject.Entities.Grade", "Grade")
+                        .WithMany()
+                        .HasForeignKey("gradeID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

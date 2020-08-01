@@ -11,7 +11,7 @@ namespace CyberProject.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int GradeID { get; set; }
         public string GradeName { get; set; }
         public int Level { get; set; }
         public int Step { get; set; }

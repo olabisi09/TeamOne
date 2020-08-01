@@ -23,7 +23,7 @@ namespace CyberProject.Services
 
         public async Task<IEnumerable<User>> GetAll()
         {
-            return await _context.WebUsers.Include(d => d.Department).ToListAsync();
+            return await _context.WebUsers.Include(d => d.Department)./*Include(g => g.Grade).*/ToListAsync();
         }
 
         public async Task<User> GetById(int Id)
@@ -44,7 +44,7 @@ namespace CyberProject.Services
                 us.Username = user.Username;
                 us.Email = user.Email;
                 us.PhoneNo = user.PhoneNo;
-                us.Grade = user.Grade;
+                //us.Grade = user.Grade;
 
                 await _context.SaveChangesAsync();
                 return true;

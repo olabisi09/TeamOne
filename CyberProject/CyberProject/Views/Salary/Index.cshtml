@@ -78,16 +78,8 @@
             <div class="main-card mb-3 card">
                 <div class="card-body">
                     <h5 class="card-title">Compute Salary</h5>
-                    <form asp-controller="Salary" method="post">
-                        <div class="position-relative row form-group">
-                            <label asp-for="UserID" class="col-sm-2 col-form-label"></label>
-                            <div class="col-sm-10">
-                                <select class="mb-2 form-control" asp-for="UserID" asp-items="@ViewBag.us">
-                                    <option>Employee</option>
-                                </select>
-                            </div>
-                            <span asp-validation-for="UserID"></span>
-                        </div>
+                    @*<form asp-controller="Salary" method="post">
+                        
                         <div class="position-relative row form-group">
                             <label asp-for="Sal" class="col-sm-2 col-form-label">Salary</label>
                             <div class="col-sm-10"><input asp-for="Sal" type="text" class="form-control"></div>
@@ -109,7 +101,7 @@
                                 <button asp-action="Index" class="btn btn-secondary">Save Salary Details</button>
                             </div>
                         </div>
-                    </form>
+                    </form>*@
                 </div>
             </div>
 
