@@ -123,6 +123,8 @@ namespace CyberProject.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("facultyCode");
+
                     b.Property<string>("facultyName");
 
                     b.HasKey("facultyID");
@@ -138,9 +140,9 @@ namespace CyberProject.Migrations
 
                     b.Property<string>("GradeName");
 
-                    b.Property<int>("Level");
+                    b.Property<string>("Level");
 
-                    b.Property<int>("Step");
+                    b.Property<string>("Step");
 
                     b.HasKey("GradeID");
 
@@ -157,13 +159,37 @@ namespace CyberProject.Migrations
 
                     b.Property<int>("GradeId");
 
-                    b.Property<string>("PayItem");
+                    b.Property<float>("Housing");
 
-                    b.Property<string>("PayItemType");
+                    b.Property<string>("HousingPayType");
+
+                    b.Property<float>("Lunch");
+
+                    b.Property<string>("LunchPayType");
+
+                    b.Property<float>("Medical");
+
+                    b.Property<string>("MedicalPayType");
+
+                    b.Property<float>("NetSalary");
+
+                    b.Property<float>("Tax");
+
+                    b.Property<string>("TaxPayType");
+
+                    b.Property<float>("TaxPercentage");
+
+                    b.Property<float>("Transport");
+
+                    b.Property<string>("TransportPayType");
+
+                    b.Property<int>("UserId");
 
                     b.HasKey("SalaryId");
 
                     b.HasIndex("GradeId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Salaries");
                 });
@@ -302,6 +328,11 @@ namespace CyberProject.Migrations
                     b.HasOne("CyberProject.Entities.Grade", "Grade")
                         .WithMany()
                         .HasForeignKey("GradeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("CyberProject.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

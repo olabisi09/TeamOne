@@ -23,7 +23,7 @@ namespace CyberProject.Services
 
         public async Task<IEnumerable<User>> GetAll()
         {
-            return await _context.WebUsers.Include(d => d.Department)./*Include(g => g.Grade).*/ToListAsync();
+            return await _context.WebUsers.Include(d => d.Department).Include(g => g.Grade).ToListAsync();
         }
 
         public async Task<User> GetById(int Id)

@@ -13,5 +13,6 @@ namespace CyberProject.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int facultyID { get; set; }
         public string facultyName { get; set; }
+        public string facultyCode { get; set; }
     }
 }

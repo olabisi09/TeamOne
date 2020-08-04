@@ -63,6 +63,8 @@ namespace CyberProject.Controllers
             var fac = await _faculty.GetAll();
             var dept = await _department.GetAll();
             var grade = await _grade.GetAll();
+            var level = await _grade.GetAll();
+            var step = await _grade.GetAll();
             var facList = fac.Select(f => new SelectListItem()
             {
                 Value = f.facultyID.ToString(),
@@ -78,9 +80,21 @@ namespace CyberProject.Controllers
                 Value = g.GradeID.ToString(),
                 Text = g.GradeName
             });
+            var levelList = level.Select(l => new SelectListItem()
+            {
+                Value = l.GradeID.ToString(),
+                Text = l.Level
+            });
+            var stepList = step.Select(s => new SelectListItem()
+            {
+                Value = s.GradeID.ToString(),
+                Text = s.Step
+            });
             ViewBag.grade = gradeList;
             ViewBag.fac = facList;
             ViewBag.dept = deptList;
+            ViewBag.level = levelList;
+            ViewBag.step = stepList;
             return View();
         }
 
@@ -112,32 +126,6 @@ namespace CyberProject.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> ComputeSalary(int id)
-        {
-            var getUser = await _userService.GetById(id);
-
-            if (getUser == null)
-            {
-                return RedirectToAction("ListUsers");
-            }
-            var fac = await _faculty.GetAll();
-            var dept = await _department.GetAll();
-            var facList = fac.Select(f => new SelectListItem()
-            {
-                Value = f.facultyID.ToString(),
-                Text = f.facultyName
-            });
-            var deptList = dept.Select(d => new SelectListItem()
-            {
-                Value = d.deptID.ToString(),
-                Text = d.deptName
-            });
-            ViewBag.fac = facList;
-            ViewBag.dept = deptList;
-            return View(getUser);
-        }
-
-        [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
             var editUser = await _userService.GetById(id);
@@ -146,19 +134,19 @@ namespace CyberProject.Controllers
             {
                 return RedirectToAction("ListUsers");
             }
-            var fac = await _faculty.GetAll();
+            var grade = await _grade.GetAll();
             var dept = await _department.GetAll();
-            var facList = fac.Select(f => new SelectListItem()
+            var gradeList = grade.Select(g => new SelectListItem()
             {
-                Value = f.facultyID.ToString(),
-                Text = f.facultyName
+                Value = g.GradeID.ToString(),
+                Text = g.GradeName
             });
             var deptList = dept.Select(d => new SelectListItem()
             {
                 Value = d.deptID.ToString(),
                 Text = d.deptName
             });
-            ViewBag.fac = facList;
+            ViewBag.grade = gradeList;
             ViewBag.dept = deptList;
             return View(editUser);
         }

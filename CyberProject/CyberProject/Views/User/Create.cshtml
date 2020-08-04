@@ -177,9 +177,31 @@
                             <span asp-validation-for="PhoneNo"></span>
                         </div>
                         <div class="position-relative row form-group">
-                            <label asp-for="Grade" class="col-sm-2 col-form-label">Grade</label>
-                            <div class="col-sm-10"><input asp-for="Grade" type="text" class="form-control"></div>
-                            <span asp-validation-for="Grade"></span>
+                            <label asp-for="gradeID" class="col-sm-2 col-form-label">Grade</label>
+                            <div class="col-sm-10">
+                                <select class="mb-2 form-control" asp-for="gradeID" asp-items="@ViewBag.grade">
+                                    <option>Grade</option>
+                                </select>
+                            </div>
+                            <span asp-validation-for="gradeID"></span>
+                        </div>
+                        <div class="position-relative row form-group">
+                            <label asp-for="gradeID" class="col-sm-2 col-form-label">Level</label>
+                            <div class="col-sm-10">
+                                <select class="mb-2 form-control" asp-for="gradeID" asp-items="@ViewBag.level">
+                                    <option>Level</option>
+                                </select>
+                            </div>
+                            <span asp-validation-for="gradeID"></span>
+                        </div>
+                        <div class="position-relative row form-group">
+                            <label asp-for="gradeID" class="col-sm-2 col-form-label">Step</label>
+                            <div class="col-sm-10">
+                                <select class="mb-2 form-control" asp-for="gradeID" asp-items="@ViewBag.step">
+                                    <option>Step</option>
+                                </select>
+                            </div>
+                            <span asp-validation-for="gradeID"></span>
                         </div>
 
                         <div class="row">

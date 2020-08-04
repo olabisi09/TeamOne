@@ -67,6 +67,7 @@ namespace CyberProject.Services
             if (fac != null)
             {
                 fac.facultyName = faculty.facultyName;
+                fac.facultyCode = faculty.facultyCode;
                 await _context.SaveChangesAsync();
                 return true;
             }
