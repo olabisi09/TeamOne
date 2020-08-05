@@ -83,6 +83,7 @@
                                 <tr>
                                     <th>Faculty ID</th>
                                     <th>Faculty Name</th>
+                                    <th>Faculty Code</th>
                                 </tr>
                             </thead>
                             @foreach (var fac in Model)
@@ -91,6 +92,7 @@
                                     <tr>
                                         <td scope="row">@fac.facultyID</td>
                                         <td>@fac.facultyName</td>
+                                        <td>@fac.facultyCode</td>
                                         <td class="dropdown">
                                             <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="fa fa-ellipsis-v"></i>

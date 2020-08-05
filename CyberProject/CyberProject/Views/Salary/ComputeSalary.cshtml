@@ -111,10 +111,10 @@
                         </div>
                         <div class="form-row">
                             <div class="col-md-6">
-                                <div class="position-relative form-group"><label asp-for="TaxPercentage">Tax Percentage</label><input asp-for="TaxPercentage" type="text" class="form-control"></div>
+                                <div class="position-relative form-group"><label asp-for="TaxPercentage">Tax Percentage (%)</label><input value="@Model.TaxPercentage" type="text" class="form-control"></div>
                             </div>
                             <div class="col-md-4">
-                                <div class="position-relative form-group"><label asp-for="Tax">Tax Amount</label><input asp-for="Tax" type="text" class="form-control"></div>
+                                <div class="position-relative form-group"><label asp-for="Tax">Tax Amount</label><input value="@Model.Tax" type="text" class="form-control"></div>
                             </div>
                             <div class="col-md-2">
                                 <div class="position-relative form-group"><label asp-for="TaxPayType">Tax Payment Type</label><input type="text" value="@Model.TaxPayType" class="form-control"></div>
@@ -124,7 +124,7 @@
                             <div class="col-md-6">
                                 <div class="position-relative form-group">
                                     <label asp-for="Housing">Housing Amount</label>
-                                    <input asp-for="Housing" type="text" class="form-control">
+                                    <input value="@Model.Housing" type="text" class="form-control">
                                     @*<span asp-validation-for="Housing" class="text-danger"></span>*@
                                 </div>
                             </div>
@@ -139,14 +139,14 @@
                             <div class="col-md-6">
                                 <div class="position-relative form-group">
                                     <label asp-for="Transport">Transportation</label>
-                                    <input asp-for="Transport" type="text" class="form-control">
+                                    <input value="@Model.Transport" type="text" class="form-control">
                                     @*<span asp-validation-for="Transport" class="text-danger"></span>*@
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="position-relative form-group">
                                     <label asp-for="TransportPayType">Transport Payment Type</label>
-                                    <input asp-for="TransportPayType" type="text" class="form-control">
+                                    <input value="@Model.TransportPayType" type="text" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -154,7 +154,7 @@
                             <div class="col-md-6">
                                 <div class="position-relative form-group">
                                     <label asp-for="Medical">Medical Charges</label>
-                                    <input asp-for="Medical" type="text" class="form-control">
+                                    <input value="@Model.Medical" type="text" class="form-control">
                                     @*<span asp-validation-for="Medical" class="text-danger"></span>*@
                                 </div>
                             </div>
@@ -169,7 +169,7 @@
                             <div class="col-md-6">
                                 <div class="position-relative form-group">
                                     <label asp-for="Lunch">Lunch Payment</label>
-                                    <input asp-for="Lunch" type="text" class="form-control">
+                                    <input value="@Model.Lunch" type="text" class="form-control">
                                     @*<span asp-validation-for="Lunch" class="text-danger"></span>*@
                                 </div>
                             </div>
@@ -183,15 +183,16 @@
                         <div class="form-row">
                             <div class="position-relative form-group">
                                 <label asp-for="NetSalary">Net Salary</label>
-                                <input asp-for="NetSalary" type="text" class="form-control">
+                                <input value="@Model.NetSalary" type="text" class="form-control">
                                 @*<span asp-validation-for="NetSalary" class="text-danger"></span>*@
                             </div>
                         </div>
 
                         <div class="position-relative row form-check">
                             <div class="col-sm-10 offset-sm-2">
-                                <button asp-action="ComputeSalary" class="btn btn-secondary">View Changes</button>
-                                <button asp-action="Index" class="btn btn-success">Save Salary Details</button>
+                                <button asp-action="Preview"class="btn btn-secondary" >Preview Changes</button>
+                                <button asp-action="ComputeSalary" class="btn btn-success">Save Changes</button>
+                                <button asp-action="Index" class="btn btn-danger">Cancel</button>
                             </div>
                         </div>
 

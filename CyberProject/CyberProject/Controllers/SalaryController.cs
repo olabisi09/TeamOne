@@ -43,10 +43,87 @@ namespace CyberProject.Controllers
         public async Task<ViewResult> Details(int Id)
         {
             Salary salary = await _salary.GetById(Id);
-            //User user = await _user.GetById(Id);
             ViewData["Title"] = "Salary Breakdown";
             ViewData["Salary Preview"] = salary;
             return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Preview()
+        {
+            var grade = await _grade.GetAll();
+            var user = await _user.GetAll();
+            var gradeList = grade.Select(g => new SelectListItem()
+            {
+                Value = g.GradeID.ToString(),
+                Text = g.GradeName
+            });
+            var userList = user.Select(u => new SelectListItem()
+            {
+                Value = u.Id.ToString(),
+                Text = u.FirstName + " " + u.LastName
+            });
+
+            ViewBag.grade = gradeList;
+            ViewBag.user = userList;
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Preview(Salary salary)
+        {
+            float percentOne = 5;
+            float percentTwo = 3;
+
+            if (salary.GradeId == 1)
+            {
+                //salary.Amount = 500000;
+
+                salary.TaxPercentage = 5;
+                salary.Tax = salary.Amount * (salary.TaxPercentage / 100);
+                salary.TaxPayType = "Deduction";
+
+                salary.Housing = (percentOne / 100) * salary.Amount;
+                salary.HousingPayType = "Allowance";
+
+                salary.Medical = salary.Amount * (percentOne / 100);
+                salary.MedicalPayType = "Allowance";
+
+                salary.Lunch = salary.Amount * (percentOne / 100);
+                salary.LunchPayType = "Allowance";
+
+                salary.Transport = salary.Amount * (percentOne / 100);
+                salary.TransportPayType = "Allowance";
+
+
+            }
+
+            if (salary.GradeId == 2)
+            {
+                //salary.Amount = 100000;
+
+                salary.TaxPercentage = 3;
+                salary.Tax = salary.Amount * (salary.TaxPercentage / 100);
+                salary.TaxPayType = "Deduction";
+
+                salary.Housing = (percentTwo / 100) * salary.Amount;
+                salary.HousingPayType = "Allowance";
+
+                salary.Medical = salary.Amount * (percentTwo / 100);
+                salary.MedicalPayType = "Allowance";
+
+                salary.Lunch = salary.Amount * (percentTwo / 100);
+                salary.LunchPayType = "Allowance";
+
+                salary.Transport = salary.Amount * (percentTwo / 100);
+                salary.TransportPayType = "Allowance";
+
+
+            }
+            salary.NetSalary = (salary.Amount - salary.Tax) + salary.Housing + salary.Medical + salary.Lunch + salary.Transport;
+
+            return PartialView("ComputeSalary", salary);
         }
 
         [HttpGet]
