@@ -215,3 +215,6 @@ C:\Users\DELL\TeamOne\CyberProject\CyberProject\obj\Debug\netcoreapp2.1\Razor\Vi
 C:\Users\DELL\TeamOne\CyberProject\CyberProject\obj\Debug\netcoreapp2.1\Razor\Views\User\SalaryBreakdown.g.cshtml.cs
 C:\Users\DELL\TeamOne\CyberProject\CyberProject\obj\Debug\netcoreapp2.1\Razor\Views\Grade\Create.g.cshtml.cs
 C:\Users\DELL\TeamOne\CyberProject\CyberProject\obj\Debug\netcoreapp2.1\Razor\Views\Salary\Details.g.cshtml.cs
+C:\Users\DELL\TeamOne\CyberProject\CyberProject\obj\Debug\netcoreapp2.1\Razor\Views\Salary\Edit.g.cshtml.cs
+C:\Users\DELL\TeamOne\CyberProject\CyberProject\obj\Debug\netcoreapp2.1\Razor\Views\User\Profile.g.cshtml.cs
+C:\Users\DELL\TeamOne\CyberProject\CyberProject\obj\Debug\netcoreapp2.1\Razor\Views\Salary\Preview.g.cshtml.cs

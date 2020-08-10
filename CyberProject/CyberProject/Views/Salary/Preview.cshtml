@@ -1,0 +1,243 @@
+﻿@model CyberProject.Entities.Salary
+@{
+    ViewData["Title"] = "Compute Salary";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="app-main__outer">
+    <div class="app-main__inner">
+        <div class="app-page-title">
+            <div class="page-title-wrapper">
+                <div class="page-title-heading">
+                    <div class="page-title-icon">
+                        <i class="pe-7s-graph text-success">
+                        </i>
+                    </div>
+                    <div>
+                        Salary Structure
+                        <div class="page-title-subheading">
+                            Construct a salary structure for the employees.
+                        </div>
+                    </div>
+                </div>
+                <div class="page-title-actions">
+                    <button type="button" data-toggle="tooltip" title="Example Tooltip" data-placement="bottom" class="btn-shadow mr-3 btn btn-dark">
+                        <i class="fa fa-star"></i>
+                    </button>
+                    <div class="d-inline-block dropdown">
+                        <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn-shadow dropdown-toggle btn btn-info">
+                            <span class="btn-icon-wrapper pr-2 opacity-7">
+                                <i class="fa fa-business-time fa-w-20"></i>
+                            </span>
+                            Buttons
+                        </button>
+                        <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a href="javascript:void(0);" class="nav-link">
+                                        <i class="nav-link-icon lnr-inbox"></i>
+                                        <span>
+                                            Inbox
+                                        </span>
+                                        <div class="ml-auto badge badge-pill badge-secondary">86</div>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="javascript:void(0);" class="nav-link">
+                                        <i class="nav-link-icon lnr-book"></i>
+                                        <span>
+                                            Book
+                                        </span>
+                                        <div class="ml-auto badge badge-pill badge-danger">5</div>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="javascript:void(0);" class="nav-link">
+                                        <i class="nav-link-icon lnr-picture"></i>
+                                        <span>
+                                            Picture
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a disabled href="javascript:void(0);" class="nav-link disabled">
+                                        <i class="nav-link-icon lnr-file-empty"></i>
+                                        <span>
+                                            File Disabled
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div class="main-card mb-3 card">
+                <div class="card-body">
+                    <h5 class="card-title">Compute Salary</h5>
+                    <form asp-controller="Salary" method="post">
+
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                    <label asp-for="GradeId">Grade</label>
+                                    <select class="form-control" asp-for="GradeId" asp-items="@ViewBag.grade">
+                                        <option>Grade</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                    <label asp-for="UserId">Employee</label>
+                                    <select class="form-control" asp-for="UserId" asp-items="@ViewBag.user">
+                                        <option>Employee</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <h5 class="card-title">Salary Breakdown</h5>
+                        <div class="form-row">
+                            <div class="position-relative form-group">
+                                <label asp-for="Amount">Basic Salary</label>
+                                <input asp-for="Amount" type="text" class="form-control">
+                            </div>
+                            @*<span asp-validation-for="Amount" class="text-danger"></span>*@
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="position-relative form-group"><label asp-for="TaxPercentage">Tax Percentage (%)</label><input value="@Model.TaxPercentage" type="text" class="form-control"></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="position-relative form-group"><label asp-for="Tax">Tax Amount</label><input value="@Model.Tax" type="text" class="form-control"></div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="position-relative form-group"><label asp-for="TaxPayType">Tax Payment Type</label><input type="text" value="@Model.TaxPayType" class="form-control"></div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                    <label asp-for="Housing">Housing Amount</label>
+                                    <input value="@Model.Housing" type="text" class="form-control">
+                                    @*<span asp-validation-for="Housing" class="text-danger"></span>*@
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                    <label asp-for="HousingPayType">Housing Payment Type</label>
+                                    <input value="@Model.HousingPayType" type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                    <label asp-for="Transport">Transportation</label>
+                                    <input value="@Model.Transport" type="text" class="form-control">
+                                    @*<span asp-validation-for="Transport" class="text-danger"></span>*@
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                    <label asp-for="TransportPayType">Transport Payment Type</label>
+                                    <input value="@Model.TransportPayType" type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                    <label asp-for="Medical">Medical Charges</label>
+                                    <input value="@Model.Medical" type="text" class="form-control">
+                                    @*<span asp-validation-for="Medical" class="text-danger"></span>*@
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                    <label asp-for="MedicalPayType">Medical Payment Type</label>
+                                    <input value="@Model.MedicalPayType" type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                    <label asp-for="Lunch">Lunch Payment</label>
+                                    <input value="@Model.Lunch" type="text" class="form-control">
+                                    @*<span asp-validation-for="Lunch" class="text-danger"></span>*@
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                    <label asp-for="LunchPayType">Lunch Payment Type</label>
+                                    <input value="@Model.LunchPayType" type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="position-relative form-group">
+                                <label asp-for="NetSalary">Net Salary</label>
+                                <input value="@Model.NetSalary" type="text" class="form-control">
+                                @*<span asp-validation-for="NetSalary" class="text-danger"></span>*@
+                            </div>
+                        </div>
+
+                        <div class="position-relative row form-check">
+                            <div class="col-sm-10 offset-sm-2">
+                                <button asp-action="ComputeSalary" class="btn btn-success">Save Changes</button>
+                                <button asp-action="Index" class="btn btn-danger">Cancel</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="app-wrapper-footer">
+        <div class="app-footer">
+            <div class="app-footer__inner">
+                <div class="app-footer-left">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a href="javascript:void(0);" class="nav-link">
+                                Footer Link 1
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="javascript:void(0);" class="nav-link">
+                                Footer Link 2
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="app-footer-right">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a href="javascript:void(0);" class="nav-link">
+                                Footer Link 3
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="javascript:void(0);" class="nav-link">
+                                <div class="badge badge-success mr-1 ml-0">
+                                    <small>NEW</small>
+                                </div>
+                                Footer Link 4
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

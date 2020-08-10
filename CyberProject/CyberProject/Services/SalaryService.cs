@@ -108,6 +108,59 @@ namespace CyberProject.Services
             return false;
         }
 
+        public void GetSalary(Salary salary)
+        {
+            float percentOne = 5;
+            float percentTwo = 3;
+
+            if (salary.User.Grade.GradeName == "Senior Staff")
+            {
+                //salary.Amount = 500000;
+
+                salary.TaxPercentage = 5;
+                salary.Tax = salary.Amount * (salary.TaxPercentage / 100);
+                salary.TaxPayType = "Deduction";
+
+                salary.Housing = (percentOne / 100) * salary.Amount;
+                salary.HousingPayType = "Allowance";
+
+                salary.Medical = salary.Amount * (percentOne / 100);
+                salary.MedicalPayType = "Allowance";
+
+                salary.Lunch = salary.Amount * (percentOne / 100);
+                salary.LunchPayType = "Allowance";
+
+                salary.Transport = salary.Amount * (percentOne / 100);
+                salary.TransportPayType = "Allowance";
+
+                _context.SaveChanges();
+            }
+
+            if (salary.User.Grade.GradeName == "Junior Staff")
+            {
+                //salary.Amount = 100000;
+
+                salary.TaxPercentage = 3;
+                salary.Tax = salary.Amount * (salary.TaxPercentage / 100);
+                salary.TaxPayType = "Deduction";
+
+                salary.Housing = (percentTwo / 100) * salary.Amount;
+                salary.HousingPayType = "Allowance";
+
+                salary.Medical = salary.Amount * (percentTwo / 100);
+                salary.MedicalPayType = "Allowance";
+
+                salary.Lunch = salary.Amount * (percentTwo / 100);
+                salary.LunchPayType = "Allowance";
+
+                salary.Transport = salary.Amount * (percentTwo / 100);
+                salary.TransportPayType = "Allowance";
+
+
+            }
+            salary.NetSalary = (salary.Amount - salary.Tax) + salary.Housing + salary.Medical + salary.Lunch + salary.Transport;
+        }
+
         public async Task<Salary> GetById(int Id)
         {
             var s = await _context.Salaries.FindAsync(Id);
@@ -120,8 +173,11 @@ namespace CyberProject.Services
             var s = await _context.Salaries.FindAsync(salary.SalaryId);
             if (s != null)
             {
-                s.TaxPercentage = salary.TaxPercentage;
+                //s.TaxPercentage = salary.TaxPercentage;
                 s.Amount = salary.Amount;
+
+                salary.NetSalary = (s.Amount - salary.Tax) + salary.Housing + salary.Medical + salary.Lunch + salary.Transport;
+
                 await _context.SaveChangesAsync();
                 return true;
             }

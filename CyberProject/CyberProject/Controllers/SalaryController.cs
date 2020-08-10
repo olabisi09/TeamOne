@@ -67,7 +67,7 @@ namespace CyberProject.Controllers
             ViewBag.grade = gradeList;
             ViewBag.user = userList;
 
-            return View();
+            return View(new Salary());
         }
 
         [HttpPost]
@@ -123,7 +123,7 @@ namespace CyberProject.Controllers
             }
             salary.NetSalary = (salary.Amount - salary.Tax) + salary.Housing + salary.Medical + salary.Lunch + salary.Transport;
 
-            return PartialView("ComputeSalary", salary);
+            return View(salary);
         }
 
         [HttpGet]
@@ -191,18 +191,19 @@ namespace CyberProject.Controllers
 
             ViewBag.grade = gradeList;
             ViewBag.user = userList;
-            return View();
+            return View(editSalary);
         }
 
         [HttpPost]
         public async Task<IActionResult> Edit(Salary salary)
         {
+            //_salary.GetSalary(salary);
             var editSalary = await _salary.Update(salary);
 
             if (editSalary)
             {
                 Alert("Salary details edited successfully", NotificationType.success);
-                return RedirectToAction("ListUsers");
+                return RedirectToAction("Index");
             }
             else
             {
