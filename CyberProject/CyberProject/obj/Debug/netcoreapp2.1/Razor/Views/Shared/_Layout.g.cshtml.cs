@@ -99,7 +99,7 @@ using CyberProject.Entities;
             WriteLiteral("\r\n\r\n<!doctype html>\r\n<html lang=\"en\">\r\n\r\n");
             EndContext();
             BeginContext(213, 802, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "50e622d70b5d4363a08914f588e803f5", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c5dcfb2d8365488490809d35d0db8423", async() => {
                 BeginContext(219, 565, true);
                 WriteLiteral(@"
     <meta charset=""utf-8"">
@@ -114,7 +114,7 @@ using CyberProject.Entities;
     ");
                 EndContext();
                 BeginContext(784, 41, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "2a66502e34ce4c06a7386e5cd9a89be3", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "cf2ac84e9d464ce4b857d8e7c625ed6d", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -133,7 +133,7 @@ using CyberProject.Entities;
                 WriteLiteral("\r\n\r\n    <link rel=\"stylesheet\" href=\"~css/loading.css\">\r\n    ");
                 EndContext();
                 BeginContext(886, 60, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "f010f5c00bfe45898c5fff47987a85da", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "6634508fd7d64437b9368de7edb0fea7", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -152,7 +152,7 @@ using CyberProject.Entities;
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(952, 54, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0723c6f0fa9d4abc9d78cde92e5b6aad", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "899e41e6b715474dbc93017495540a5a", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -185,7 +185,7 @@ using CyberProject.Entities;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(1017, 41329, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2f758b52ed1d4ea8a6c6a17eaf78c054", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "df5f270e3ef946d4a470676a39acaa1f", async() => {
                 BeginContext(1023, 3592, true);
                 WriteLiteral(@"
     <div class=""app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header"">
@@ -262,7 +262,7 @@ using CyberProject.Entities;
                                             ");
                 EndContext();
                 BeginContext(4615, 86, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "01d78c391b354d9b8606669daf3390f3", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "c86f9287f77b4b3e9764d55405306e21", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -295,7 +295,7 @@ using CyberProject.Entities;
                 WriteLiteral("                                            ");
                 EndContext();
                 BeginContext(5641, 189, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "07ce0529bd2d4e9293fbd844874fd50e", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "245c01fcd08f4ba39ecfd20e15bbc1d6", async() => {
                     BeginContext(5724, 102, true);
                     WriteLiteral("\r\n                                                Logout\r\n                                            ");
                     EndContext();
@@ -344,7 +344,7 @@ using CyberProject.Entities;
                                     ");
                 EndContext();
                 BeginContext(6584, 214, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8c3fba4d656d49bab5b701e1bb9ade64", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b38a1ec8940a497ca68b85b63133f582", async() => {
                     BeginContext(6674, 120, true);
                     WriteLiteral("\r\n                                        <i class=\"fa text-white fa fa-home\"></i>\r\n                                    ");
                     EndContext();
@@ -744,7 +744,7 @@ using CyberProject.Entities;
                                             ");
                 EndContext();
                 BeginContext(32838, 247, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2da18a52b7f74de2a46b4e08655a6896", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "989e8050619c472eacaa341b980897a2", async() => {
                     BeginContext(32895, 186, true);
                     WriteLiteral("\r\n                                                <i class=\"metismenu-icon\">\r\n                                                </i>View Roles\r\n                                            ");
                     EndContext();
@@ -768,7 +768,7 @@ using CyberProject.Entities;
                 WriteLiteral("\r\n                                        </li>\r\n                                        <li>\r\n                                            ");
                 EndContext();
                 BeginContext(33224, 246, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "27b30736ba784ff1ac0e7d886a8f0c0f", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fbea103818dd43e494db2766fdf9aabc", async() => {
                     BeginContext(33282, 184, true);
                     WriteLiteral("\r\n                                                <i class=\"metismenu-icon\">\r\n                                                </i>New Role\r\n                                            ");
                     EndContext();
@@ -804,7 +804,7 @@ using CyberProject.Entities;
                                             ");
                 EndContext();
                 BeginContext(34103, 242, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0770910de48d4635b7a253957c542eb2", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fe3d6b4f4eb54b9da83fe0d8845c9be3", async() => {
                     BeginContext(34151, 190, true);
                     WriteLiteral("\r\n                                                <i class=\"metismenu-icon\">\r\n                                                </i>View Employees\r\n                                            ");
                     EndContext();
@@ -828,7 +828,7 @@ using CyberProject.Entities;
                 WriteLiteral("\r\n                                        </li>\r\n                                        <li>\r\n                                            ");
                 EndContext();
                 BeginContext(34484, 237, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e15666758fad4c2eb6eafd0c1ae678c2", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5e7c1fceb8884689b71c9fb803996ae4", async() => {
                     BeginContext(34529, 188, true);
                     WriteLiteral("\r\n                                                <i class=\"metismenu-icon\">\r\n                                                </i>New Employee\r\n                                            ");
                     EndContext();
@@ -864,7 +864,7 @@ using CyberProject.Entities;
                                             ");
                 EndContext();
                 BeginContext(35362, 243, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9f78a30367fc4b919daae7d44a9f5d07", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f3983ed33edf4c63bca82d80970b0eb6", async() => {
                     BeginContext(35408, 193, true);
                     WriteLiteral("\r\n                                                <i class=\"metismenu-icon\">\r\n                                                </i>Employee Salaries\r\n                                            ");
                     EndContext();
@@ -888,7 +888,7 @@ using CyberProject.Entities;
                 WriteLiteral("\r\n                                        </li>\r\n                                        <li>\r\n                                            ");
                 EndContext();
                 BeginContext(35744, 248, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e406e188062741309c4f7dc933032fc8", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b6252708582e46f4a945c040e56ba3e7", async() => {
                     BeginContext(35798, 190, true);
                     WriteLiteral("\r\n                                                <i class=\"metismenu-icon\">\r\n                                                </i>Compute Salary\r\n                                            ");
                     EndContext();
@@ -925,7 +925,7 @@ using CyberProject.Entities;
                                             ");
                 EndContext();
                 BeginContext(36707, 241, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ffa249ce007d4e71b45865bb67463adc", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ce547a65702540aab6e8da72ce175f61", async() => {
                     BeginContext(36754, 190, true);
                     WriteLiteral("\r\n                                                <i class=\"metismenu-icon\">\r\n                                                </i>View Faculties\r\n                                            ");
                     EndContext();
@@ -949,7 +949,7 @@ using CyberProject.Entities;
                 WriteLiteral("\r\n                                        </li>\r\n                                        <li>\r\n                                            ");
                 EndContext();
                 BeginContext(37087, 239, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4bca6faea63b4e0b8073542468e51ae4", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0a4fe7b72c6d43f399583831f062059f", async() => {
                     BeginContext(37135, 187, true);
                     WriteLiteral("\r\n                                                <i class=\"metismenu-icon\">\r\n                                                </i>New Faculty\r\n                                            ");
                     EndContext();
@@ -985,7 +985,7 @@ using CyberProject.Entities;
                                             ");
                 EndContext();
                 BeginContext(37966, 246, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "219086eefb7e40cd8a6d491ee94a13ba", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "dc42f10cc10d44b8926c79f12a08c57b", async() => {
                     BeginContext(38016, 192, true);
                     WriteLiteral("\r\n                                                <i class=\"metismenu-icon\">\r\n                                                </i>View Departments\r\n                                            ");
                     EndContext();
@@ -1009,7 +1009,7 @@ using CyberProject.Entities;
                 WriteLiteral("\r\n                                        </li>\r\n                                        <li>\r\n                                            ");
                 EndContext();
                 BeginContext(38351, 245, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4cf2bf0c0f084715a6a6ed77359df33e", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9fdb11cfd543425ea6b598d646663146", async() => {
                     BeginContext(38402, 190, true);
                     WriteLiteral("\r\n                                                <i class=\"metismenu-icon\">\r\n                                                </i>New Department\r\n                                            ");
                     EndContext();
@@ -1045,7 +1045,7 @@ using CyberProject.Entities;
                                             ");
                 EndContext();
                 BeginContext(39228, 236, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a7cb5dc317094e9281b67faa57c653d9", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f9e2010274b84b15a59d2133275427e4", async() => {
                     BeginContext(39273, 187, true);
                     WriteLiteral("\r\n                                                <i class=\"metismenu-icon\">\r\n                                                </i>View Grades\r\n                                            ");
                     EndContext();
@@ -1069,7 +1069,7 @@ using CyberProject.Entities;
                 WriteLiteral("\r\n                                        </li>\r\n                                        <li>\r\n                                            ");
                 EndContext();
                 BeginContext(39603, 235, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3ba4884a63484ab98615211c2e269a2f", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0dab6c9b79b34847a4043158e2c7da7a", async() => {
                     BeginContext(39649, 185, true);
                     WriteLiteral("\r\n                                                <i class=\"metismenu-icon\">\r\n                                                </i>New Grade\r\n                                            ");
                     EndContext();
@@ -1120,7 +1120,7 @@ using CyberProject.Entities;
                                             ");
                 EndContext();
                 BeginContext(40781, 241, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f1ab59159d7b43be8d15ce82b98e06cc", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "82bfcd5906964527bdef999f97ef39e9", async() => {
                     BeginContext(40830, 188, true);
                     WriteLiteral("\r\n                                                <i class=\"metismenu-icon\">\r\n                                                </i>View Profile\r\n                                            ");
                     EndContext();
@@ -1164,7 +1164,7 @@ using CyberProject.Entities;
                 WriteLiteral("                    </div>\r\n                </div>\r\n\r\n\r\n\r\n            </div>\r\n            ");
                 EndContext();
                 BeginContext(41650, 40, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "a66d3e4dd007420e93819e20bcf8d3a9", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "f00a0073c5a848058b60e42950ae2d8a", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper>();
@@ -1183,7 +1183,7 @@ using CyberProject.Entities;
                 WriteLiteral("\r\n            ");
                 EndContext();
                 BeginContext(41704, 37, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "b882a1a94c6d461f8a60da973a50af0d", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "902d57e40d4448109bc4d2d563d19d47", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper>();
@@ -1215,7 +1215,7 @@ using CyberProject.Entities;
                 WriteLiteral("            <script src=\"https://maps.google.com/maps/api/js?sensor=true\"></script>\r\n        </div>\r\n    </div>\r\n    ");
                 EndContext();
                 BeginContext(41932, 71, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c6ad385252f24d4280feee435c493aee", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "03fd18e481ac44fbb43eb82e658b9249", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1234,7 +1234,7 @@ using CyberProject.Entities;
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(42009, 39, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d70baac84c904100965f3e317fb0cb00", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a214efa3ee424c74a89973b1960afb7b", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

@@ -67,7 +67,7 @@ namespace CyberProject.Controllers
             ViewBag.grade = gradeList;
             ViewBag.user = userList;
 
-            return View(new Salary());
+            return View();
         }
 
         [HttpPost]
@@ -155,7 +155,7 @@ namespace CyberProject.Controllers
             if (createSalary)
             {
                 Alert("Salary created successfully.", NotificationType.success);
-                return View(salary);
+                return RedirectToAction("Index");
             }
             else
             {
@@ -163,7 +163,7 @@ namespace CyberProject.Controllers
             }
 
 
-            return View(salary);
+            return View();
         }
 
         [HttpGet]

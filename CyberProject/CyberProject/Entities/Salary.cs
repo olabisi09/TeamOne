@@ -28,6 +28,7 @@ namespace CyberProject.Entities
         public float Amount { get; set; }
         public float NetSalary { get; set; }
         public Grade Grade { get; set; }
+        [ForeignKey("UserId")]
         public User User { get; set; }
     }
 }

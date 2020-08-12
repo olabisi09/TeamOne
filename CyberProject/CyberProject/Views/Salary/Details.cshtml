@@ -1,9 +1,13 @@
-﻿@model CyberProject.Entities.Salary
+﻿@model IEnumerable<CyberProject.Entities.Salary>
 @{
     ViewData["Title"] = "List Salary";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
     var details = ViewData["Salary Preview"] as CyberProject.Entities.Salary;
+
+    var totalAllowance = details.Housing + details.Lunch + details.Medical + details.Transport;
+
+    var AmountAfterTax = details.Amount - details.Tax;
 }
 
 
@@ -18,9 +22,9 @@
                         </i>
                     </div>
                     <div>
-                        Regular Tables
+                        Salary Breakdown
                         <div class="page-title-subheading">
-                            Tables are the backbone of almost all web applications.
+                            Detailed info on the employee's salary structure.
                         </div>
                     </div>
                 </div>
@@ -79,52 +83,74 @@
         </div>
         <div class="row">
             <div class="col-lg-6">
-                <div class="main-card mb-3 card" style="width : 100%;">
+                <div class="main-card mb-3 card">
                     <div class="card-body">
-                        <h5 class="card-title">Employee Details</h5>
-                        <div>
-                            <p>Employee ID : @details.UserId</p>
-                            <p>Grade ID : @details.GradeId</p>
-                            <p>Basic Salary : N @details.Amount</p>
+                        <h5 class="card-title">Personal Information</h5>
+                        <div class="scroll-area-sm">
+                            <div class="scrollbar-container ps--active-y">
+                                <p><b>Employee ID</b> : @details.UserId</p>
+                                <p><b>Employee Name</b> : @details.User.FirstName @details.User.LastName</p>
+                                <p><b>Email</b> : @details.User.Email</p>
+                                <p><b>Grade</b> : @details.User.Grade.GradeName</p>
+                            </div>
                         </div>
-                        <br />
-                        <h6 class="card-title">Housing</h6>
-                        <div>
-                            <p>Amount : N @details.Housing</p>
-                            <p>Type : @details.HousingPayType</p>
-                        </div>
-                        <br />
-                        <h6 class="card-title">Medical</h6>
-                        <div>
-                            <p>Amount : N @details.Medical</p>
-                            <p>Type : @details.MedicalPayType</p>
-                        </div>
-                        <br />
-                        <h6 class="card-title">Lunch</h6>
-                        <div>
-                            <p>Amount :N @details.Lunch</p>
-                            <p>Type : @details.LunchPayType</p>
-                        </div>
-                        <br />
-                        <h6 class="card-title">Transportation</h6>
-                        <div>
-                            <p>Amount : N @details.Transport</p>
-                            <p>Type : @details.TransportPayType</p>
-                        </div>
-                        <br />
-                        <h6 class="card-title">Tax Deduction</h6>
-                        <div>
-                            <p>Tax Percentage : @details.TaxPercentage%</p>
-                            <p>Tax Amount : N @details.Tax</p>
-                            <p>Tax Payment Type : @details.TaxPayType</p>
-                        </div>
-                        <br />
-                        <h5>Net Salary : N @details.NetSalary</h5>
+
                     </div>
-                    
                 </div>
-               
+                <div class="main-card mb-3 card">
+                    <div class="card-body">
+                        <h5 class="card-title">Allowances</h5>
+                        <div class="scroll-area-sm">
+                            <div class="scrollbar-container ps--active-y">
+                                <h5 class="card-title">Housing</h5>
+                                <p><b>Amount</b>: N @details.Housing</p>
+                                <p><b>Type</b> : @details.HousingPayType</p>
+                                <h6 class="card-title">Medical</h6>
+                                <p><b>Amount</b> : N @details.Medical</p>
+                                <p><b>Type</b> : @details.MedicalPayType</p>
+                                <h6 class="card-title">Lunch</h6>
+                                <p><b>Amount</b> :N @details.Lunch</p>
+                                <p><b>Type</b> : @details.LunchPayType</p>
+                                <h6 class="card-title">Transportation</h6>
+                                <p><b>Amount</b> : N @details.Transport</p>
+                                <p><b>Type</b> : @details.TransportPayType</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="main-card mb-3 card">
+                    <div class="card-body">
+                        <h5 class="card-title">Tax Deductions</h5>
+                        <div class="scroll-area-sm">
+                            <div class="scrollbar-container ps--active-y">
+                                <p><b>Tax Percentage</b> : @details.TaxPercentage%</p>
+                                <p><b>Tax Amount</b> : N @details.Tax</p>
+                                <p><b>Tax Payment Type</b> : @details.TaxPayType</p>
+                                <p><b>Amount After Deduction</b> : N @AmountAfterTax</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-card mb-3 card">
+                    <div class="card-body">
+                        <h5 class="card-title">Summary</h5>
+                        <div class="scroll-area-sm">
+                            <div class="scrollbar-container ps--active-y">
+                                <p><b>Basic Salary</b> : N @details.Amount</p>
+                                <p><b>Total deductions</b> : N @details.Tax</p>
+                                <p><b>Total allowance</b> : N @totalAllowance</p>
+  
+                                <h6 class="card-title">Net Salary</h6>
+                                <p><b>N @details.NetSalary</b></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    
+    

@@ -163,6 +163,7 @@ namespace CyberProject.Services
 
         public async Task<Salary> GetById(int Id)
         {
+            await _context.Salaries.Include(u => u.User).Include(g => g.Grade).ToListAsync();
             var s = await _context.Salaries.FindAsync(Id);
 
             return s;

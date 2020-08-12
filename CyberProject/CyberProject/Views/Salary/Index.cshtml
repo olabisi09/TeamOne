@@ -7,9 +7,9 @@
 
 <div class="app-main__outer">
     <div class="app-main__inner">
-        <div class="row" style="padding-top: 100px; padding-left: 100px;">
+        <div class="row" style="padding-top: 50px; padding-left: 100px;">
             <div class="col-lg-6">
-                <div class="main-card mb-3 card" style="width : 750px; overflow: auto">
+                <div class="main-card mb-3 card" style="width : 820px; overflow: auto">
                     <div class="card-body">
                         <h5 class="card-title">Salaries</h5>
                         <table class="mb-0 table table-borderless">
@@ -24,6 +24,7 @@
                                     <th>Housing</th>
                                     <th>Medical</th>
                                     <th>Lunch</th>
+                                    <th>Transport</th>
                                     <th>Net Salary</th>
                                 </tr>
                             </thead>
@@ -40,6 +41,7 @@
                                         <td>@sal.Housing</td>
                                         <td>@sal.Medical</td>
                                         <td>@sal.Lunch</td>
+                                        <td>@sal.Transport</td>
                                         <td>@sal.NetSalary</td>
                                         <td class="dropdown">
                                             <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -48,7 +50,7 @@
                                             <div role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
                                                 <a asp-action="Details" asp-route-id="@sal.SalaryId" tabindex="0" class="dropdown-item">Details</a>
                                                 <a asp-action="Edit" asp-route-id="@sal.SalaryId" tabindex="0" class="dropdown-item">Edit</a>
-                                                <a asp-action="Delete" asp-route-id="@sal.SalaryId" onclick="return confirm('Are you sure you want to delete the salary for the @sal.Grade.GradeName grade?')" tabindex="0" class="dropdown-item">Delete</a>
+                                                <a asp-action="Delete" asp-route-id="@sal.SalaryId" onclick="return confirm('Are you sure you want to delete @sal.User.FirstName @sal.User.LastName's salary?')" tabindex="0" class="dropdown-item">Delete</a>
                                             </div>
                                         </td>
                                     </tr>
