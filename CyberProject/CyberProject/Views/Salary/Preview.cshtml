@@ -80,7 +80,7 @@
                     <h5 class="card-title">Compute Salary</h5>
                     <form asp-controller="Salary" method="post">
 
-                        <div class="form-row">
+                        @*<div class="form-row">
                             <div class="col-md-6">
                                 <div class="position-relative form-group">
                                     <label asp-for="GradeId">Grade</label>
@@ -99,9 +99,9 @@
                                 </div>
                             </div>
 
-                        </div>
-
-
+                        </div>*@
+                        <input hidden asp-for="GradeId" value="@Model.GradeId"/>
+                        <input hidden asp-for="UserId" value="@Model.UserId" />
                         <h5 class="card-title">Salary Breakdown</h5>
                         <div class="form-row">
                             <div class="position-relative form-group">
@@ -192,6 +192,7 @@
                         <div class="position-relative row form-check">
                             <div class="col-sm-10 offset-sm-2">
                                 <button asp-action="ComputeSalary" formmethod="get" class="btn btn-info">Back</button>
+                                <button asp-action="ComputeSalary" formmethod="post" class="btn btn-success">Save Changes</button>
                                 <button asp-action="Index" class="btn btn-danger">Cancel</button>
                             </div>
                         </div>

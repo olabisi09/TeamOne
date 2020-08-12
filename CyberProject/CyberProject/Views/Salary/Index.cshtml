@@ -50,7 +50,7 @@
                                             <div role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
                                                 <a asp-action="Details" asp-route-id="@sal.SalaryId" tabindex="0" class="dropdown-item">Details</a>
                                                 <a asp-action="Edit" asp-route-id="@sal.SalaryId" tabindex="0" class="dropdown-item">Edit</a>
-                                                <a asp-action="Delete" asp-route-id="@sal.SalaryId" onclick="return confirm('Are you sure you want to delete @sal.User.FirstName @sal.User.LastName's salary?')" tabindex="0" class="dropdown-item">Delete</a>
+                                                <a asp-action="Delete" asp-route-id="@sal.SalaryId" onclick="return confirm('Are you sure you want to delete the salary details for @sal.User.FirstName @sal.User.LastName?')" tabindex="0" class="dropdown-item">Delete</a>
                                             </div>
                                         </td>
                                     </tr>
