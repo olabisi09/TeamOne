@@ -73,54 +73,54 @@ namespace CyberProject.Controllers
         [HttpPost]
         public IActionResult Preview(Salary salary)
         {
-            float percentOne = 5;
-            float percentTwo = 3;
+            //float percentOne = 5;
+            //float percentTwo = 3;
 
-            if (salary.GradeId == 1)
-            {
-                //salary.Amount = 500000;
+            //if (salary.GradeId == 1)
+            //{
+            //    //salary.Amount = 500000;
 
-                salary.TaxPercentage = 5;
-                salary.Tax = salary.Amount * (salary.TaxPercentage / 100);
-                salary.TaxPayType = "Deduction";
+            //    salary.TaxPercentage = 5;
+            //    salary.Tax = salary.Amount * (salary.TaxPercentage / 100);
+            //    salary.TaxPayType = "Deduction";
 
-                salary.Housing = (percentOne / 100) * salary.Amount;
-                salary.HousingPayType = "Allowance";
+            //    salary.Housing = (percentOne / 100) * salary.Amount;
+            //    salary.HousingPayType = "Allowance";
 
-                salary.Medical = salary.Amount * (percentOne / 100);
-                salary.MedicalPayType = "Allowance";
+            //    salary.Medical = salary.Amount * (percentOne / 100);
+            //    salary.MedicalPayType = "Allowance";
 
-                salary.Lunch = salary.Amount * (percentOne / 100);
-                salary.LunchPayType = "Allowance";
+            //    salary.Lunch = salary.Amount * (percentOne / 100);
+            //    salary.LunchPayType = "Allowance";
 
-                salary.Transport = salary.Amount * (percentOne / 100);
-                salary.TransportPayType = "Allowance";
-
-
-            }
-
-            if (salary.GradeId == 2)
-            {
-                //salary.Amount = 100000;
-
-                salary.TaxPercentage = 3;
-                salary.Tax = salary.Amount * (salary.TaxPercentage / 100);
-                salary.TaxPayType = "Deduction";
-
-                salary.Housing = (percentTwo / 100) * salary.Amount;
-                salary.HousingPayType = "Allowance";
-
-                salary.Medical = salary.Amount * (percentTwo / 100);
-                salary.MedicalPayType = "Allowance";
-
-                salary.Lunch = salary.Amount * (percentTwo / 100);
-                salary.LunchPayType = "Allowance";
-
-                salary.Transport = salary.Amount * (percentTwo / 100);
-                salary.TransportPayType = "Allowance";
+            //    salary.Transport = salary.Amount * (percentOne / 100);
+            //    salary.TransportPayType = "Allowance";
 
 
-            }
+            //}
+
+            //if (salary.GradeId == 2)
+            //{
+            //    //salary.Amount = 100000;
+
+            //    salary.TaxPercentage = 3;
+            //    salary.Tax = salary.Amount * (salary.TaxPercentage / 100);
+            //    salary.TaxPayType = "Deduction";
+
+            //    salary.Housing = (percentTwo / 100) * salary.Amount;
+            //    salary.HousingPayType = "Allowance";
+
+            //    salary.Medical = salary.Amount * (percentTwo / 100);
+            //    salary.MedicalPayType = "Allowance";
+
+            //    salary.Lunch = salary.Amount * (percentTwo / 100);
+            //    salary.LunchPayType = "Allowance";
+
+            //    salary.Transport = salary.Amount * (percentTwo / 100);
+            //    salary.TransportPayType = "Allowance";
+
+
+            //}
             salary.NetSalary = (salary.Amount - salary.Tax) + salary.Housing + salary.Medical + salary.Lunch + salary.Transport;
 
             return View(salary);

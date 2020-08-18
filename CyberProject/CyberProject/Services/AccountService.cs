@@ -1,4 +1,5 @@
-﻿using CyberProject.Dtos;
+﻿using CyberProject.Data;
+using CyberProject.Dtos;
 using CyberProject.Entities;
 using CyberProject.Interfaces;
 using CyberProject.Models;
@@ -49,7 +50,7 @@ namespace CyberProject.Services
                 }
                 return false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -103,7 +104,7 @@ namespace CyberProject.Services
                 }
                 return signInDetails;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return signInDetails;
             }
@@ -127,15 +128,15 @@ namespace CyberProject.Services
                 }
                 return false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
         }
 
-        public async Task<IEnumerable<ApplicationUser>> GetAll()
+        public IEnumerable<ApplicationUser> GetAll()
         {
-            return await _userManager.GetUsersInRoleAsync("User");
+            return _userManager.Users.ToList();
         }
     }
 }

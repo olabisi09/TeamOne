@@ -12,8 +12,8 @@ namespace CyberProject.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int SalaryId { get; set; }
-        public int GradeId { get; set; }
-        public int UserId { get; set; }
+        //public int GradeId { get; set; }
+        //public int UserId { get; set; }
         public float Tax { get; set; }
         public float TaxPercentage { get; set; }
         public string TaxPayType { get; set; }
@@ -27,8 +27,8 @@ namespace CyberProject.Entities
         public string LunchPayType { get; set; }
         public float Amount { get; set; }
         public float NetSalary { get; set; }
-        public Grade Grade { get; set; }
-        [ForeignKey("UserId")]
-        public User User { get; set; }
+        //public Grade Grade { get; set; }
+        //[ForeignKey("UserId")]
+        //public User User { get; set; }
     }
 }

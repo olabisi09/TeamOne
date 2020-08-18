@@ -12,7 +12,6 @@ namespace CyberProject.Interfaces
         void Add(Salary salary);
         Task<bool> AddAsync(Salary salary);
         Task<bool> Update(Salary salary);
-        void GetSalary(Salary salary);
         Task<Salary> GetById(int Id);
         Task<bool> Delete(int Id);
     }

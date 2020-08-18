@@ -1,6 +1,8 @@
-﻿using System;
+﻿using CyberProject.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,6 +20,9 @@ namespace CyberProject.Models
         public string Username { get; set; }
 
         [Required]
+        public string PhoneNo { get; set; }
+
+        [Required]
         public string Country { get; set; }
 
         [Required]
@@ -25,25 +30,6 @@ namespace CyberProject.Models
 
         [Required]
         public string LGA { get; set; }
-
-        [Required]
-        public string Faculty { get; set; }
-
-        [Required]
-        public string Department { get; set; }
-
-        [Required]
-        public string Grade { get; set; }
-
-        [Required]
-        public string Level { get; set; }
-
-        [Required]
-        public string Step { get; set; }
-
-        [Required]
-        [DataType(DataType.PhoneNumber)]
-        public string PhoneNo { get; set; }
 
         [Required]
         [DataType(DataType.EmailAddress)]

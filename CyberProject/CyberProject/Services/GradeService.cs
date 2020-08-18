@@ -23,10 +23,91 @@ namespace CyberProject.Services
             _context.SaveChanges();
         }
 
+        public bool GetSalary()
+        {
+            try
+            {
+                Grade grade = new Grade();
+                float percentOne = 5;
+                float percentTwo = 3;
+
+                if (grade.GradeID == 1)
+                {
+                    //salary.Amount = 500000;
+
+                    grade.Salary.TaxPercentage = 5;
+                    grade.Salary.Tax = grade.Salary.Amount * (grade.Salary.TaxPercentage / 100);
+                    grade.Salary.TaxPayType = "Deduction";
+
+                    grade.Salary.Housing = (percentOne / 100) * grade.Salary.Amount;
+                    grade.Salary.HousingPayType = "Allowance";
+
+                    grade.Salary.Medical = grade.Salary.Amount * (percentOne / 100);
+                    grade.Salary.MedicalPayType = "Allowance";
+
+                    grade.Salary.Lunch = grade.Salary.Amount * (percentOne / 100);
+                    grade.Salary.LunchPayType = "Allowance";
+
+                    grade.Salary.Transport = grade.Salary.Amount * (percentOne / 100);
+                    grade.Salary.TransportPayType = "Allowance";
+
+
+                }
+
+                if (grade.GradeID == 2)
+                {
+                    //grade.Salary.Amount = 100000;
+
+                    grade.Salary.TaxPercentage = 3;
+                    grade.Salary.Tax = grade.Salary.Amount * (grade.Salary.TaxPercentage / 100);
+                    grade.Salary.TaxPayType = "Deduction";
+
+                    grade.Salary.Housing = (percentTwo / 100) * grade.Salary.Amount;
+                    grade.Salary.HousingPayType = "Allowance";
+
+                    grade.Salary.Medical = grade.Salary.Amount * (percentTwo / 100);
+                    grade.Salary.MedicalPayType = "Allowance";
+
+                    grade.Salary.Lunch = grade.Salary.Amount * (percentTwo / 100);
+                    grade.Salary.LunchPayType = "Allowance";
+
+                    grade.Salary.Transport = grade.Salary.Amount * (percentTwo / 100);
+                    grade.Salary.TransportPayType = "Allowance";
+
+
+                }
+                grade.Salary.NetSalary = (grade.Salary.Amount - grade.Salary.Tax) + grade.Salary.Housing + grade.Salary.Medical + grade.Salary.Lunch + grade.Salary.Transport;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+            
+        }
+
         public async Task<bool> AddAsync(Grade grade)
         {
             try
             {
+                float percentOne = 5;
+
+                grade.Salary.TaxPercentage = 5;
+                grade.Salary.Tax = grade.Salary.Amount * (grade.Salary.TaxPercentage / 100);
+                grade.Salary.TaxPayType = "Deduction";
+
+                grade.Salary.Housing = (percentOne / 100) * grade.Salary.Amount;
+                grade.Salary.HousingPayType = "Allowance";
+
+                grade.Salary.Medical = grade.Salary.Amount * (percentOne / 100);
+                grade.Salary.MedicalPayType = "Allowance";
+
+                grade.Salary.Lunch = grade.Salary.Amount * (percentOne / 100);
+                grade.Salary.LunchPayType = "Allowance";
+
+                grade.Salary.Transport = grade.Salary.Amount * (percentOne / 100);
+                grade.Salary.TransportPayType = "Allowance";
+                grade.Salary.NetSalary = (grade.Salary.Amount - grade.Salary.Tax) + grade.Salary.Housing + grade.Salary.Medical + grade.Salary.Lunch + grade.Salary.Transport;
                 await _context.AddAsync(grade);
                 await _context.SaveChangesAsync();
             }
@@ -52,7 +133,7 @@ namespace CyberProject.Services
 
         public async Task<IEnumerable<Grade>> GetAll()
         {
-            return await _context.Grades.ToListAsync();
+            return await _context.Grades.Include(s => s.Salary).ToListAsync();
         }
 
         public async Task<Grade> GetById(int Id)

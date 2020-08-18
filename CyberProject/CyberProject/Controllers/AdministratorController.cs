@@ -130,8 +130,8 @@ namespace CyberProject.Controllers
 
             }
 
-            return View(model);
-
+            //return View(model);
+            return RedirectToAction("ListRoles");
         }
 
         [HttpGet]
@@ -168,6 +168,7 @@ namespace CyberProject.Controllers
 
             }
             return View(model);
+            //return RedirectToAction("ListRoles");
         }
 
         [HttpPost]

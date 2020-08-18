@@ -53,6 +53,8 @@ namespace CyberProject.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
+                    b.Property<string>("Country");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256);
 
@@ -60,6 +62,8 @@ namespace CyberProject.Migrations
 
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("LGA");
 
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(100)");
@@ -81,6 +85,8 @@ namespace CyberProject.Migrations
                     b.Property<bool>("PhoneNumberConfirmed");
 
                     b.Property<string>("SecurityStamp");
+
+                    b.Property<string>("State");
 
                     b.Property<bool>("TwoFactorEnabled");
 
@@ -114,6 +120,10 @@ namespace CyberProject.Migrations
 
                     b.HasIndex("FacultyID");
 
+                    b.HasIndex("deptName")
+                        .IsUnique()
+                        .HasFilter("[deptName] IS NOT NULL");
+
                     b.ToTable("Departments");
                 });
 
@@ -129,6 +139,10 @@ namespace CyberProject.Migrations
 
                     b.HasKey("facultyID");
 
+                    b.HasIndex("facultyName", "facultyCode")
+                        .IsUnique()
+                        .HasFilter("[facultyName] IS NOT NULL AND [facultyCode] IS NOT NULL");
+
                     b.ToTable("Faculties");
                 });
 
@@ -142,9 +156,17 @@ namespace CyberProject.Migrations
 
                     b.Property<string>("Level");
 
+                    b.Property<int>("SalaryID");
+
                     b.Property<string>("Step");
 
                     b.HasKey("GradeID");
+
+                    b.HasIndex("SalaryID");
+
+                    b.HasIndex("GradeName", "Level", "Step")
+                        .IsUnique()
+                        .HasFilter("[GradeName] IS NOT NULL AND [Level] IS NOT NULL AND [Step] IS NOT NULL");
 
                     b.ToTable("Grades");
                 });
@@ -156,8 +178,6 @@ namespace CyberProject.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<float>("Amount");
-
-                    b.Property<int>("GradeId");
 
                     b.Property<float>("Housing");
 
@@ -183,13 +203,7 @@ namespace CyberProject.Migrations
 
                     b.Property<string>("TransportPayType");
 
-                    b.Property<int>("UserId");
-
                     b.HasKey("SalaryId");
-
-                    b.HasIndex("GradeId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Salaries");
                 });
@@ -323,16 +337,11 @@ namespace CyberProject.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("CyberProject.Entities.Salary", b =>
+            modelBuilder.Entity("CyberProject.Entities.Grade", b =>
                 {
-                    b.HasOne("CyberProject.Entities.Grade", "Grade")
+                    b.HasOne("CyberProject.Entities.Salary", "Salary")
                         .WithMany()
-                        .HasForeignKey("GradeId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("CyberProject.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("SalaryID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

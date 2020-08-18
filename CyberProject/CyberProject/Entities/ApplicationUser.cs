@@ -17,5 +17,9 @@ namespace CyberProject.Entities
         [PersonalData]
         [Column(TypeName = "nvarchar(100)")]
         public string LastName { get; set; }
+
+        public string Country { get; set; }
+        public string State { get; set; }
+        public string LGA { get; set; }
     }
 }

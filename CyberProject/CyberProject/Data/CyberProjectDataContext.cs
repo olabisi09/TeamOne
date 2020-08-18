@@ -13,6 +13,25 @@ namespace CyberProject.Data
         public CyberProjectDataContext(DbContextOptions<CyberProjectDataContext> options) : base(options)
         {
         }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.Entity<Faculty>()
+            .HasIndex(p => new { p.facultyName, p.facultyCode })
+            .IsUnique(true);
+
+            builder.Entity<Department>()
+            .HasIndex(p => new { p.deptName })
+            .IsUnique(true);
+
+            builder.Entity<Grade>()
+            .HasIndex(p => new { p.GradeName, p.Level, p.Step })
+            .IsUnique(true);
+
+        }
+
         public virtual DbSet<Faculty> Faculties { get; set; }
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<Grade> Grades { get; set; }

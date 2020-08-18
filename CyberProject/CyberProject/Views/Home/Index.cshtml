@@ -1,4 +1,8 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@using CyberProject.Entities
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@{
     Layout = "";
 }
 
@@ -16,18 +20,26 @@
     <link rel="stylesheet" href="~/Landing Page/css/styles.css" />
 </head>
 <body>
-    
+
     <header id="first">
         <div class="header-content">
             <div class="inner">
                 <h1 class="cursive wow flipInX">Welcome To PayPortal</h1>
                 <h4>Click the button below to get started.</h4>
                 <hr>
-                <a asp-controller="User" asp-action="ListUsers" class="btn btn-primary btn-xl page-scroll">Get Started</a>
+                <a asp-controller="Account" asp-action="LogOut" class="btn btn-primary btn-xl">Logout</a> &nbsp;
+                @if (SignInManager.IsSignedIn(User) && User.IsInRole("User"))
+                {
+                    <a asp-controller="Account" asp-action="Profile" class="btn btn-primary btn-xl page-scroll">View Profile</a>
+                }
+                @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                {
+                    <a asp-controller="User" asp-action="ListUsers" class="btn btn-primary btn-xl page-scroll">View Employee Management System</a>
+                }
             </div>
         </div>
     </header>
-    
+
     <!--scripts loaded here -->
     <script src="~/Landing Page/js/jquery.min.js"></script>
     <script src="~/Landing Page/js/bootstrap.min.js"></script>

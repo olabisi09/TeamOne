@@ -2,7 +2,10 @@
 @using CyberProject.Entities
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
-
+@model CyberProject.Entities.ApplicationUser
+@{
+    ViewData["Title"] = "User Profile";
+}
 
 <div class="app-main__outer">
     <div class="app-main__inner">
@@ -83,22 +86,106 @@
             <div class="card-body">
                 <h5 class="card-title">@UserManager.GetUserName(User)'s Profile</h5>
                 <div class="collapse" id="collapseExample123">
-                    <p>
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-                        nesciunt sapiente ea
-                        proident.
-                    </p>
-                    <p>
-                        Donec molestie odio id nisi malesuada, mattis tincidunt velit egestas. Sed non pulvinar risus. Aenean elementum eleifend nunc, pellentesque dapibus arcu hendrerit fringilla. Aliquam in nibh massa. Cras ultricies
-                        lorem non enim volutpat, a eleifend urna placerat. Fusce id luctus urna. In sed leo tellus. Mauris tristique leo a nisl feugiat, eget vehicula leo venenatis. Quisque magna metus, luctus quis sollicitudin vel,
-                        vehicula nec ipsum. Donec rutrum commodo lacus ut condimentum. Integer vel turpis purus. Etiam vehicula, nulla non fringilla blandit, massa purus faucibus tellus, a luctus enim orci non augue. Aenean
-                        ullamcorper nisl urna, non feugiat tortor volutpat in. Vivamus lobortis massa dolor, eget faucibus ipsum varius eget. Pellentesque imperdiet, turpis sed sagittis lobortis, leo elit laoreet arcu, vehicula
-                        sagittis elit leo id nisi.
-                    </p>
+                    <form asp-controller="User" method="post">
+                        <input asp-for="Id" name="Id" type="hidden" />
+                        <div class="position-relative row form-group">
+                            <label asp-for="FirstName" class="col-sm-2 col-form-label">First Name</label>
+                            <div class="col-sm-10"><input asp-for="FirstName" type="text" class="form-control"></div>
+                            <span asp-validation-for="FirstName"></span>
+                        </div>
+                        <div class="position-relative row form-group">
+                            <label asp-for="LastName" class="col-sm-2 col-form-label">Last Name</label>
+                            <div class="col-sm-10"><input asp-for="LastName" type="text" class="form-control"></div>
+                            <span asp-validation-for="LastName"></span>
+                        </div>
+                        <div class="position-relative row form-group">
+                            <label asp-for="UserName" class="col-sm-2 col-form-label">Username</label>
+                            <div class="col-sm-10"><input asp-for="UserName" type="text" class="form-control"></div>
+                            <span asp-validation-for="UserName"></span>
+                        </div>
+                        
+                        <div class="position-relative row form-group">
+                            <label asp-for="State" class="col-sm-2 col-form-label">State</label>
+                            <div class="col-sm-10">
+                                <select asp-for="State" class="mb-2 form-control" onchange="toggleLGA(this);" name="state" id="state">
+                                    <option value="" selected="selected">- State -</option>
+                                    <option value="Abia">Abia</option>
+                                    <option value="Adamawa">Adamawa</option>
+                                    <option value="AkwaIbom">AkwaIbom</option>
+                                    <option value="Anambra">Anambra</option>
+                                    <option value="Bauchi">Bauchi</option>
+                                    <option value="Bayelsa">Bayelsa</option>
+                                    <option value="Benue">Benue</option>
+                                    <option value="Borno">Borno</option>
+                                    <option value="Cross River">Cross River</option>
+                                    <option value="Delta">Delta</option>
+                                    <option value="Ebonyi">Ebonyi</option>
+                                    <option value="Edo">Edo</option>
+                                    <option value="Ekiti">Ekiti</option>
+                                    <option value="Enugu">Enugu</option>
+                                    <option value="FCT">FCT</option>
+                                    <option value="Gombe">Gombe</option>
+                                    <option value="Imo">Imo</option>
+                                    <option value="Jigawa">Jigawa</option>
+                                    <option value="Kaduna">Kaduna</option>
+                                    <option value="Kano">Kano</option>
+                                    <option value="Katsina">Katsina</option>
+                                    <option value="Kebbi">Kebbi</option>
+                                    <option value="Kogi">Kogi</option>
+                                    <option value="Kwara">Kwara</option>
+                                    <option value="Lagos">Lagos</option>
+                                    <option value="Nasarawa">Nasarawa</option>
+                                    <option value="Niger">Niger</option>
+                                    <option value="Ogun">Ogun</option>
+                                    <option value="Ondo">Ondo</option>
+                                    <option value="Osun">Osun</option>
+                                    <option value="Oyo">Oyo</option>
+                                    <option value="Plateau">Plateau</option>
+                                    <option value="Rivers">Rivers</option>
+                                    <option value="Sokoto">Sokoto</option>
+                                    <option value="Taraba">Taraba</option>
+                                    <option value="Yobe">Yobe</option>
+                                    <option value="Zamfara">Zamafara</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="position-relative row form-group">
+                            <label asp-for="LGA" class="col-sm-2 col-form-label">LGA</label>
+                            <div class="col-sm-10">
+                                <select asp-for="LGA" name="lga" id="lga" class="mb-2 form-control select-lga" required>
+                                    <option value="" selected="selected">- Local Government -</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="position-relative row form-group">
+                            <label asp-for="Email" class="col-sm-2 col-form-label">Email</label>
+                            <div class="col-sm-10"><input asp-for="Email" type="email" class="form-control"></div>
+                            <span asp-validation-for="Email"></span>
+                        </div>
+                        <div class="position-relative row form-group">
+                            <label asp-for="PhoneNumber" class="col-sm-2 col-form-label">Phone Number</label>
+                            <div class="col-sm-10"><input asp-for="PhoneNumber" type="text" class="form-control"></div>
+                            <span asp-validation-for="PhoneNumber"></span>
+                        </div>
+                        
+
+                        <div class="row">
+                            <div class="position-relative row form-check">
+                                <div class="col-sm-10 offset-sm-2">
+                                    <button asp-action="Create" class="btn btn-secondary">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
                 </div>
             </div>
             <div class="card-footer">
-                <button type="button" data-toggle="collapse" href="#collapseExample123" class="btn btn-primary">Toggle</button>
+                <button type="button" data-toggle="collapse" href="#collapseExample123" class="btn btn-primary">View</button>
             </div>
         </div>
     </div>
+</div>

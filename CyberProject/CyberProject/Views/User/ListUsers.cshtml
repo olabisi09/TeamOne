@@ -29,6 +29,7 @@
                                     <th>Grade</th>
                                     <th>Level</th>
                                     <th>Step</th>
+                                    <th>Salary</th>
                                 </tr>
                             </thead>
                             @foreach (var user in Model)
@@ -48,6 +49,7 @@
                                         <td>@user.Grade.GradeName</td>
                                         <td>@user.Grade.Level</td>
                                         <td>@user.Grade.Step</td>
+                                        <td>@user.Grade.Salary.NetSalary</td>
                                         
                                         <td class="dropdown">
                                             <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -55,7 +57,7 @@
                                             </a>
                                             <div role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
                                                 <a asp-controller="User" asp-action="Edit" asp-route-id="@user.Id" tabindex="0" class="dropdown-item">Edit</a>
-                                                <a asp-controller="User" asp-action="ComputeSalary" asp-route-id="@user.Id" tabindex="0" class="dropdown-item">Compute Salary</a>
+                                                <a asp-controller="User" asp-action="Details" asp-route-id="@user.Id" tabindex="0" class="dropdown-item">Salary Breakdown</a>
                                                 <a asp-controller="User" asp-action="Delete" asp-route-id="@user.Id" onclick="return confirm('Are you sure you want to delete the user @user.Id?')" tabindex="0" class="dropdown-item">Delete</a>
                                             </div>
                                         </td>

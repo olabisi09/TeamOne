@@ -15,5 +15,7 @@ namespace CyberProject.Entities
         public string GradeName { get; set; }
         public string Level { get; set; }
         public string Step { get; set; }
+        public int SalaryID { get; set; }
+        public Salary Salary { get; set; }
     }
 }

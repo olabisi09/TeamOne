@@ -125,6 +125,14 @@ namespace CyberProject.Controllers
             return View();
         }
 
+        public async Task<ViewResult> Details(int Id)
+        {
+            User user = await _userService.GetById(Id);
+            ViewData["Title"] = "Salary Breakdown";
+            ViewData["Salary Preview"] = user;
+            return View();
+        }
+
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {

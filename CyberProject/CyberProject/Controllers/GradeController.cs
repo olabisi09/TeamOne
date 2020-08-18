@@ -33,10 +33,10 @@ namespace CyberProject.Controllers
                 return View(model);
             return View();
         }
+
         [HttpGet]
         public IActionResult Create()
         {
-
             return View();
         }
 

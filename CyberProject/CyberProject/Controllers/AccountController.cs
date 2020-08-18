@@ -11,28 +11,44 @@ using CyberProject.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CyberProject.Controllers
 {
     public class AccountController : BaseController
     {
         private readonly IAccount _account;
+        private readonly IGrade _grade;
+        private readonly IUser _user;
+        private readonly IDepartment _department;
 
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public AccountController(IAccount account, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        public AccountController(IAccount account, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IGrade grade, IUser user, IDepartment department)
         {
             _account = account;
             _signInManager = signInManager;
             _userManager = userManager;
+            _grade = grade;
+            _user = user;
+            _department = department;
         }
 
         [HttpGet]
         [Authorize(Roles = "User")]
         public IActionResult Profile()
         {
-            return View();
+            var user = _userManager.GetUserId(User);
+            if(user == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            else
+            {
+                ApplicationUser us = _userManager.FindByIdAsync(user).Result;
+                return View(us);
+            }
         }
 
         public IActionResult Login()
@@ -40,8 +56,16 @@ namespace CyberProject.Controllers
             return View();
         }
 
-        public IActionResult Signup()
+        public async Task<IActionResult> Signup()
         {
+            var grade = await _grade.GetAll();
+            var gradeList = grade.Select(g => new SelectListItem()
+            {
+                Value = g.GradeID.ToString(),
+                Text = g.GradeName
+            });
+            
+            ViewBag.grade = gradeList;
             return View();
         }
 
@@ -50,7 +74,7 @@ namespace CyberProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Username, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName};
+                var user = new ApplicationUser { UserName = model.Username, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, PhoneNumber = model.PhoneNo, Country = model.Country, State = model.State, LGA = model.LGA};
                 var signUp = await _userManager.CreateAsync(user, model.Password);
 
                 if (signUp.Succeeded)

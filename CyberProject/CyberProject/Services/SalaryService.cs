@@ -22,7 +22,7 @@ namespace CyberProject.Services
          
         public async Task<IEnumerable<Salary>> GetAll()
         {
-            return await _context.Salaries.Include(g => g.Grade).Include(u => u.User).ToListAsync();
+            return await _context.Salaries.ToListAsync();
         }
 
         public void Add(Salary salary)
@@ -35,55 +35,7 @@ namespace CyberProject.Services
         {
             try
             {
-                float percentOne = 5;
-                float percentTwo = 3;
-
-                if (salary.GradeId == 1)
-                {
-                    //salary.Amount = 500000;
-
-                    salary.TaxPercentage = 5;
-                    salary.Tax = salary.Amount * (salary.TaxPercentage / 100);
-                    salary.TaxPayType = "Deduction";
-
-                    salary.Housing = (percentOne / 100) * salary.Amount;
-                    salary.HousingPayType = "Allowance";
-
-                    salary.Medical = salary.Amount * (percentOne / 100);
-                    salary.MedicalPayType = "Allowance";
-
-                    salary.Lunch = salary.Amount * (percentOne / 100);
-                    salary.LunchPayType = "Allowance";
-
-                    salary.Transport = salary.Amount * (percentOne / 100);
-                    salary.TransportPayType = "Allowance";
-
-                    
-                }
-
-                if (salary.GradeId == 2)
-                {
-                    //salary.Amount = 100000;
-
-                    salary.TaxPercentage = 3;
-                    salary.Tax = salary.Amount * (salary.TaxPercentage / 100);
-                    salary.TaxPayType = "Deduction";
-
-                    salary.Housing = (percentTwo / 100) * salary.Amount;
-                    salary.HousingPayType = "Allowance";
-
-                    salary.Medical = salary.Amount * (percentTwo / 100);
-                    salary.MedicalPayType = "Allowance";
-
-                    salary.Lunch = salary.Amount * (percentTwo / 100);
-                    salary.LunchPayType = "Allowance";
-
-                    salary.Transport = salary.Amount * (percentTwo / 100);
-                    salary.TransportPayType = "Allowance";
-
-                    
-                }
-                salary.NetSalary = (salary.Amount - salary.Tax) + salary.Housing + salary.Medical + salary.Lunch + salary.Transport;
+                
 
                 await _context.AddAsync(salary);
                 await _context.SaveChangesAsync();
@@ -108,62 +60,9 @@ namespace CyberProject.Services
             return false;
         }
 
-        public void GetSalary(Salary salary)
-        {
-            float percentOne = 5;
-            float percentTwo = 3;
-
-            if (salary.User.Grade.GradeName == "Senior Staff")
-            {
-                //salary.Amount = 500000;
-
-                salary.TaxPercentage = 5;
-                salary.Tax = salary.Amount * (salary.TaxPercentage / 100);
-                salary.TaxPayType = "Deduction";
-
-                salary.Housing = (percentOne / 100) * salary.Amount;
-                salary.HousingPayType = "Allowance";
-
-                salary.Medical = salary.Amount * (percentOne / 100);
-                salary.MedicalPayType = "Allowance";
-
-                salary.Lunch = salary.Amount * (percentOne / 100);
-                salary.LunchPayType = "Allowance";
-
-                salary.Transport = salary.Amount * (percentOne / 100);
-                salary.TransportPayType = "Allowance";
-
-                _context.SaveChanges();
-            }
-
-            if (salary.User.Grade.GradeName == "Junior Staff")
-            {
-                //salary.Amount = 100000;
-
-                salary.TaxPercentage = 3;
-                salary.Tax = salary.Amount * (salary.TaxPercentage / 100);
-                salary.TaxPayType = "Deduction";
-
-                salary.Housing = (percentTwo / 100) * salary.Amount;
-                salary.HousingPayType = "Allowance";
-
-                salary.Medical = salary.Amount * (percentTwo / 100);
-                salary.MedicalPayType = "Allowance";
-
-                salary.Lunch = salary.Amount * (percentTwo / 100);
-                salary.LunchPayType = "Allowance";
-
-                salary.Transport = salary.Amount * (percentTwo / 100);
-                salary.TransportPayType = "Allowance";
-
-
-            }
-            salary.NetSalary = (salary.Amount - salary.Tax) + salary.Housing + salary.Medical + salary.Lunch + salary.Transport;
-        }
-
         public async Task<Salary> GetById(int Id)
         {
-            await _context.Salaries.Include(u => u.User).Include(g => g.Grade).ToListAsync();
+            await _context.Salaries.ToListAsync();
             var s = await _context.Salaries.FindAsync(Id);
 
             return s;
