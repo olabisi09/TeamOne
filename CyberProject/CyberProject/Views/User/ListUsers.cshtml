@@ -37,19 +37,19 @@
                                 <tbody>
                                     <tr>
                                         <td scope="row">@user.Id</td>
-                                        <td>@user.FirstName</td>
-                                        <td>@user.LastName</td>
-                                        <td>@user.Username</td>
+                                        <td>@user.ApplicationUser.FirstName</td>
+                                        <td>@user.ApplicationUser.LastName</td>
+                                        <td>@user.ApplicationUser.UserName</td>
                                         <td>@user.Country</td>
-                                        <td>@user.State</td>
-                                        <td>@user.LGA</td>
-                                        <td>@user.Email</td>
+                                        <td>@user.ApplicationUser.State</td>
+                                        <td>@user.ApplicationUser.LGA</td>
+                                        <td>@user.ApplicationUser.Email</td>
                                         <td>@user.Department.deptName</td>
-                                        <td>@user.PhoneNo</td>
+                                        <td>@user.ApplicationUser.PhoneNumber</td>
                                         <td>@user.Grade.GradeName</td>
                                         <td>@user.Grade.Level</td>
                                         <td>@user.Grade.Step</td>
-                                        <td>@user.Grade.Salary.NetSalary</td>
+                                        <td>@user.NetSalary</td>
                                         
                                         <td class="dropdown">
                                             <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

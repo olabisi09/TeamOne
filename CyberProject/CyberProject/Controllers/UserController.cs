@@ -5,6 +5,7 @@ using CyberProject.Enums;
 using CyberProject.Interfaces;
 using CyberProject.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
@@ -19,7 +20,7 @@ using System.Threading.Tasks;
 
 namespace CyberProject.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class UserController : BaseController
     {
         private IAccount _account;
@@ -28,8 +29,10 @@ namespace CyberProject.Controllers
         private IGrade _grade;
         private IUser _userService;
         private IConfiguration _config;
+        private CyberProjectDataContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public UserController(IUser userService, IConfiguration config, IAccount account, IFaculty faculty, IDepartment department, IGrade grade)
+        public UserController(IUser userService, IConfiguration config, IAccount account, IFaculty faculty, IDepartment department, IGrade grade, UserManager<ApplicationUser> userManager, CyberProjectDataContext context)
         {
             _account = account;
             _userService = userService;
@@ -37,6 +40,8 @@ namespace CyberProject.Controllers
             _faculty = faculty;
             _grade = grade;
             _department = department;
+            _userManager = userManager;
+            _context = context;
         }
 
         [HttpPost]
@@ -63,8 +68,8 @@ namespace CyberProject.Controllers
             var fac = await _faculty.GetAll();
             var dept = await _department.GetAll();
             var grade = await _grade.GetAll();
-            var level = await _grade.GetAll();
-            var step = await _grade.GetAll();
+            //var level = await _grade.GetAll();
+            //var step = await _grade.GetAll();
             var facList = fac.Select(f => new SelectListItem()
             {
                 Value = f.facultyID.ToString(),
@@ -80,27 +85,42 @@ namespace CyberProject.Controllers
                 Value = g.GradeID.ToString(),
                 Text = g.GradeName
             });
-            var levelList = level.Select(l => new SelectListItem()
+            List<string> tempEmailList = _context.WebUsers.Select(q => q.ApplicationUser.Email).ToList();
+            var users = _context.Users.Where(u => !tempEmailList.Contains(u.Email));
+            //ViewBag.users = temp.ToList();
+            var usersList = users.Select(u => new SelectListItem()
             {
-                Value = l.GradeID.ToString(),
-                Text = l.Level
+                Value = u.Id.ToString(),
+                Text = u.FirstName + " " + u.LastName
             });
-            var stepList = step.Select(s => new SelectListItem()
-            {
-                Value = s.GradeID.ToString(),
-                Text = s.Step
-            });
+
             ViewBag.grade = gradeList;
             ViewBag.fac = facList;
             ViewBag.dept = deptList;
-            ViewBag.level = levelList;
-            ViewBag.step = stepList;
+            ViewBag.users = usersList;
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(User user)
         {
+            var findUser = _context.Grades.First(x => x.GradeID == user.gradeID);
+
+            
+            user.Amount = findUser.Amount;
+            user.Tax = findUser.Tax;
+            user.TaxPercentage = findUser.TaxPercentage;
+            user.TaxPayType = findUser.TaxPayType;
+            user.Housing = findUser.Housing;
+            user.HousingPayType = findUser.HousingPayType;
+            user.Lunch = findUser.Lunch;
+            user.LunchPayType = findUser.LunchPayType;
+            user.Transport = findUser.Transport;
+            user.TransportPayType = findUser.TransportPayType;
+            user.Medical = findUser.Medical;
+            user.MedicalPayType = findUser.MedicalPayType;
+            user.NetSalary = findUser.NetSalary;
+
             var createUser = await _userService.AddAsync(user);
             if (createUser)
             {
@@ -112,6 +132,30 @@ namespace CyberProject.Controllers
                 Alert("User not created!", NotificationType.error);
             }
 
+            return View();
+        }
+
+        public async Task<IActionResult> Profile()
+        {
+            var model = await _userService.GetAll();
+
+            if (model != null)
+            {
+                //ViewBag.state = _context.States.ToList();
+                return View(model);
+            }
+            return View();
+        }
+
+        public async Task<IActionResult> SalaryBreakdown()
+        {
+            var model = await _userService.GetAll();
+
+            if (model != null)
+            {
+                //ViewBag.state = _context.States.ToList();
+                return View(model);
+            }
             return View();
         }
 

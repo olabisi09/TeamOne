@@ -17,5 +17,7 @@ namespace CyberProject.Interfaces
         Task<SignInModel> SignIn(LoginDto loginDetails);
 
         Task<bool> Login(LoginViewModel loginModel);
+
+        Task<bool> UpdateUser(ApplicationUser userprofile);
     }
 }

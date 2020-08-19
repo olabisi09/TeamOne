@@ -152,17 +152,39 @@ namespace CyberProject.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<float>("Amount");
+
                     b.Property<string>("GradeName");
+
+                    b.Property<float>("Housing");
+
+                    b.Property<string>("HousingPayType");
 
                     b.Property<string>("Level");
 
-                    b.Property<int>("SalaryID");
+                    b.Property<float>("Lunch");
+
+                    b.Property<string>("LunchPayType");
+
+                    b.Property<float>("Medical");
+
+                    b.Property<string>("MedicalPayType");
+
+                    b.Property<float>("NetSalary");
 
                     b.Property<string>("Step");
 
-                    b.HasKey("GradeID");
+                    b.Property<float>("Tax");
 
-                    b.HasIndex("SalaryID");
+                    b.Property<string>("TaxPayType");
+
+                    b.Property<float>("TaxPercentage");
+
+                    b.Property<float>("Transport");
+
+                    b.Property<string>("TransportPayType");
+
+                    b.HasKey("GradeID");
 
                     b.HasIndex("GradeName", "Level", "Step")
                         .IsUnique()
@@ -214,27 +236,55 @@ namespace CyberProject.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<float>("Amount");
+
+                    b.Property<string>("ApplicationUserId");
+
                     b.Property<string>("Country");
 
                     b.Property<int>("DepartmentID");
 
-                    b.Property<string>("Email");
-
                     b.Property<string>("FirstName");
+
+                    b.Property<float>("Housing");
+
+                    b.Property<string>("HousingPayType");
 
                     b.Property<string>("LGA");
 
                     b.Property<string>("LastName");
 
+                    b.Property<float>("Lunch");
+
+                    b.Property<string>("LunchPayType");
+
+                    b.Property<float>("Medical");
+
+                    b.Property<string>("MedicalPayType");
+
+                    b.Property<float>("NetSalary");
+
                     b.Property<string>("PhoneNo");
 
                     b.Property<string>("State");
+
+                    b.Property<float>("Tax");
+
+                    b.Property<string>("TaxPayType");
+
+                    b.Property<float>("TaxPercentage");
+
+                    b.Property<float>("Transport");
+
+                    b.Property<string>("TransportPayType");
 
                     b.Property<string>("Username");
 
                     b.Property<int>("gradeID");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
 
                     b.HasIndex("DepartmentID");
 
@@ -337,16 +387,12 @@ namespace CyberProject.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("CyberProject.Entities.Grade", b =>
-                {
-                    b.HasOne("CyberProject.Entities.Salary", "Salary")
-                        .WithMany()
-                        .HasForeignKey("SalaryID")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("CyberProject.Entities.User", b =>
                 {
+                    b.HasOne("CyberProject.Entities.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId");
+
                     b.HasOne("CyberProject.Entities.Department", "Department")
                         .WithMany()
                         .HasForeignKey("DepartmentID")

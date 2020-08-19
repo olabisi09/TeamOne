@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using CyberProject.Data;
 using CyberProject.Dtos;
 using CyberProject.Entities;
 using CyberProject.Enums;
@@ -21,11 +22,12 @@ namespace CyberProject.Controllers
         private readonly IGrade _grade;
         private readonly IUser _user;
         private readonly IDepartment _department;
+        private CyberProjectDataContext _context;
 
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public AccountController(IAccount account, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IGrade grade, IUser user, IDepartment department)
+        public AccountController(IAccount account, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IGrade grade, IUser user, IDepartment department, CyberProjectDataContext context)
         {
             _account = account;
             _signInManager = signInManager;
@@ -33,6 +35,7 @@ namespace CyberProject.Controllers
             _grade = grade;
             _user = user;
             _department = department;
+            _context = context;
         }
 
         [HttpGet]
@@ -40,7 +43,7 @@ namespace CyberProject.Controllers
         public IActionResult Profile()
         {
             var user = _userManager.GetUserId(User);
-            if(user == null)
+            if (user == null)
             {
                 return RedirectToAction("Login", "Account");
             }
@@ -50,6 +53,37 @@ namespace CyberProject.Controllers
                 return View(us);
             }
         }
+
+        [HttpPost]
+        public async Task<IActionResult> PersonalInfo(ApplicationUser userProfile)
+        {
+            //var _userprofile = await _context.UserProfiles.FindAsync(id);
+            //var user = _userManager.GetUserName(User);
+            var _userprofile = await _context.WebUsers.FindAsync(Convert.ToInt32(userProfile.Id));
+            //userProfile.Email = _userprofile.Email;
+            var x = await _userManager.FindByEmailAsync(userProfile.Email);
+            //var x = await _userManager.FindByNameAsync(user);
+            userProfile.Id = x.Id;
+            //userProfile.Id = _userProfile.GetIdByEmail(x.Email);
+
+            _userprofile.FirstName = userProfile.FirstName;
+            _userprofile.LastName = userProfile.LastName;
+
+            var editUserPro = await _user.Update(_userprofile);
+
+            var editUserProfile = await _account.UpdateUser(userProfile);
+
+            if (editUserProfile)
+            {
+
+                Alert("UserProfile edited successfully.", NotificationType.success);
+                return RedirectToAction("Index", "UserProfile");
+
+            }
+            Alert("UserProfile not edited!", NotificationType.error);
+            return View();
+        }
+
 
         public IActionResult Login()
         {

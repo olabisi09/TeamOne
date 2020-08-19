@@ -63,6 +63,8 @@
     <Compile Remove="Migrations\20200731201028_MoreTables.Designer.cs" />
     <Compile Remove="Migrations\20200731214429_TryAgain.cs" />
     <Compile Remove="Migrations\20200731214429_TryAgain.Designer.cs" />
+    <Compile Remove="Migrations\20200818181240_Addgrade.cs" />
+    <Compile Remove="Migrations\20200818181240_Addgrade.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

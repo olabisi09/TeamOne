@@ -22,17 +22,20 @@ namespace CyberProject.Services
         private readonly UserManager<ApplicationUser> _userManager;
         //private readonly UserManager<SignUpViewModel> _userSignUp;
         private readonly RoleManager<ApplicationRole> _roleManager;
+        private readonly CyberProjectDataContext _context;
 
         private IConfiguration _config;
         public AccountService(SignInManager<ApplicationUser> signInManager,
                                 UserManager<ApplicationUser> userManager,
                                 RoleManager<ApplicationRole> roleManager,
-                                 IConfiguration config)
+                                 IConfiguration config,
+                                 CyberProjectDataContext context)
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _roleManager = roleManager;
             _config = config;
+            _context = context;
         }
 
         public async Task<bool> CreateUser(ApplicationUser user, string password)
@@ -132,6 +135,29 @@ namespace CyberProject.Services
             {
                 return false;
             }
+        }
+
+        public async Task<bool> UpdateUser(ApplicationUser userprofile) //Update
+        {
+            var _userprofile = await _userManager.FindByIdAsync(userprofile.Id);
+            if (_userprofile != null)
+            {
+                _userprofile.FirstName = userprofile.FirstName;
+                _userprofile.LastName = userprofile.LastName;
+                //_userprofile.Email = userprofile.Email;
+
+
+                _userprofile.LGA = userprofile.LGA;
+                _userprofile.State = userprofile.State;
+                _userprofile.Country = userprofile.Country;
+
+
+                await _userManager.UpdateAsync(_userprofile);
+                return true;
+            }
+
+            return false;
+
         }
 
         public IEnumerable<ApplicationUser> GetAll()

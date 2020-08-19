@@ -11,7 +11,7 @@ namespace CyberProject.Interfaces
         void Add(Grade grade);
         Task<bool> AddAsync(Grade grade);
         Task<bool> Update(Grade grade, int Id);
-        bool GetSalary();
+        bool GetSalary(Grade grade);
         Task<IEnumerable<Grade>> GetAll();
         Task<Grade> GetById(int Id);
         Task<bool> Delete(int Id);

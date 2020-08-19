@@ -30,7 +30,7 @@
                 <a asp-controller="Account" asp-action="LogOut" class="btn btn-primary btn-xl">Logout</a> &nbsp;
                 @if (SignInManager.IsSignedIn(User) && User.IsInRole("User"))
                 {
-                    <a asp-controller="Account" asp-action="Profile" class="btn btn-primary btn-xl page-scroll">View Profile</a>
+                    <a asp-controller="User" asp-action="Profile" class="btn btn-primary btn-xl page-scroll">View Profile</a>
                 }
                 @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                 {

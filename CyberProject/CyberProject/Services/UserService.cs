@@ -23,12 +23,12 @@ namespace CyberProject.Services
 
         public async Task<IEnumerable<User>> GetAll()
         {
-            return await _context.WebUsers.Include(d => d.Department).Include(g => g.Grade).Include(s => s.Grade.Salary).ToListAsync();
+            return await _context.WebUsers.Include(d => d.Department).Include(g => g.Grade).Include(s => s.ApplicationUser).ToListAsync();
         }
 
         public async Task<User> GetById(int Id)
         {
-            await _context.WebUsers.Include(d => d.Department).Include(g => g.Grade).Include(s => s.Grade.Salary).ToListAsync();
+            await _context.WebUsers.Include(d => d.Department).Include(g => g.Grade).Include(s => s.ApplicationUser).ToListAsync();
             var user = await _context.WebUsers.FindAsync(Id);
 
             return user;
@@ -42,10 +42,8 @@ namespace CyberProject.Services
             {
                 us.FirstName = user.FirstName;
                 us.LastName = user.LastName;
-                us.Username = user.Username;
-                us.Email = user.Email;
-                us.PhoneNo = user.PhoneNo;
-                //us.Grade = user.Grade;
+                us.DepartmentID = user.DepartmentID;
+                us.gradeID = user.gradeID;
 
                 await _context.SaveChangesAsync();
                 return true;

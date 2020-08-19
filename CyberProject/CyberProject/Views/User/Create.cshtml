@@ -79,84 +79,25 @@
         <div class="tab-content">
             <div class="main-card mb-3 card">
                 <div class="card-body">
-                    <h5 class="card-title">Create Employee</h5>
+                    <h5 class="card-title">Create Employee Grade</h5>
                     <form asp-controller="User" method="post">
                         <input asp-for="Id" name="Id" type="hidden" />
                         <div class="position-relative row form-group">
-                            <label asp-for="FirstName" class="col-sm-2 col-form-label">First Name</label>
-                            <div class="col-sm-10"><input asp-for="FirstName" type="text" class="form-control"></div>
-                            <span asp-validation-for="FirstName"></span>
+                            <label asp-for="ApplicationUserId" class="col-sm-2 col-form-label">Employees</label>
+                            <div class="col-sm-10">
+                                <select class="mb-2 form-control" asp-for="ApplicationUserId" asp-items="@ViewBag.users">
+                                    <option>Employees</option>
+                                </select>
+                            </div>
+                            <span asp-validation-for="ApplicationUserId"></span>
                         </div>
-                        <div class="position-relative row form-group">
-                            <label asp-for="LastName" class="col-sm-2 col-form-label">Last Name</label>
-                            <div class="col-sm-10"><input asp-for="LastName" type="text" class="form-control"></div>
-                            <span asp-validation-for="LastName"></span>
-                        </div>
-                        <div class="position-relative row form-group">
-                            <label asp-for="Username" class="col-sm-2 col-form-label">Username</label>
-                            <div class="col-sm-10"><input asp-for="Username" type="text" class="form-control"></div>
-                            <span asp-validation-for="Username"></span>
-                        </div>
+                        
                         <div class="position-relative row form-group">
                             <label asp-for="Country" class="col-sm-2 col-form-label">Country</label>
-                            <div class="col-sm-10"><input asp-for="Country" type="text" class="form-control"></div>
+                            <div class="col-sm-10"><input asp-for="Country" value="Nigeria" type="text" class="form-control"></div>
                             <span asp-validation-for="Country"></span>
                         </div>
-                        <div class="position-relative row form-group">
-                            <label asp-for="State" class="col-sm-2 col-form-label">State</label>
-                            <div class="col-sm-10">
-                                <select asp-for="State" class="mb-2 form-control" onchange="toggleLGA(this);" name="state" id="state">
-                                    <option value="" selected="selected">- State -</option>
-                                    <option value="Abia">Abia</option>
-                                    <option value="Adamawa">Adamawa</option>
-                                    <option value="AkwaIbom">AkwaIbom</option>
-                                    <option value="Anambra">Anambra</option>
-                                    <option value="Bauchi">Bauchi</option>
-                                    <option value="Bayelsa">Bayelsa</option>
-                                    <option value="Benue">Benue</option>
-                                    <option value="Borno">Borno</option>
-                                    <option value="Cross River">Cross River</option>
-                                    <option value="Delta">Delta</option>
-                                    <option value="Ebonyi">Ebonyi</option>
-                                    <option value="Edo">Edo</option>
-                                    <option value="Ekiti">Ekiti</option>
-                                    <option value="Enugu">Enugu</option>
-                                    <option value="FCT">FCT</option>
-                                    <option value="Gombe">Gombe</option>
-                                    <option value="Imo">Imo</option>
-                                    <option value="Jigawa">Jigawa</option>
-                                    <option value="Kaduna">Kaduna</option>
-                                    <option value="Kano">Kano</option>
-                                    <option value="Katsina">Katsina</option>
-                                    <option value="Kebbi">Kebbi</option>
-                                    <option value="Kogi">Kogi</option>
-                                    <option value="Kwara">Kwara</option>
-                                    <option value="Lagos">Lagos</option>
-                                    <option value="Nasarawa">Nasarawa</option>
-                                    <option value="Niger">Niger</option>
-                                    <option value="Ogun">Ogun</option>
-                                    <option value="Ondo">Ondo</option>
-                                    <option value="Osun">Osun</option>
-                                    <option value="Oyo">Oyo</option>
-                                    <option value="Plateau">Plateau</option>
-                                    <option value="Rivers">Rivers</option>
-                                    <option value="Sokoto">Sokoto</option>
-                                    <option value="Taraba">Taraba</option>
-                                    <option value="Yobe">Yobe</option>
-                                    <option value="Zamfara">Zamafara</option>
-                                </select>
-                            </div>
-
-                        </div>
-
-                        <div class="position-relative row form-group">
-                            <label asp-for="LGA" class="col-sm-2 col-form-label">LGA</label>
-                            <div class="col-sm-10">
-                                <select asp-for="LGA" name="lga" id="lga" class="mb-2 form-control select-lga" required>
-                                    <option value="" selected="selected">- Local Government -</option>
-                                </select>
-                            </div>
-                        </div>
+                        
                         <div class="position-relative row form-group">
                             <label asp-for="DepartmentID" class="col-sm-2 col-form-label">Department</label>
                             <div class="col-sm-10">
@@ -166,39 +107,12 @@
                             </div>
                             <span asp-validation-for="DepartmentID"></span>
                         </div>
-                        <div class="position-relative row form-group">
-                            <label asp-for="Email" class="col-sm-2 col-form-label">Email</label>
-                            <div class="col-sm-10"><input asp-for="Email" type="email" class="form-control"></div>
-                            <span asp-validation-for="Email"></span>
-                        </div>
-                        <div class="position-relative row form-group">
-                            <label asp-for="PhoneNo" class="col-sm-2 col-form-label">Phone Number</label>
-                            <div class="col-sm-10"><input asp-for="PhoneNo" type="text" class="form-control"></div>
-                            <span asp-validation-for="PhoneNo"></span>
-                        </div>
+                        
                         <div class="position-relative row form-group">
                             <label asp-for="gradeID" class="col-sm-2 col-form-label">Grade</label>
                             <div class="col-sm-10">
                                 <select class="mb-2 form-control" asp-for="gradeID" asp-items="@ViewBag.grade">
                                     <option>Grade</option>
-                                </select>
-                            </div>
-                            <span asp-validation-for="gradeID"></span>
-                        </div>
-                        <div class="position-relative row form-group">
-                            <label asp-for="gradeID" class="col-sm-2 col-form-label">Level</label>
-                            <div class="col-sm-10">
-                                <select class="mb-2 form-control" asp-for="gradeID" asp-items="@ViewBag.level">
-                                    <option>Level</option>
-                                </select>
-                            </div>
-                            <span asp-validation-for="gradeID"></span>
-                        </div>
-                        <div class="position-relative row form-group">
-                            <label asp-for="gradeID" class="col-sm-2 col-form-label">Step</label>
-                            <div class="col-sm-10">
-                                <select class="mb-2 form-control" asp-for="gradeID" asp-items="@ViewBag.step">
-                                    <option>Step</option>
                                 </select>
                             </div>
                             <span asp-validation-for="gradeID"></span>

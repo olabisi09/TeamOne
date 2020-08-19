@@ -23,60 +23,61 @@ namespace CyberProject.Services
             _context.SaveChanges();
         }
 
-        public bool GetSalary()
+        public bool GetSalary(Grade grade)
         {
             try
             {
-                Grade grade = new Grade();
                 float percentOne = 5;
-                float percentTwo = 3;
 
-                if (grade.GradeID == 1)
+                grade.TaxPercentage = 5;
+                grade.Tax = grade.Amount * (grade.TaxPercentage / 100);
+                grade.TaxPayType = "Deduction";
+
+                grade.Housing = (percentOne / 100) * grade.Amount;
+                //grade.HousingPayType = "Allowance";
+                if (grade.HousingPayType == "Allowance")
                 {
-                    //salary.Amount = 500000;
-
-                    grade.Salary.TaxPercentage = 5;
-                    grade.Salary.Tax = grade.Salary.Amount * (grade.Salary.TaxPercentage / 100);
-                    grade.Salary.TaxPayType = "Deduction";
-
-                    grade.Salary.Housing = (percentOne / 100) * grade.Salary.Amount;
-                    grade.Salary.HousingPayType = "Allowance";
-
-                    grade.Salary.Medical = grade.Salary.Amount * (percentOne / 100);
-                    grade.Salary.MedicalPayType = "Allowance";
-
-                    grade.Salary.Lunch = grade.Salary.Amount * (percentOne / 100);
-                    grade.Salary.LunchPayType = "Allowance";
-
-                    grade.Salary.Transport = grade.Salary.Amount * (percentOne / 100);
-                    grade.Salary.TransportPayType = "Allowance";
-
-
+                    grade.Amount += grade.Housing;
+                }
+                else if (grade.HousingPayType == "Deduction")
+                {
+                    grade.Amount -= grade.Housing;
                 }
 
-                if (grade.GradeID == 2)
+                grade.Medical = grade.Amount * (percentOne / 100);
+                //grade.MedicalPayType = "Allowance";
+                if (grade.MedicalPayType == "Allowance")
                 {
-                    //grade.Salary.Amount = 100000;
-
-                    grade.Salary.TaxPercentage = 3;
-                    grade.Salary.Tax = grade.Salary.Amount * (grade.Salary.TaxPercentage / 100);
-                    grade.Salary.TaxPayType = "Deduction";
-
-                    grade.Salary.Housing = (percentTwo / 100) * grade.Salary.Amount;
-                    grade.Salary.HousingPayType = "Allowance";
-
-                    grade.Salary.Medical = grade.Salary.Amount * (percentTwo / 100);
-                    grade.Salary.MedicalPayType = "Allowance";
-
-                    grade.Salary.Lunch = grade.Salary.Amount * (percentTwo / 100);
-                    grade.Salary.LunchPayType = "Allowance";
-
-                    grade.Salary.Transport = grade.Salary.Amount * (percentTwo / 100);
-                    grade.Salary.TransportPayType = "Allowance";
-
-
+                    grade.Amount += grade.Medical;
                 }
-                grade.Salary.NetSalary = (grade.Salary.Amount - grade.Salary.Tax) + grade.Salary.Housing + grade.Salary.Medical + grade.Salary.Lunch + grade.Salary.Transport;
+                else if (grade.MedicalPayType == "Deduction")
+                {
+                    grade.Amount -= grade.Medical;
+                }
+
+                grade.Lunch = grade.Amount * (percentOne / 100);
+                //grade.LunchPayType = "Allowance";
+                if (grade.LunchPayType == "Allowance")
+                {
+                    grade.Amount += grade.Lunch;
+                }
+                else if (grade.LunchPayType == "Deduction")
+                {
+                    grade.Amount -= grade.Lunch;
+                }
+
+                grade.Transport = grade.Amount * (percentOne / 100);
+                //grade.TransportPayType = "Allowance";
+                if (grade.TransportPayType == "Allowance")
+                {
+                    grade.Amount += grade.Transport;
+                }
+                else if (grade.TransportPayType == "Deduction")
+                {
+                    grade.Amount -= grade.Transport;
+                }
+
+                grade.NetSalary = (grade.Amount - grade.Tax) + grade.Housing + grade.Medical + grade.Lunch + grade.Transport;
             }
             catch (Exception)
             {
@@ -90,24 +91,57 @@ namespace CyberProject.Services
         {
             try
             {
-                float percentOne = 5;
+                //float percentOne = 5;
 
-                grade.Salary.TaxPercentage = 5;
-                grade.Salary.Tax = grade.Salary.Amount * (grade.Salary.TaxPercentage / 100);
-                grade.Salary.TaxPayType = "Deduction";
+                grade.TaxPercentage = 5;
+                grade.Tax = grade.Amount * (grade.TaxPercentage / 100);
+                grade.TaxPayType = "Deduction";
 
-                grade.Salary.Housing = (percentOne / 100) * grade.Salary.Amount;
-                grade.Salary.HousingPayType = "Allowance";
+                //grade.Housing = (percentOne / 100) * grade.Amount;
+                //grade.HousingPayType = "Allowance";
+                if (grade.HousingPayType == "Allowance")
+                {
+                    grade.Amount += grade.Housing;
+                }
+                else if (grade.HousingPayType == "Deduction")
+                {
+                    grade.Amount -= grade.Housing;
+                }
 
-                grade.Salary.Medical = grade.Salary.Amount * (percentOne / 100);
-                grade.Salary.MedicalPayType = "Allowance";
+                //grade.Medical = grade.Amount * (percentOne / 100);
+                //grade.MedicalPayType = "Allowance";
+                if (grade.MedicalPayType == "Allowance")
+                {
+                    grade.Amount += grade.Medical;
+                }
+                else if (grade.MedicalPayType == "Deduction")
+                {
+                    grade.Amount -= grade.Medical;
+                }
 
-                grade.Salary.Lunch = grade.Salary.Amount * (percentOne / 100);
-                grade.Salary.LunchPayType = "Allowance";
+                //grade.Lunch = grade.Amount * (percentOne / 100);
+                //grade.LunchPayType = "Allowance";
+                if (grade.LunchPayType == "Allowance")
+                {
+                    grade.Amount += grade.Lunch;
+                }
+                else if (grade.LunchPayType == "Deduction")
+                {
+                    grade.Amount -= grade.Lunch;
+                }
 
-                grade.Salary.Transport = grade.Salary.Amount * (percentOne / 100);
-                grade.Salary.TransportPayType = "Allowance";
-                grade.Salary.NetSalary = (grade.Salary.Amount - grade.Salary.Tax) + grade.Salary.Housing + grade.Salary.Medical + grade.Salary.Lunch + grade.Salary.Transport;
+                //grade.Transport = grade.Amount * (percentOne / 100);
+                //grade.TransportPayType = "Allowance";
+                if (grade.TransportPayType == "Allowance")
+                {
+                    grade.Amount += grade.Transport;
+                }
+                else if (grade.TransportPayType == "Deduction")
+                {
+                    grade.Amount -= grade.Transport;
+                }
+
+                grade.NetSalary = (grade.Amount - grade.Tax) + grade.Housing + grade.Medical + grade.Lunch + grade.Transport;
                 await _context.AddAsync(grade);
                 await _context.SaveChangesAsync();
             }
@@ -133,7 +167,7 @@ namespace CyberProject.Services
 
         public async Task<IEnumerable<Grade>> GetAll()
         {
-            return await _context.Grades.Include(s => s.Salary).ToListAsync();
+            return await _context.Grades.ToListAsync();
         }
 
         public async Task<Grade> GetById(int Id)
@@ -147,6 +181,8 @@ namespace CyberProject.Services
             var gr = await _context.Grades.FindAsync(Id);
             if (gr != null)
             {
+                grade.Amount = 0;
+                GetSalary(grade);
                 gr.GradeName = grade.GradeName;
                 gr.Level = grade.Level;
                 gr.Step = grade.Step;
