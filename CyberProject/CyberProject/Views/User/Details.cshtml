@@ -5,9 +5,9 @@
 
     var details = ViewData["Salary Preview"] as CyberProject.Entities.User;
 
-    var totalAllowance = details.Housing + details.Lunch + details.Medical + details.Transport;
+    var totalAllowance = details.Grade.Housing + details.Grade.Lunch + details.Grade.Medical + details.Grade.Transport;
 
-    var AmountAfterTax = details.Amount - details.Tax;
+    var AmountAfterTax = details.Grade.Amount - details.Grade.Tax;
 }
 
 
@@ -126,9 +126,9 @@
                         <h5 class="card-title">Tax Deductions</h5>
                         <div class="scroll-area-sm">
                             <div class="scrollbar-container ps--active-y">
-                                <p><b>Tax Percentage</b> : @details.TaxPercentage%</p>
-                                <p><b>Tax Amount</b> : N @details.Tax</p>
-                                <p><b>Tax Payment Type</b> : @details.TaxPayType</p>
+                                <p><b>Tax Percentage</b> : @details.Grade.TaxPercentage%</p>
+                                <p><b>Tax Amount</b> : N @details.Grade.Tax</p>
+                                <p><b>Tax Payment Type</b> : @details.Grade.TaxPayType</p>
                                 <p><b>Amount After Deduction</b> : N @AmountAfterTax</p>
                             </div>
                         </div>
@@ -139,12 +139,12 @@
                         <h5 class="card-title">Summary</h5>
                         <div class="scroll-area-sm">
                             <div class="scrollbar-container ps--active-y">
-                                <p><b>Basic Salary</b> : N @details.Amount</p>
-                                <p><b>Total deductions</b> : N @details.Tax</p>
+                                <p><b>Basic Salary</b> : N @details.Grade.Amount</p>
+                                <p><b>Total deductions</b> : N @details.Grade.Tax</p>
                                 <p><b>Total allowance</b> : N @totalAllowance</p>
   
                                 <h6 class="card-title">Net Salary</h6>
-                                <p><b>N @details.NetSalary</b></p>
+                                <p><b>N @details.Grade.NetSalary</b></p>
                             </div>
                         </div>
                     </div>

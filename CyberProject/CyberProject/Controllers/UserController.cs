@@ -124,12 +124,12 @@ namespace CyberProject.Controllers
             var createUser = await _userService.AddAsync(user);
             if (createUser)
             {
-                Alert("User created successfully.", NotificationType.success);
+                Alert("Grade successfully assigned to user.", NotificationType.success);
                 return RedirectToAction("ListUsers", "User");
             }
             else
             {
-                Alert("User not created!", NotificationType.error);
+                Alert("User not assigned!", NotificationType.error);
             }
 
             return View();

@@ -21,6 +21,68 @@
             <div class="app-main__inner">
                 <div class="app-page-title">
                     <div class="page-title-wrapper">
+                    </div>
+                </div>
+
+                <div class="main-card mb-3 card">
+                    <div class="card-body">
+                        <h5 class="card-title">@UserManager.GetUserName(User)'s Profile</h5>
+                        <div class="collapse" id="collapseExample123">
+                            <form asp-controller="User" method="post">
+                                <input name="Id" type="hidden" />
+                                <div class="position-relative row form-group">
+                                    <label class="col-sm-2 col-form-label">First Name</label>
+                                    <div class="col-sm-10"><input value="@s.ApplicationUser.FirstName" type="text" class="form-control" disabled></div>
+                                </div>
+                                <div class="position-relative row form-group">
+                                    <label class="col-sm-2 col-form-label">Last Name</label>
+                                    <div class="col-sm-10"><input value="@s.ApplicationUser.LastName" type="text" class="form-control" disabled></div>
+                                </div>
+                                <div class="position-relative row form-group">
+                                    <label class="col-sm-2 col-form-label">Username</label>
+                                    <div class="col-sm-10"><input value="@s.ApplicationUser.UserName" type="text" class="form-control" disabled></div>
+                                </div>
+
+                                <div class="position-relative row form-group">
+                                    <label class="col-sm-2 col-form-label">Country</label>
+                                    <div class="col-sm-10"><input value="@s.ApplicationUser.Country" type="text" class="form-control" disabled></div>
+                                </div>
+
+                                <div class="position-relative row form-group">
+                                    <label class="col-sm-2 col-form-label">State</label>
+                                    <div class="col-sm-10"><input value="@s.ApplicationUser.State" type="text" class="form-control" disabled></div>
+                                </div>
+                                <div class="position-relative row form-group">
+                                    <label class="col-sm-2 col-form-label">LGA</label>
+                                    <div class="col-sm-10"><input value="@s.ApplicationUser.LGA" type="text" class="form-control" disabled></div>
+                                </div>
+
+                                <div class="position-relative row form-group">
+                                    <label class="col-sm-2 col-form-label">Email</label>
+                                    <div class="col-sm-10"><input value="@s.ApplicationUser.Email" type="text" class="form-control" disabled></div>
+                                </div>
+                                <div class="position-relative row form-group">
+                                    <label class="col-sm-2 col-form-label">Phone Number</label>
+                                    <div class="col-sm-10"><input value="@s.ApplicationUser.PhoneNumber" type="text" class="form-control" disabled></div>
+                                </div>
+
+
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" data-toggle="collapse" href="#collapseExample123" class="btn btn-primary">View</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    @*else
+    {
+        <div class="app-main__outer">
+            <div class="app-main__inner">
+                <div class="app-page-title">
+                    <div class="page-title-wrapper">
                         <div class="page-title-heading">
                             <div class="page-title-icon">
                                 <i class="pe-7s-diamond icon-gradient bg-warm-flame">
@@ -89,55 +151,16 @@
 
                 <div class="main-card mb-3 card">
                     <div class="card-body">
-                        <h5 class="card-title">@UserManager.GetUserName(User)'s Profile</h5>
-                        <div class="collapse" id="collapseExample123">
-                            <form asp-controller="User" method="post">
-                                <input name="Id" type="hidden" />
-                                <div class="position-relative row form-group">
-                                    <label class="col-sm-2 col-form-label">First Name</label>
-                                    <div class="col-sm-10"><input value="@s.ApplicationUser.FirstName" type="text" class="form-control" disabled></div>
-                                </div>
-                                <div class="position-relative row form-group">
-                                    <label class="col-sm-2 col-form-label">Last Name</label>
-                                    <div class="col-sm-10"><input value="@s.ApplicationUser.LastName" type="text" class="form-control"></div>
-                                </div>
-                                <div class="position-relative row form-group">
-                                    <label class="col-sm-2 col-form-label">Username</label>
-                                    <div class="col-sm-10"><input value="@s.ApplicationUser.UserName" type="text" class="form-control"></div>
-                                </div>
-
-                                <div class="position-relative row form-group">
-                                    <label class="col-sm-2 col-form-label">Country</label>
-                                    <div class="col-sm-10"><input value="@s.ApplicationUser.Country" type="text" class="form-control"></div>
-                                </div>
-
-                                <div class="position-relative row form-group">
-                                    <label class="col-sm-2 col-form-label">State</label>
-                                    <div class="col-sm-10"><input value="@s.ApplicationUser.State" type="text" class="form-control"></div>
-                                </div>
-                                <div class="position-relative row form-group">
-                                    <label class="col-sm-2 col-form-label">LGA</label>
-                                    <div class="col-sm-10"><input value="@s.ApplicationUser.LGA" type="text" class="form-control"></div>
-                                </div>
-
-                                <div class="position-relative row form-group">
-                                    <label class="col-sm-2 col-form-label">Email</label>
-                                    <div class="col-sm-10"><input value="@s.ApplicationUser.Email" type="text" class="form-control"></div>
-                                </div>
-                                <div class="position-relative row form-group">
-                                    <label class="col-sm-2 col-form-label">Phone Number</label>
-                                    <div class="col-sm-10"><input value="@s.ApplicationUser.PhoneNumber" type="text" class="form-control"></div>
-                                </div>
-
-
-                            </form>
-                        </div>
+                        <h5 class="card-title">No </h5>
+                        Oops! You haven't been assigned a grade yet. Contact the management for more information.
                     </div>
-                    <div class="card-footer">
-                        <button type="button" data-toggle="collapse" href="#collapseExample123" class="btn btn-primary">View</button>
-                    </div>
+                    
                 </div>
             </div>
         </div>
+
     }
+    break;*@
 }
+
+
